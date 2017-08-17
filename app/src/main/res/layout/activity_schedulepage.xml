@@ -88,11 +88,11 @@ android:textStyle="bold"
         android:layout_marginTop="25dp"
         android:textStyle="bold"
         android:clickable="true"
-        android:onClick="Address"
+
 android:textColor="#fff"
         android:layout_below="@+id/relativecalender"
         android:id="@+id/tvchange"
-        android:text="+ Add Address"
+        android:text=" Address"
         />
 
 

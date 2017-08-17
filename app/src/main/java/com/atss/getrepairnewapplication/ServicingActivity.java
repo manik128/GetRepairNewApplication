@@ -1099,6 +1099,8 @@ RelativeLayout relativespinnerfloors,rlrs1,rlsppositonsells,rlrs3,rlrs2,rlrs4,rl
 
             public void onClick(View view) {
 //                 else {
+
+
                     if (pos == 0) {
                         if (etselectmakes.getText().toString().equals("")) {
                             Snackbar.make(view, "Please Enter issue", Snackbar.LENGTH_LONG)

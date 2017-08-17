@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,8 +32,9 @@ import java.util.Date;
 import java.util.List;
 
 public class SchedulePageActivity extends AppCompatActivity {
-    RelativeLayout relativeLayout;
+    RelativeLayout relativeLayout,relativecalender;
     Date dt;
+    LinearLayout linearlayouthorscroll;
     int mcur,fmur=0;
     int value;
    Calendar calendar;
@@ -59,7 +61,7 @@ public class SchedulePageActivity extends AppCompatActivity {
 Button btncontinue;
 ImageView ivedit,ivdelete, ivactionmenu;
 Mainclass mclass;
-String tempaddr;
+String tempaddr, tvdt,tvtm;
     String[] time = {"6am-8am", "8am-10am", "10am-12pm", "12pm-2pm", "2pm-4pm", "4pm-6pm", "6pm-8pm", "8pm-10pm", "10pm-12am", "12am-2am", "2am-4am", "4am-6am"};
     private List database;
     SQLiteDatabase db;
@@ -76,7 +78,8 @@ String tempaddr;
         getSupportActionBar().setElevation(0);
         tvservicing= (TextView) mActionBarView.findViewById(R.id.tvservicing);
 
-
+        relativecalender = (RelativeLayout) findViewById(R.id.relativecalender);
+        linearlayouthorscroll = (LinearLayout) findViewById(R.id.linearlayouthorscroll);
         relativeLayout = (RelativeLayout) findViewById(R.id.relativecalender);
         tvchange = (TextView) findViewById(R.id.tvchange);
         tvservicing = (TextView) findViewById(R.id.tvservicing);
@@ -169,22 +172,24 @@ String tempaddr;
         btncontinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if((fmur-value)>=ldt ){
-                    mcur=mcur+1;
+                if ( tvdt== null) {
+                    Snackbar.make(v, "Please select date", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }else if ( tvtm== null) {
+                        Snackbar.make(v, "Please select time", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                }else {
+                    if ((fmur - value) >= ldt) {
+                        mcur = mcur + 1;
+                    }
+                    mclass.setDate(Integer.toString(value) + "," + mon[mcur] + "," + calendar.get(Calendar.YEAR));
+                    Intent intent = new Intent(SchedulePageActivity.this, OrdersummaryActivity.class);
+                    startActivityForResult(intent, 2);
                 }
-                mclass.setDate(Integer.toString(value)+","+mon[mcur]+","+calendar.get(Calendar.YEAR));
-                Intent intent = new Intent(SchedulePageActivity.this, OrdersummaryActivity.class);
-                startActivityForResult(intent, 2);
 
             }
         });
-        ivdelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                container.removeView(myView);
-            }
-        });
+
 ivedit=(ImageView)findViewById(R.id.ivedit);
         ivedit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -217,20 +222,20 @@ ivedit=(ImageView)findViewById(R.id.ivedit);
         });
 
 
-        tvchange.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-
-
-                    Intent intent = new Intent(SchedulePageActivity.this,AddadressActivity.class);
-
-                    startActivity(intent);
-
-
-            }
-        });
+//        tvchange.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//
+//
+//
+//                    Intent intent = new Intent(SchedulePageActivity.this,AddadressActivity.class);
+//
+//                    startActivity(intent);
+//
+//
+//            }
+//        });
         SimpleDateFormat sdf = new SimpleDateFormat("dd");
 
         Date today = new Date();
@@ -307,6 +312,8 @@ ivedit=(ImageView)findViewById(R.id.ivedit);
             pojoClass.getLinearLayout().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    tvdt= (tvdate.getText().toString().replaceAll("[^0-9]", ""));
+
                     value = Integer.parseInt(tvdate.getText().toString().replaceAll("[^0-9]", ""));
                     if (v2 != null) {
                         v2.setBackgroundColor(Color.parseColor("#ffffff"));
@@ -338,6 +345,7 @@ ivedit=(ImageView)findViewById(R.id.ivedit);
                         tvtime.setOnClickListener(new View.OnClickListener() {
                                                       @Override
                                                       public void onClick(View v) {
+                                                          tvtm= (tvtime.getText().toString().replaceAll("[^0-9]", ""));
                                                           mclass.setTime(tvtime.getText().toString());
                                                           if (v1 != null) {
                                                               v1.setBackgroundColor(Color.parseColor("#ffffff"));
