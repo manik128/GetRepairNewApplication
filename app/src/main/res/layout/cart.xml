@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/android_card_view_example"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+
+          >
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="Automobiles"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+
+
+                android:textColor="#808080"
+
+                android:id="@+id/tvselectmake"
+                android:layout_marginTop="1dp"
+
+                android:paddingBottom="10dp"
+
+
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#FFDAD8D8"
+                android:layout_below="@+id/tvselectmake"
+
+                android:id="@+id/tvlines"
+
+
+                />
+
+            <TextView
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/tvservice"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="92dp"
+
+                android:layout_marginStart="90dp"
+                android:layout_marginTop="3dp"
+                android:id="@+id/textView11" />
+
+            <TextView
+                android:text="Repairs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textView11"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/tvrepair" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="service"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+
+                android:textColor="#808080"
+
+                android:id="@+id/tvservice"
+
+                android:paddingBottom="10dp"
+
+
+                android:layout_below="@+id/tvselectmake"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <TextView
+                android:text="Basic inspection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvservice"
+                android:layout_marginBottom="15dp"
+                android:id="@+id/tvorders" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+              android:src="@drawable/rubbish"
+
+                android:layout_alignParentRight="true"
+
+                android:layout_marginRight="14dp"
+                android:layout_marginEnd="14dp"
+               android:layout_marginTop="40dp"
+                android:id="@+id/ivdelete" />
+            <Button
+                android:text="continue"
+                android:textColor="#fff"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+
+                android:background="@drawable/myborderbuildingblue"
+                android:id="@+id/btncontinue"
+                android:layout_below="@+id/tvorders"
+                />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

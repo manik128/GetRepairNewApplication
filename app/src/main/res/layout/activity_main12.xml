@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/android_coordinator_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:id="@+id/appbar_layout"
+        android:layout_height="@dimen/app_bar_height"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar_android_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="?attr/colorPrimary"
+            android:background="#d9d7d7"
+            app:expandedTitleMarginStart="@dimen/expanded_toolbar_title_margin_start"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+            <RelativeLayout
+                android:id="@+id/linearviewpager"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="#ffffff"
+                android:orientation="vertical"
+                >
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:weightSum="3"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginBottom="9dp"
+                    android:layout_marginLeft="150dp"
+                    android:layout_marginRight="150dp"
+                    android:layout_alignBottom="@+id/pager"
+                    android:layout_centerHorizontal="true">
+                    <ImageView
+                        android:id="@+id/imgslidecircle1"
+                        android:layout_width="0dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="8dp"
+                        android:background="@drawable/circle1">
+                    </ImageView>
+
+
+
+                    <ImageView
+                        android:id="@+id/imgslidecircle3"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginRight="5dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/circle1">
+                    </ImageView>
+
+
+                </LinearLayout>
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true">
+                </android.support.v4.view.ViewPager>
+
+            </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:background="#ffffff"
+        android:layout_below="@+id/linearviewpager">
+        <TextView
+            android:layout_width="match_parent"
+            android:text="Why Choose Us?"
+            android:id="@+id/tvwhy"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textColor="#000"
+            android:paddingLeft="20dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_below="@+id/tvwhy"
+            android:layout_marginTop="5dp"
+           android:background="#8e8b8b"
+            android:id="@+id/tvline"
+            android:layout_height="0.1dp" />
+
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="7dp"
+    android:id="@+id/ivdot1"
+    android:src="@drawable/dot"
+    android:paddingLeft="20dp"
+    android:layout_marginTop="10dp"
+    android:layout_below="@+id/tvline"
+   />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/tvline"
+            android:id="@+id/tvpnt1"
+            android:layout_height="wrap_content"
+            android:textColor="#8e8d8d"
+            android:paddingLeft="5dp"
+            android:layout_toRightOf="@+id/ivdot1"
+            android:paddingTop="3dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Experts and Certified Mechanics"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="7dp"
+            android:id="@+id/ivdot2"
+            android:src="@drawable/dot"
+            android:paddingLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/tvpnt1"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_below="@+id/tvpnt1"
+            android:id="@+id/tvpnt2"
+            android:layout_height="wrap_content"
+            android:textColor="#8e8d8d"
+            android:paddingLeft="5dp"
+            android:paddingTop="3dp"
+            android:drawablePadding="10dp"
+            android:layout_toRightOf="@+id/ivdot2"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Experts and Certified Mechanics"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="7dp"
+            android:id="@+id/ivdot3"
+            android:src="@drawable/dot"
+            android:paddingLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/tvpnt2"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/tvpnt3"
+            android:layout_height="wrap_content"
+            android:textColor="#8e8d8d"
+            android:paddingLeft="5dp"
+            android:paddingTop="3dp"
+            android:drawablePadding="10dp"
+            android:layout_toRightOf="@+id/ivdot3"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Experts and Certified Mechanics"
+            android:layout_below="@+id/tvpnt2"
+            />
+
+
+    </RelativeLayout>
+</RelativeLayout>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:id="@+id/nestedscrollview"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <RelativeLayout
+            android:id="@+id/linearLayouts"
+            android:background="#d9d7d7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:background="#d9d7d7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            </RelativeLayout>
+
+            <!--<com.gigamole.navigationtabstrip.NavigationTabStrip-->
+                <!--android:id="@+id/nts"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--app:nts_active_color="@android:color/black"-->
+                <!--app:nts_color="#16667D"-->
+                <!--android:background="#fff"-->
+                <!--app:nts_gravity="bottom"-->
+                <!--app:nts_inactive_color="@android:color/darker_gray"-->
+                <!--app:nts_size="13sp"-->
+                <!--app:nts_type="line"-->
+                <!--app:nts_weight="3dp" />-->
+
+            <!--<android.support.v4.view.ViewPager-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="310dp"-->
+                <!--android:id="@+id/viewpager"-->
+                <!--android:background="#fff"-->
+
+                <!--android:layout_below="@+id/nts"-->
+
+                <!--android:orientation="vertical"-->
+                <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"/>-->
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:id="@+id/rlhorizontal"
+    android:layout_marginTop="5dp"
+    android:background="#fff"
+    android:layout_below="@+id/relativeLayout"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/tvarticles"
+        android:layout_marginTop="5dp"
+        android:background="#8e8b8b"
+        android:id="@+id/tvline1"
+        android:layout_height="0.1dp" />
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:id="@+id/horizontalScrollView"
+        android:layout_below="@+id/tvline1"
+        android:scrollbars="none"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/linearlayouthorscroll"
+            android:layout_height="wrap_content">
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Articles"
+        android:id="@+id/tvarticles"
+        android:textColor="#000"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:paddingLeft="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_marginTop="5dp"
+    android:background="#fff"
+    android:layout_below="@+id/rlhorizontal"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GetRepair Guarantee"
+        android:id="@+id/tvguarantee"
+        android:textColor="#000"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:paddingLeft="20dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/tvguarantee"
+        android:layout_marginTop="5dp"
+        android:background="#8e8b8b"
+        android:id="@+id/tvline2"
+        android:layout_height="0.1dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:id="@+id/linearguarantee"
+        android:layout_below="@+id/tvline2"
+        android:layout_height="wrap_content">
+
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:id="@+id/ivrepair"
+                android:paddingBottom="5dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:src="@drawable/notebook"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:id="@+id/tvverify"
+                android:textSize="10dp"
+                android:textColor="#000"
+                android:text="Verified"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ivrepair"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:text="Professionals"
+                android:textSize="10dp"
+                android:id="@+id/tvprofessional"
+                android:textColor="#000"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvverify"/>
+        </RelativeLayout>
+        <TextView
+            android:layout_width="1dp"
+            android:background="#dddddd"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_height="match_parent" />
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:text="Insured"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:id="@+id/tvinsured"
+                android:textSize="10dp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ivrepair1"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_below="@+id/tvinsured"
+                android:text="Work"
+                android:id="@+id/tvwork"
+                android:textColor="#000"
+                android:gravity="center"
+                android:textSize="10dp"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:id="@+id/ivrepair1"
+                android:paddingBottom="5dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:src="@drawable/correct"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+        </RelativeLayout>
+        <TextView
+            android:layout_width="1dp"
+            android:background="#dddddd"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_height="match_parent" />
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:id="@+id/tvsatisfaction"
+                android:text="Satisfaction"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:textSize="10dp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ivrepair2"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Guaranteed"
+                android:textSize="10dp"
+                android:textColor="#000"
+                android:gravity="center"
+                android:id="@+id/tvguaranteed"
+                android:layout_below="@+id/tvsatisfaction"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:id="@+id/ivrepair2"
+                android:paddingBottom="5dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:src="@drawable/trophy"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+        </RelativeLayout>
+        <TextView
+            android:layout_width="1dp"
+            android:background="#dddddd"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_height="match_parent" />
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:id="@+id/ivrepair3"
+                android:src="@drawable/creditcard"
+                android:paddingBottom="5dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Easy"
+                android:textSize="10dp"
+                android:textColor="#000"
+                android:gravity="center"
+                android:id="@+id/tveasy"
+                android:layout_below="@+id/ivrepair3"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="10dp"
+                android:textColor="#000"
+                android:gravity="center"
+                android:id="@+id/tvpayment"
+                android:layout_below="@+id/tveasy"
+                android:text="Payment"/>
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>
+</RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>

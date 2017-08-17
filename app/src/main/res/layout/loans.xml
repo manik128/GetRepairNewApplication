@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ecf7f7">
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvbudget"
+        android:textColor="#484848"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/relativespinnerfloors"
+        android:text="Tell us your Budget:"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/tvbudget"
+        android:id="@+id/relativebudget"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="150dp"
+            android:id="@+id/rlrs1"
+            android:layout_marginLeft="20dp"
+            android:background="#ffff"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:text="@string/Rs"
+                android:paddingTop="8dp"
+                android:paddingLeft="20dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/tvrs1"/>
+            <Spinner
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/sprs1"
+                android:layout_toRightOf="@+id/tvrs1"
+                android:layout_toEndOf="@+id/tvrs1"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+
+
+                android:textSize="20dp"
+                android:textColor="#787878"
+                />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>

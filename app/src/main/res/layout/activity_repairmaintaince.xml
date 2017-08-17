@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#ffff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:text="Repair Maintaince"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvhome"
+        android:textSize="18dp"
+        android:layout_gravity="center"
+        android:padding="5dp"
+        android:textColor="#000"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/tvlineschedule"
+        android:layout_below="@+id/tvhome"
+        android:background="#E9E9E9"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearlayout1"
+        android:orientation="vertical"
+        android:layout_below="@+id/tvhome"
+
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="selectmake"
+            android:text="Electrical Work "
+            android:drawableRight="@drawable/plus"
+            android:layout_below="@+id/tvlineschedule"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:paddingRight="10dp"
+            android:textColor="#5D5D5D"
+            android:id="@+id/tvelectrical"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:textSize="16dp"
+            android:paddingLeft="20dp"
+
+            />
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvtelevision"
+            android:id="@+id/rlselectmake">
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bio Metric Service"
+            android:drawableRight="@drawable/plus"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_below="@+id/rlselectmake"
+            android:textColor="#5D5D5D"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvbiometric"
+            android:layout_marginTop="1dp"
+            android:paddingTop="10dp"
+            android:textSize="16dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="10dp"
+
+            />
+
+
+
+
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvdvd"
+            android:id="@+id/ldvd">
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Air Conditioner"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:drawableRight="@drawable/plus"
+            android:layout_below="@+id/ldvd"
+            android:textColor="#5D5D5D"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvcooler"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textSize="16dp"
+            android:paddingLeft="20dp"
+
+            />
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvrefrigerator"
+            android:id="@+id/lrefri">
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Projector Service"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:drawableRight="@drawable/plus"
+            android:layout_below="@+id/lrefri"
+            android:textColor="#5D5D5D"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvprojector"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textSize="16dp"
+            android:paddingLeft="20dp"
+
+            />
+
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvwashing"
+            android:id="@+id/lwashing">
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Plumber Work"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:drawableRight="@drawable/plus"
+            android:layout_below="@+id/lwashing"
+            android:textColor="#5D5D5D"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvplumber"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textSize="16dp"
+            android:paddingLeft="20dp"
+
+            />
+
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvtheatre"
+            android:id="@+id/lhome">
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="painter Work"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:drawableRight="@drawable/plus"
+            android:layout_below="@+id/lhome"
+            android:textColor="#5D5D5D"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvpainter"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textSize="16dp"
+            android:paddingLeft="20dp"
+
+            />
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvgeyser"
+            android:id="@+id/lgeyser">
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Carpentry Work"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:drawableRight="@drawable/plus"
+            android:layout_below="@+id/lgeyser"
+            android:textColor="#5D5D5D"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvcarpenter"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textSize="16dp"
+            android:paddingLeft="20dp"
+
+            />
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvcarpentry"
+            android:id="@+id/lcarpentry">
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lan Networking Service"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="16dp"
+            android:layout_below="@+id/lcarpentry"
+            android:textColor="#5D5D5D"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvlan"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+
+            android:paddingLeft="20dp"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Laptop Service"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:drawableRight="@drawable/plus"
+            android:layout_below="@+id/llan"
+            android:textColor="#5D5D5D"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvlaptop"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textSize="16dp"
+            android:paddingLeft="20dp"
+
+            />
+
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvlan"
+            android:id="@+id/llan">
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CCTV Camera Service"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:drawableRight="@drawable/plus"
+            android:layout_below="@+id/llaptop"
+            android:textColor="#5D5D5D"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvcamera"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textSize="16dp"
+            android:paddingLeft="20dp"
+
+            />
+
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvlaptop"
+            android:id="@+id/llaptop">
+
+
+        </LinearLayout>
+
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvcamera"
+            android:id="@+id/lcamera">
+
+
+        </LinearLayout>
+
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvmanson"
+            android:id="@+id/lmanson">
+
+
+        </LinearLayout>
+
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvglass"
+            android:id="@+id/lglass">
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Glass doors and Glass Work Service"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#5D5D5D"
+            android:layout_below="@+id/lmanson"
+            android:textSize="16dp"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvglass"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+
+            android:paddingLeft="20dp"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cleaning Equipments Work"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:drawableRight="@drawable/plus"
+            android:layout_below="@+id/lglass"
+            android:textColor="#5D5D5D"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvcleaning"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textSize="16dp"
+            android:paddingLeft="20dp"
+
+            />
+
+    <LinearLayout
+
+
+
+        android:background="#ecf7f7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        android:layout_below="@+id/tvcleaning"
+        android:id="@+id/lcleaning">
+
+
+    </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Printer Service"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:drawableRight="@drawable/plus"
+            android:layout_below="@+id/lcleaning"
+            android:textColor="#5D5D5D"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvprinter"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textSize="16dp"
+            android:paddingLeft="20dp"
+
+            />
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvprinter"
+            android:id="@+id/lprinter">
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chair Work"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:drawableRight="@drawable/plus"
+            android:layout_below="@+id/lprinter"
+            android:textColor="#5D5D5D"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvchair"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textSize="16dp"
+            android:paddingLeft="20dp"
+
+            />
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvchair"
+            android:id="@+id/lchair">
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mobiles Service"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:drawableRight="@drawable/plus"
+            android:layout_below="@+id/lchair"
+            android:textColor="#5D5D5D"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvmobile"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textSize="16dp"
+            android:paddingLeft="20dp"
+
+            />
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvmobile"
+            android:id="@+id/lmobile">
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Desktop Service"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:drawableRight="@drawable/plus"
+            android:layout_below="@+id/lchair"
+            android:textColor="#5D5D5D"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvdesktop"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textSize="16dp"
+            android:paddingLeft="20dp"
+
+            />
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvmobile"
+            android:id="@+id/ldesktop">
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tablet Service"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:drawableRight="@drawable/plus"
+            android:layout_below="@+id/lchair"
+            android:textColor="#5D5D5D"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvtablet"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textSize="16dp"
+            android:paddingLeft="20dp"
+
+            />
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvmobile"
+            android:id="@+id/ltablet">
+
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#ffff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:text="Facility Management"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvhome"
+        android:textSize="18dp"
+        android:layout_gravity="center"
+        android:padding="5dp"
+        android:textColor="#000"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/tvlineschedule"
+        android:layout_below="@+id/tvhome"
+        android:background="#E9E9E9"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearlayout1"
+        android:orientation="vertical"
+
+        android:layout_below="@+id/tvhome"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="selectmake"
+            android:text="Man Power Service"
+            android:drawableRight="@drawable/plus"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:paddingRight="10dp"
+            android:textSize="16dp"
+            android:textColor="#5D5D5D"
+            android:id="@+id/tvmenpower"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+
+            android:paddingLeft="20dp"
+
+            />
+
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvmenpower"
+            android:id="@+id/lmenpower">
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="One time Cleaning Services "
+            android:textColor="#5D5D5D"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_below="@+id/lmenpower"
+            android:textSize="16dp"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvonetime"
+            android:layout_marginTop="1dp"
+            android:paddingTop="10dp"
+
+            android:paddingLeft="20dp"
+            android:paddingRight="10dp"
+
+            />
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvonetime"
+            android:id="@+id/lonetime">
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Movers and Packers"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:drawableRight="@drawable/plus"
+            android:layout_below="@+id/lonetime"
+            android:textSize="16dp"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvmovers"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textColor="#5D5D5D"
+            android:paddingLeft="20dp"
+
+            />
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvmovers"
+            android:id="@+id/lmovers">
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Real Estate"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:drawableRight="@drawable/plus"
+            android:layout_below="@+id/tvmovers"
+            android:textSize="16dp"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvreal"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textColor="#5D5D5D"
+            android:paddingLeft="20dp"
+
+            />
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvreal"
+            android:id="@+id/lreal">
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tours and Traveler"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:drawableRight="@drawable/plus"
+            android:layout_below="@+id/lreal"
+            android:textSize="16dp"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvtours"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textColor="#5D5D5D"
+            android:paddingLeft="20dp"
+
+            />
+
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvtours"
+            android:id="@+id/ltours">
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pest Control Services"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="16dp"
+            android:layout_below="@+id/ltours"
+            android:textColor="#5D5D5D"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvpest"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+
+            android:paddingLeft="20dp"
+
+            />
+
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvpest"
+            android:id="@+id/lpest">
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Skill Manpower Services"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:drawableRight="@drawable/plus"
+            android:layout_below="@+id/lpest"
+            android:textSize="16dp"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvskill"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textColor="#5D5D5D"
+            android:paddingLeft="20dp"
+
+            />
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvpest"
+            android:id="@+id/lskill">
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Housekeeping Materials Supplier"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+
+            android:layout_below="@+id/lpest"
+            android:textSize="16dp"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvmaterialhouse"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textColor="#5D5D5D"
+            android:paddingLeft="20dp"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Stationary Materials Suppliers"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+
+            android:layout_below="@+id/lpest"
+            android:textSize="16dp"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvstationary"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textColor="#5D5D5D"
+            android:paddingLeft="20dp"
+
+            />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_marginRight="5dp"
+android:layout_marginLeft="5dp"
+android:background="#ecf7f7"
+android:layout_height="match_parent">
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/contacts_type"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:visibility="gone"
+
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="Name of the Company:"
+            android:textColorHint="#017FA5"
+            android:textColor="#017FA5"
+            android:inputType="time"
+
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:textSize="17dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/tvcompany"
+
+
+            />
+        <MultiAutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ex:Adikarah tech Software System"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="20dp"
+            android:background="@drawable/myborderbuilding"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="#017FA5"
+            android:textColorHint="#AB017FA5"
+            android:textSize="18dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/multiAutoCompleteTextView1"
+            android:layout_below="@+id/multiAutoCompleteTextView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:visibility="visible"
+        android:id="@+id/rlsell1"
+        android:layout_below="@+id/contacts_type"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="11dp"
+        android:layout_marginEnd="11dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Building Type:"
+            android:layout_marginTop="10dp"
+
+            android:textSize="17dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#017FA5"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/tvwantrentcomm"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_below="@+id/tvwantrentcomm"
+            android:id="@+id/rlsppositonsells"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/myborderbuilding"
+            android:layout_height="wrap_content">
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="10dp"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"
+                android:textColor="#787878"
+                android:id="@+id/sppositonsells"
+                android:layout_height="wrap_content">
+
+            </Spinner>
+        </RelativeLayout>
+
+
+
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Additional Address:"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#017FA5"
+            android:textSize="17dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_below="@+id/rlsppositonsells"
+            android:id="@+id/tvaddress"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvaddress"
+            android:hint="E.g. M.G.Road"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="@drawable/myborderbuilding"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+
+            android:textSize="18dp"
+            android:id="@+id/edaddress"
+            />
+
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:id="@+id/linears"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/edaddress"
+            >
+
+
+            <TextView
+                android:text="Tell us your Budget "
+                android:textSize="18dp"
+                android:weightSum="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#017FA5"
+                android:layout_marginLeft="20dp"
+
+                android:id="@+id/tvlives" />
+
+            <RelativeLayout
+                android:layout_width="115dp"
+                android:id="@+id/rlrs3"
+                android:layout_marginLeft="30dp"
+
+                android:weightSum="1"
+                android:background="@drawable/myborderbuilding"
+                android:layout_height="wrap_content">
+
+
+                <Spinner
+                    android:layout_width="115dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sprs1"
+                    android:layout_marginLeft="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:textSize="20dp"
+                    android:textColor="#787878"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:id="@+id/linearfloor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/linears"
+            >
+
+
+            <TextView
+                android:text="No of Floors"
+                android:textSize="18dp"
+                android:weightSum="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#017FA5"
+                android:layout_marginLeft="20dp"
+
+                android:id="@+id/tvfloors" />
+
+            <RelativeLayout
+                android:layout_width="115dp"
+                android:id="@+id/rlrs4"
+                android:layout_marginLeft="87dp"
+
+                android:weightSum="1"
+                android:background="@drawable/myborderbuilding"
+                android:layout_height="wrap_content">
+
+                <Spinner
+                    android:layout_width="115dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sprs3"
+                    android:layout_marginLeft="5dp"
+                    android:paddingLeft="0dp"
+                    android:paddingRight="0dp"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:textSize="20dp"
+                    android:textColor="#787878"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+</RelativeLayout>
+</RelativeLayout>

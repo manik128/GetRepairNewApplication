@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#ffff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:text="Interior Design"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvhome"
+        android:textSize="18dp"
+        android:layout_gravity="center"
+        android:padding="5dp"
+        android:textColor="#000"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/tvlineschedule"
+        android:layout_below="@+id/tvhome"
+        android:background="#E9E9E9"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearlayout1"
+        android:orientation="vertical"
+        android:layout_below="@+id/tvhome"
+
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="selectmake"
+            android:text="Interior Work"
+            android:drawableRight="@drawable/plus"
+            android:layout_below="@+id/tvlineschedule"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:paddingRight="10dp"
+
+
+            android:id="@+id/tvinterior"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+
+            android:paddingLeft="20dp"
+
+            />
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvtelevision"
+            android:id="@+id/rlinterior">
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Interior Design"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+
+            android:layout_below="@+id/lcarpentry"
+
+            android:paddingBottom="10dp"
+            android:id="@+id/tvdesign"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+
+            android:paddingLeft="20dp"
+
+            />
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvlan"
+            android:id="@+id/ldesign">
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvmobile"
+            android:id="@+id/larch">
+
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ecf7f7">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvselectarea"
+        android:textColor="#484848"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="Select size of Area:"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvfloors"
+        android:textColor="#484848"
+        android:layout_marginLeft="10dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/relativeselectarea"
+        android:text="Number of Floors:"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/tvfloors"
+        android:id="@+id/relativespinnerfloors"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/myborderbuilding"
+        android:layout_height="wrap_content">
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="One Floor"
+            android:textSize="18dp"
+            android:textColor="#787878"
+            android:id="@+id/spinnerfloors"
+            android:layout_marginLeft="3dp"
+            android:layout_height="wrap_content">
+
+        </Spinner>
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvbudget"
+        android:textColor="#484848"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/relativespinnerfloors"
+        android:text="Tell us your Budget:"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/tvbudget"
+        android:id="@+id/relativebudget"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="150dp"
+            android:id="@+id/rlrs1"
+            android:layout_marginLeft="20dp"
+            android:background="#ffff"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:text="@string/Rs"
+                android:paddingTop="8dp"
+                android:paddingLeft="20dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/tvrs1"/>
+            <Spinner
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/sprs1"
+                android:layout_toRightOf="@+id/tvrs1"
+                android:layout_toEndOf="@+id/tvrs1"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textSize="20dp"
+                android:textColor="#787878"
+                />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/relativeselectarea"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvselectarea"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <EditText
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/etminimum"
+            android:hint="Size"
+            android:gravity="center"
+            android:paddingBottom="15dp"
+            android:paddingTop="8dp"
+            android:layout_marginLeft="10dp"
+            android:inputType="number"
+            android:background="@drawable/myborderbuilding"
+            android:textSize="18dp"
+            android:textColor="#787878"
+            />
+
+
+        <RelativeLayout
+            android:layout_width="110dp"
+            android:layout_toRightOf="@+id/etminimum"
+            android:layout_toEndOf="@+id/etminimum"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/myborderbuilding"
+            android:layout_height="wrap_content">
+
+
+            <Spinner
+                android:layout_width="110dp"
+                android:id="@+id/spinnersqft"
+                android:paddingBottom="13dp"
+                android:paddingTop="13dp"
+
+                android:text="Sq.Ft."
+                android:textSize="18dp"
+                android:textColor="#787878"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true">
+
+            </Spinner>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvselect"
+        android:textColor="#000"
+        android:gravity="center"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="What do you want?"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linear"
+        android:orientation="vertical"
+        android:layout_below="@+id/tvselect"
+
+     >
+
+
+    </LinearLayout>
+
+    <Button
+        android:text="Submit"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnsubmit"
+        android:background="#0088BC"
+
+        android:layout_below="@+id/linear"
+    />
+
+</RelativeLayout>

@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_repairpage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+android:background="#ffffff"
+    tools:context="com.atss.getrepairnewapplication.RepairpageActivity">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:id="@+id/linearbottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+
+      >
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_marginRight="1dp"
+            android:background="#0088B0"
+            android:text="submit"
+            android:textColor="#fff"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/button2" />
+
+        <Button
+            android:layout_width="0dp"
+            android:text="next"
+            android:textColor="#fff"
+            android:layout_marginLeft="1dp"
+            android:background="#0088B0"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/linearbottom"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/rlbrandtop"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/myborder"
+                android:layout_height="wrap_content">
+
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:id="@+id/spinnerbrand"
+                    android:paddingBottom="13dp"
+                    android:paddingTop="13dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#787878"
+                    android:layout_height="wrap_content">
+
+                </Spinner>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/rlissuetop"
+                android:layout_below="@+id/rlbrandtop"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/myborder"
+                android:layout_height="wrap_content">
+
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:id="@+id/spinnerissue"
+                    android:paddingBottom="13dp"
+                    android:paddingTop="23dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#787878"
+                    android:layout_height="wrap_content">
+
+                </Spinner>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:background="#dddddd"
+                android:id="@+id/tvlinetip"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/rlissuetop"
+                android:layout_height="3dp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:id="@+id/rltipinfor"
+
+                android:layout_below="@+id/tvlinetip"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:id="@+id/linearrepair"
+                    android:background="#fff"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:text="Tips"
+                        android:textColor="#000"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/myborderbuildingblue"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:id="@+id/btntips" />
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:text="information"
+                        android:background="@drawable/myborderrecrepair"
+                        android:textColor="#000"
+                        android:layout_marginLeft="5dp"
+    android:id="@+id/btninfor"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/rltips"
+                    android:layout_below="@+id/linearrepair"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="7dp"
+                        android:id="@+id/ivdot1"
+                        android:src="@drawable/dot"
+                        android:paddingLeft="15dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_below="@+id/tvpnt1"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="35dp"
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/tvtips2"
+                        android:layout_below="@+id/tvtips1"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Plz check your tyres regularly"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="7dp"
+                        android:id="@+id/ivdot2"
+                        android:src="@drawable/dot"
+                        android:paddingLeft="15dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_below="@+id/tvtips1"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="35dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_below="@+id/tvtips2"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Plz check your tyres regularly"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="7dp"
+                        android:id="@+id/ivdot3"
+                      android:src="@drawable/dot"
+                        android:paddingLeft="15dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_below="@+id/tvtips2"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvtips1"
+                        android:layout_marginLeft="35dp"
+                        android:layout_marginTop="5dp"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Plz check your tyres regularly"
+                      />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/rltipinformation"
+                    android:visibility="gone"
+                    android:layout_below="@+id/linearrepair"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="35dp"
+                        android:id="@+id/tvtip1"
+                        android:layout_marginTop="5dp"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Plz check your tyres regularly"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="7dp"
+                        android:id="@+id/ivdots1"
+                        android:src="@drawable/dot"
+                        android:paddingLeft="15dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_below="@+id/tvpnt1"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="35dp"
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/tvtip2"
+                        android:layout_below="@+id/tvtip1"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Plz check your tyres regularly"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="7dp"
+                        android:id="@+id/ivdots2"
+                        android:src="@drawable/dot"
+                        android:paddingLeft="15dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_below="@+id/tvtip1"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="35dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_below="@+id/tvtip2"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Plz check your tyres regularly"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="7dp"
+                        android:id="@+id/ivdots3"
+                        android:src="@drawable/dot"
+                        android:paddingLeft="15dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_below="@+id/tvtip2"
+                        />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:background="#dddddd"
+                android:id="@+id/tvline"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/rltipinfor"
+                android:layout_height="3dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:background="#fff"
+                android:layout_below="@+id/tvline"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvrepairguarantee"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="GetRepair Guarantee"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:background="#dddddd"
+                    android:id="@+id/tvrprline"
+                    android:layout_below="@+id/tvrepairguarantee"
+                    android:layout_height="1dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="4"
+                    android:id="@+id/repairguarantee"
+                    android:layout_below="@+id/tvrprline"
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:id="@+id/ivrepair"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="5dp"
+                            android:src="@drawable/notebook"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:gravity="center"
+                            android:paddingTop="5dp"
+                            android:id="@+id/tvverify"
+                            android:textSize="10dp"
+                            android:textColor="#000"
+                            android:text="Verified"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ivrepair"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:text="Professionals"
+                            android:textSize="10dp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvverify"/>
+                    </RelativeLayout>
+                    <TextView
+                        android:layout_width="1dp"
+                        android:background="#dddddd"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="match_parent" />
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:text="Insured"
+                            android:gravity="center"
+                            android:paddingTop="5dp"
+                            android:id="@+id/tvinsured"
+                            android:textSize="10dp"
+                            android:textColor="#000"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ivrepair1"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_below="@+id/tvinsured"
+                            android:text="Work"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:textSize="10dp"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:id="@+id/ivrepair1"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="5dp"
+                            android:src="@drawable/correct"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true" />
+                    </RelativeLayout>
+                    <TextView
+                        android:layout_width="1dp"
+                        android:background="#dddddd"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="match_parent" />
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:id="@+id/tvsatisfaction"
+                            android:text="Satisfaction"
+                            android:gravity="center"
+                            android:paddingTop="5dp"
+                          android:textSize="10dp"
+                            android:textColor="#000"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ivrepair2"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Guaranteed"
+                            android:textSize="10dp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_below="@+id/tvsatisfaction"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:id="@+id/ivrepair2"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="5dp"
+                            android:src="@drawable/trophy"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true" />
+                    </RelativeLayout>
+                    <TextView
+                        android:layout_width="1dp"
+                        android:background="#dddddd"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="match_parent" />
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:id="@+id/ivrepair3"
+                            android:src="@drawable/creditcard"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="5dp"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Easy"
+                            android:textSize="10dp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:id="@+id/tveasy"
+                            android:layout_below="@+id/ivrepair3"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="10dp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_below="@+id/tveasy"
+                            android:text="Payment"/>
+                    </RelativeLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

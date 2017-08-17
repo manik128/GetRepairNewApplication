@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_article"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.atss.getrepairnewapplication.ArticleActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="15dp"
+    android:text="Why does your car need to be waxed?"
+    android:id="@+id/tvquestion"
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:layout_marginRight="15dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000"
+        android:id="@+id/tvquesline"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_below="@+id/tvquestion"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/banner1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:id="@+id/ivbanner"
+        android:layout_below="@+id/tvquesline"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/ivbanner"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:id="@+id/tvbanner"
+        android:text="Your car is like your faithful pet dog. It Understands\nyou and does your bidding whenever you coomand it.\nBut all it asks for in return is for you to take care of it."
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvbanner"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:id="@+id/tvtitle"
+        android:layout_marginTop="10dp"
+        android:textColor="#000"
+        android:text="Here's why your car needs to be waxed."/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/tvtitle"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:id="@+id/tvpoint1"
+        android:layout_marginTop="5dp"
+        android:text="Your car is like your faithful pet dog. It Understands\nyou and does your bidding whenever you coomand it.\nBut all it asks for in return is for you to take care of it."
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/banner1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:id="@+id/ivbanner1"
+        android:layout_below="@+id/tvpoint1"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/ivbanner1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:id="@+id/tvpoint2"
+        android:layout_marginTop="5dp"
+        android:text="Your car is like your faithful pet dog. It Understands\nyou and does your bidding whenever you coomand it.\nBut all it asks for in return is for you to take care of it."
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/tvpoint2"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:id="@+id/tvpoint3"
+        android:layout_marginTop="5dp"
+        android:text="Your car is like your faithful pet dog. It Understands\nyou and does your bidding whenever you coomand it.\nBut all it asks for in return is for you to take care of it."
+        android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

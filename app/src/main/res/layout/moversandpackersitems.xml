@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ecf7f7">
+
+
+    <LinearLayout
+        android:id="@+id/contacts_type"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:visibility="gone"
+
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="Name of the Company:"
+            android:textColorHint="#017FA5"
+            android:textColor="#017FA5"
+            android:inputType="time"
+
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:textSize="17dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/tvcompany"
+
+
+            />
+        <MultiAutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ex:Adikarah tech Software System"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="20dp"
+            android:background="@drawable/myborderbuilding"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="#017FA5"
+            android:textColorHint="#AB017FA5"
+            android:textSize="18dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/multiAutoCompleteTextView3"
+            android:layout_below="@+id/multiAutoCompleteTextView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:text="What are the major items you want to move ? "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentLeft="true"
+
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:textColor="#017FA5"
+        android:textSize="17dp"
+        android:layout_below="@+id/contacts_type"
+        android:layout_marginTop="15dp"
+        android:id="@+id/tvchoose" />
+    <LinearLayout
+        android:layout_width="match_parent"
+
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_below="@+id/tvchoose"
+        android:id="@+id/linearshiftqty"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Items"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:background="#CDE6ED"
+            android:id="@+id/tvduty"
+            android:textColor="#017FA5"
+            android:textSize="18dp"
+
+
+            />
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+
+            android:background="#7CC8E0"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Qty"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:gravity="center"
+            android:background="#CDE6ED"
+            android:textColor="#017FA5"
+            android:textSize="18dp"
+            android:id="@+id/tvqty"
+
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:id="@+id/linearbottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+
+        android:layout_below="@+id/linearshiftqty"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:textColor="#017FA5"
+            android:text="Furniture(EX:Sofa sets,tables)"
+            android:gravity="center"
+            android:textSize="17dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/tvone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3"
+
+
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/ic_remove_circle_outline_black_24dp"
+                android:id="@+id/ivminus1"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/tvcounts"
+                android:textColor="#0280A6"
+                android:textColorHint="#0280A6"
+                android:layout_gravity="center"
+                android:paddingLeft="7dp"
+                android:paddingRight="3dp"
+                android:paddingTop="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textSize="20dp"
+                android:hint="00"
+                />
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/ic_add_circle_outline_black_24dp"
+                android:id="@+id/ivplus1"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:id="@+id/linearbottoms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+
+        android:layout_below="@+id/linearbottom"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:textColor="#017FA5"
+            android:text="Electronics(EX:Tv,Refrigerators)"
+            android:gravity="center"
+            android:textSize="17dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/tvtwo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3"
+
+
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/ic_remove_circle_outline_black_24dp"
+                android:id="@+id/ivminus2"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/tvcount"
+                android:textColor="#0280A6"
+                android:textColorHint="#0280A6"
+                android:layout_gravity="center"
+                android:paddingLeft="7dp"
+                android:paddingRight="3dp"
+                android:paddingTop="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textSize="20dp"
+                android:hint="00"
+                />
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/ic_add_circle_outline_black_24dp"
+                android:id="@+id/ivplus2"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+
+        android:layout_below="@+id/linearbottoms"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:textColor="#017FA5"
+            android:text="Vehicle(EX:Bikes,cars)"
+            android:gravity="center"
+            android:textSize="17dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/tvthree" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3"
+
+
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/ic_remove_circle_outline_black_24dp"
+                android:id="@+id/ivminus3"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/tvcounting"
+                android:textColor="#0280A6"
+                android:textColorHint="#0280A6"
+                android:layout_gravity="center"
+                android:paddingLeft="7dp"
+                android:paddingRight="3dp"
+                android:paddingTop="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textSize="20dp"
+                android:hint="00"
+                />
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/ic_add_circle_outline_black_24dp"
+                android:id="@+id/ivplus3"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:id="@+id/linear2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/linears"
+        >
+
+
+        <TextView
+            android:text="with service lift"
+            android:textSize="17dp"
+            android:weightSum="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#017FA5"
+            android:layout_marginLeft="20dp"
+
+            android:id="@+id/tvlift" />
+
+        <RelativeLayout
+            android:layout_width="115dp"
+            android:id="@+id/rlrs2"
+android:layout_marginLeft="20dp"
+            android:background="#ffff"
+            android:weightSum="1"
+            android:layout_height="wrap_content">
+
+            <Spinner
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/sprstwo"
+
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textSize="20dp"
+                android:textColor="#787878"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:id="@+id/linears3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/linear2"
+        >
+
+
+        <TextView
+            android:text="I'm moving to"
+            android:textSize="17dp"
+            android:weightSum="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#017FA5"
+            android:layout_marginLeft="20dp"
+
+            android:id="@+id/tvlives" />
+
+        <RelativeLayout
+            android:layout_width="115dp"
+            android:id="@+id/rlrs4"
+            android:layout_marginLeft="27dp"
+            android:background="#ffff"
+            android:weightSum="1"
+            android:layout_height="wrap_content">
+
+            <Spinner
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/sprsthree"
+
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textSize="20dp"
+                android:textColor="#787878"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="floor "
+            android:textColor="#017FA5"
+           android:layout_marginLeft="10dp"
+            android:weightSum="1"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/tvflooring"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:id="@+id/linears"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/linear"
+        >
+
+
+        <TextView
+            android:text="I currently live on"
+            android:textSize="17dp"
+            android:weightSum="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#017FA5"
+            android:layout_marginLeft="20dp"
+
+            android:id="@+id/tvlive" />
+
+        <RelativeLayout
+            android:layout_width="115dp"
+            android:id="@+id/rlrs1"
+
+            android:background="#ffff"
+            android:weightSum="1"
+            android:layout_height="wrap_content">
+
+            <Spinner
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/sprsone"
+                android:layout_toRightOf="@+id/tvrs1"
+                android:layout_toEndOf="@+id/tvrs1"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textSize="20dp"
+                android:textColor="#787878"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="floor "
+            android:textColor="#017FA5"
+            android:layout_marginLeft="10dp"
+            android:weightSum="1"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/tvfloor"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:id="@+id/linear3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@+id/linears3"
+        >
+
+
+        <TextView
+            android:text="with service lift"
+            android:textSize="17dp"
+            android:weightSum="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#017FA5"
+            android:layout_marginLeft="20dp"
+
+            android:id="@+id/tvlifts" />
+
+        <RelativeLayout
+            android:layout_width="115dp"
+            android:id="@+id/rlrs5"
+            android:layout_marginLeft="20dp"
+            android:background="#ffff"
+            android:weightSum="1"
+            android:layout_height="wrap_content">
+
+            <Spinner
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/sprsfour"
+
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textSize="20dp"
+                android:textColor="#787878"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:text="Select your Location?"
+        android:textSize="17dp"
+        android:weightSum="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#017FA5"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/linear3"
+        android:id="@+id/tvlocation" />
+
+    <MultiAutoCompleteTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="From"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textColor="#017FA5"
+        android:background="@drawable/myborderbuilding"
+        android:layout_marginLeft="20dp"
+        android:paddingLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:textColorHint="#AB017FA5"
+        android:textSize="18dp"
+        android:id="@+id/multiAutoCompleteTextView"
+        android:layout_below="@+id/tvlocation"
+        />
+    <MultiAutoCompleteTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="To"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="20dp"
+        android:textColor="#017FA5"
+        android:background="@drawable/myborderbuilding"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:textColorHint="#AB017FA5"
+        android:textSize="18dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/multiAutoCompleteTextView1"
+        android:layout_below="@+id/multiAutoCompleteTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <!--<LinearLayout-->
+        <!--android:orientation="horizontal"-->
+        <!--android:weightSum="4"-->
+        <!--android:id="@+id/linear4"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginTop="21dp"-->
+        <!--android:layout_below="@+id/tvlocation"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true">-->
+
+        <!--<TextView-->
+            <!--android:text="From:"-->
+            <!--android:textSize="17dp"-->
+            <!--android:weightSum="1"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textColor="#017FA5"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_below="@+id/linear3"-->
+            <!--android:id="@+id/tvfrom" />-->
+
+
+        <!--<EditText-->
+            <!--android:hint=" hint: Madiwala"-->
+            <!--android:textSize="17dp"-->
+            <!--android:weightSum="1"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textColorHint="#017FA5"-->
+            <!--android:paddingBottom="10dp"-->
+            <!--android:paddingTop="10dp"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:gravity="center"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:background="@drawable/myborderbuilding"-->
+            <!--android:layout_marginLeft="2dp"-->
+            <!--android:layout_below="@+id/linear3"-->
+            <!--android:id="@+id/etfrom" />-->
+
+        <!--<TextView-->
+            <!--android:text="To:"-->
+            <!--android:textSize="17dp"-->
+            <!--android:weightSum="1"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textColor="#017FA5"-->
+
+            <!--android:layout_below="@+id/linear3"-->
+            <!--android:id="@+id/tvto" />-->
+        <!--<EditText-->
+            <!--android:hint="hint:silkboard"-->
+            <!--android:textSize="17dp"-->
+            <!--android:weightSum="1"-->
+            <!--android:paddingBottom="10dp"-->
+            <!--android:paddingTop="10dp"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:gravity="center"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textColorHint="#017FA5"-->
+            <!--android:background="@drawable/myborderbuilding"-->
+            <!--android:layout_marginLeft="2dp"-->
+            <!--android:layout_below="@+id/linear3"-->
+            <!--android:id="@+id/etto" />-->
+
+
+
+    <!--</LinearLayout>-->
+
+
+</RelativeLayout>

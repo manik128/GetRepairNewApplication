@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+
+    <RadioButton
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@null"
+        android:checked="false"
+        android:drawableRight="@drawable/radio_button_selector"
+        android:id="@+id/radioButton"
+       android:layout_marginTop="20dp"
+       android:layout_marginLeft="15dp"
+         />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prem Kumar"
+        android:textSize="15dp"
+        android:textColor="#000"
+        android:background="#fff"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/tvname"
+        android:layout_alignBottom="@+id/radioButton"
+        android:layout_toRightOf="@+id/radioButton"
+        android:layout_toEndOf="@+id/radioButton"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+       />
+
+    <TextView
+
+        android:background="#fff"
+        android:text="Bengaluru,"
+        android:id="@+id/tvstreetpage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvhouseno"
+        android:layout_alignLeft="@+id/tvhouseno"
+        android:layout_alignStart="@+id/tvhouseno"
+        />
+
+    <TextView
+
+        android:id="@+id/tvcitypage"
+        android:text="Karantaka."
+
+        android:background="#fff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvstreetpage"
+        android:layout_alignLeft="@+id/tvstreetpage"
+        android:layout_alignStart="@+id/tvstreetpage"
+        />
+    <TextView
+
+        android:id="@+id/tvpinpage"
+        android:text="560034."
+
+        android:background="#fff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvstreetpage"
+        android:layout_alignLeft="@+id/tvstreetpage"
+        android:layout_alignStart="@+id/tvstreetpage"
+        />
+
+    <TextView
+
+        android:id="@+id/tvmobile"
+
+android:textSize="15dp"
+        android:textColor="#000"
+        android:background="#fff"
+        android:text="9764378562"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvcitypage"
+        android:layout_alignLeft="@+id/tvcitypage"
+        android:layout_alignStart="@+id/tvcitypage"
+         />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_border_color_black_24dp"
+        android:layout_alignBottom="@+id/tvhouseno"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="29dp"
+        android:layout_marginEnd="29dp"
+        android:id="@+id/ivedit" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_delete_black_24dp"
+        android:layout_alignBottom="@+id/tvcitypage"
+        android:layout_alignRight="@+id/ivedit"
+        android:layout_alignEnd="@+id/ivedit"
+        android:id="@+id/ivdelete" />
+
+    <TextView
+
+        android:layout_height="1dp"
+        android:id="@+id/tvlineschedule"
+android:layout_marginTop="15dp"
+        android:background="#E9E9E9"
+        android:layout_width="match_parent"
+
+        android:layout_below="@+id/tvmobile"
+
+        />
+
+    <TextView
+        android:text="Second Floor,6/A,80 Feet Main Rd,"
+        android:background="#fff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvhouseno"
+        android:layout_below="@+id/tvname"
+        android:layout_alignLeft="@+id/tvname"
+        android:layout_alignStart="@+id/tvname"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp" />
+
+
+</RelativeLayout>

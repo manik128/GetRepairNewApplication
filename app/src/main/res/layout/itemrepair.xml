@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+   <!-- <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="selectmake"
+        android:text="Add This Service"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:background="@drawable/myedittextrec"
+        android:layout_marginRight="1dp"
+        android:layout_marginLeft="1dp"
+        android:paddingRight="10dp"
+        android:textColor="#0088AD"
+        android:drawableRight="@drawable/substract"
+        android:id="@+id/tvselectmake"
+        android:layout_marginTop="1dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+
+        />!-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="#ecf7f7"
+        android:layout_below="@+id/tvselectmake"
+        android:layout_height="wrap_content"
+android:id="@+id/relativeservice"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <CheckBox
+            android:id="@+id/basicCheckBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relativeLayout"
+
+            android:checked="false"
+            android:padding="15dp"
+            android:text=" "
+
+            android:textSize="15dp"
+            />
+
+
+
+        <!--<CheckBox-->
+        <!--android:id="@+id/basicCheckBox"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:buttonTint="@android:color/holo_blue_dark"-->
+        <!--android:checked="false"-->
+        <!--android:padding="15dp"-->
+        <!--android:text=" "-->
+
+        <!--android:textSize="15dp"-->
+        <!--/>-->
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:textColor="#1d1d1d"
+            android:id="@+id/tvname"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="15dp"
+            android:layout_alignTop="@+id/imageView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#FFDAD8D8"
+            android:layout_below="@+id/tvname"
+
+            android:id="@+id/tvline"
+            android:layout_marginTop="15dp"></TextView>
+
+            <!--/>-->
+        <!--<CheckBox-->
+        <!--android:id="@+id/basicCheckBox"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/relativeLayout"-->
+        <!--android:checked="false"-->
+        <!--android:padding="15dp"-->
+        <!--android:text=" "-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:textSize="15dp"-->
+        <!--/>-->
+
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="I  agree  to pay  After  Service  and  to the "-->
+        <!--android:id="@+id/tvterm"-->
+        <!--android:layout_alignTop="@+id/basicCheckBox"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_marginLeft="40dp"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:layout_marginStart="40dp" />-->
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/your_string"-->
+        <!--android:id="@+id/textView"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:layout_alignBottom="@+id/basicCheckBox"-->
+        <!--android:layout_alignLeft="@+id/tvterm"-->
+        <!--android:layout_alignStart="@+id/tvterm" />-->
+
+
+
+    </RelativeLayout>
+</RelativeLayout>

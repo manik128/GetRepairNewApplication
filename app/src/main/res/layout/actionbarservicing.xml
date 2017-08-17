@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#0189b1"
+    android:id="@+id/relativeactionbarhome"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/leftarrow"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingBottom="10dp"
+        android:id="@+id/ivactionmenu"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Service"
+        android:id="@+id/tvcommercial"
+        android:textSize="17dp"
+        android:paddingTop="10dp"
+        android:textColor="#FFFF"
+        android:paddingBottom="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/ivactionmenu"
+        android:layout_toEndOf="@+id/ivactionmenu" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:id="@+id/linearcart"
+        android:gravity="center">
+        <include
+            layout="@layout/addcart"
+
+            />
+    </LinearLayout>
+
+
+    <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:src="@drawable/shoppingcart"-->
+        <!--android:id="@+id/ivactionhomemap"-->
+        <!--android:paddingTop="10dp"-->
+
+        <!--android:paddingBottom="10dp"-->
+        <!--android:layout_marginLeft="5dp"-->
+        <!--android:paddingRight="10dp"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--/>-->
+
+
+</RelativeLayout>
+
+
+

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#E9E9E9"
+    android:layout_height="match_parent"
+  >
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:layout_above="@+id/btncontinue"
+       android:id="@+id/scrollview">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:background="#fff"
+        android:id="@+id/linearcalenders">
+
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:background="#fff"
+    android:id="@+id/linearcalender">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+android:textStyle="bold"
+        android:id="@+id/tvselectdate"
+        android:paddingTop="10dp"
+        android:paddingLeft="15dp"
+        android:drawablePadding="10dp"
+        android:drawableLeft="@drawable/calendar"
+        android:paddingBottom="5dp"
+        android:text="Selelct Date"
+        android:textSize="15dp"/>
+
+<HorizontalScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/tvselectdate"
+    android:id="@+id/horizontalcalender"
+
+    android:scrollbars="none"
+    >
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linearlayouthorscroll"
+         >
+
+
+    </LinearLayout>
+  <!-- <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/tvcalender"
+       android:layout_marginLeft="5dp"
+       android:layout_marginTop="5dp"
+       android:layout_marginBottom="5dp"
+       android:onClick="calender"/>-->
+</HorizontalScrollView>
+</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearcalender"
+
+        android:id="@+id/relativecalender">
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="15dp"
+        android:paddingBottom="5dp"
+        android:background="#45badc"
+        android:layout_marginTop="25dp"
+        android:textStyle="bold"
+        android:clickable="true"
+        android:onClick="Address"
+android:textColor="#fff"
+        android:layout_below="@+id/relativecalender"
+        android:id="@+id/tvchange"
+        android:text="+ Add Address"
+        />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:id="@+id/container_destacado"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvchange"
+        android:orientation="vertical">
+
+
+    </LinearLayout>
+
+
+
+    <!--
+
+
+
+     <LinearLayout
+                    android:layout_width="match_parent"
+
+                    android:background="#fff"
+                    android:layout_marginTop="1dp"
+                    android:orientation="horizontal"
+                    android:weightSum="1"
+                    android:id="@+id/relativeprem"
+                    android:layout_height="wrap_content">
+                <RadioButton
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/radiobtnprem"
+
+                    />
+
+     </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="67dp"
+                android:id="@+id/tvname"
+
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/radiocalender"
+                android:layout_toEndOf="@+id/radiocalender"
+                android:layout_marginStart="7dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/tvname"
+                android:layout_marginLeft="67dp"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_below="@+id/relativeprem"
+            android:background="#fff"
+            android:id="@+id/relativesiva"
+            android:layout_marginTop="1dp"
+            android:layout_height="wrap_content">
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radiocalender1"
+           >
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radiobtn"
+                android:layout_marginTop="17dp"
+                android:layout_below="@+id/relativepayment1"
+                android:buttonTint="#0088B0"
+
+
+                />
+
+
+        </RadioGroup>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sivalingh"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/tvname1"
+            android:layout_toRightOf="@+id/radiocalender1"
+            android:layout_toEndOf="@+id/radiocalender1"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+  android:text=
+            android:layout_marginLeft="7dp"
+            android:textSize="17dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/tvaddress1"
+            android:layout_toRightOf="@+id/radiocalender1"
+            android:layout_toEndOf="@+id/radiocalender1"
+            android:layout_below="@+id/tvname1"
+            />-->
+
+</RelativeLayout>
+</ScrollView>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Continue"
+
+        android:id="@+id/btncontinue"
+
+        android:background="#0189b1"
+        android:textColor="#fff"
+        android:layout_alignParentBottom="true"
+        />
+</RelativeLayout>

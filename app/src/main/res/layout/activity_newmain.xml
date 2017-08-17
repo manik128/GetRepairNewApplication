@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_navigation"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.atss.getrepairnewapplication.Navigation"
+    tools:showIn="@layout/app_bar_navigation">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/linearviewpager"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="#ffffff"
+                android:layout_below="@+id/ivtop"
+                android:orientation="vertical"
+
+                >
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/pager"
+                    android:background="#5d5d5d"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp">
+                </android.support.v4.view.ViewPager>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:weightSum="6"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginBottom="1dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="130dp"
+                    android:layout_marginRight="130dp"
+                    android:layout_alignBottom="@+id/pager"
+                    android:layout_centerHorizontal="true">
+                    <ImageView
+                        android:id="@+id/imgslidecircle1"
+                        android:layout_width="0dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="0dp"
+                        android:background="@drawable/circle1">
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/imgslidecircle2"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginRight="0dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/circle1">
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/imgslidecircle3"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginRight="0dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/circle1">
+                    </ImageView>
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+            <!--<LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:orientation="vertical" >
+
+            </LinearLayout>-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Get Repair Services"
+                android:gravity="center"
+                android:padding="10dp"
+                android:id="@+id/titlabel"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#5D5D5D"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginBottom="25dp"
+                android:background="#5D5D5D"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="2">
+
+                <!-- <TextView
+                     android:layout_width="match_parent"
+                     android:layout_height="1dp"
+                     android:background="#5D5D5D"/>-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:weightSum="3"
+                    android:background="#5d5d5d"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"
+                        android:padding="10dp"
+                        android:background="#FFFFFF"
+                        android:layout_marginRight="0.3dp"
+
+                        android:orientation="vertical"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/big_motorbike"
+                            android:id="@+id/imageView"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textColor="#5D5D5D"
+                            android:layout_marginTop="15dp"
+                            android:text="Bikes"
+                            android:id="@+id/bk"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="15dp"/>
+                    </LinearLayout>
+                    <!--<TextView
+                        android:layout_width="0.3dp"
+                        android:layout_height="match_parent"
+                        android:background="#5D5D5D"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"/>-->
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"
+                        android:padding="10dp"
+                        android:background="#FFFFFF"
+                        android:orientation="vertical"
+                        android:layout_marginRight="0.3dp"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/car_facing_right"
+                            android:id="@+id/car"
+                            android:layout_gravity="center"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textColor="#5D5D5D"
+                            android:layout_marginTop="15dp"
+                            android:text="Cars"
+                            android:id="@+id/cr"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="15dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"
+                        android:padding="10dp"
+                        android:background="#FFFFFF"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+
+                        >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/washing_machine"
+                            android:id="@+id/home"
+
+                            android:layout_gravity="center"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textColor="#5D5D5D"
+                            android:id="@+id/homeapp"
+                            android:layout_marginTop="15dp"
+                            android:text="\t Home\nAppliances"
+                            android:layout_gravity="center"
+
+                            android:layout_marginBottom="15dp"/>
+
+
+                    </LinearLayout>
+
+                    <!-- <TextView
+                         android:layout_width="0.3dp"
+                         android:layout_height="match_parent"
+                         android:background="#5D5D5D"
+                         android:layout_marginTop="15dp"
+                         android:layout_marginBottom="15dp"/>
+     -->
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.3dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#5D5D5D"/>
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:weightSum="3"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="160dp"
+                        android:padding="10dp"
+
+                        android:orientation="vertical"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/desktop"
+                            android:id="@+id/desktop"
+                            android:layout_gravity="center"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textColor="#5D5D5D"
+                            android:layout_marginTop="15dp"
+                            android:text="Desktop\nLaptop"
+                            android:layout_gravity="center"
+
+                            android:layout_marginBottom="15dp"
+                            android:id="@+id/desk" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="0.3dp"
+                        android:layout_height="match_parent"
+                        android:background="#5D5D5D"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="160dp"
+                        android:padding="10dp"
+
+                        android:orientation="vertical"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/driller"
+                            android:id="@+id/repair"
+                            android:layout_marginTop="15dp"
+                            android:layout_gravity="center"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textColor="#5D5D5D"
+                            android:layout_marginTop="15dp"
+                            android:text="Repair\nmaintaince"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="15dp"
+                            android:id="@+id/repairtxt" />
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="0.3dp"
+                        android:layout_height="match_parent"
+                        android:background="#5D5D5D"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"/>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="160dp"
+                        android:padding="10dp"
+                        android:orientation="vertical"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/house_plans"
+                            android:id="@+id/house"
+                            android:layout_marginTop="15dp"
+                            android:layout_gravity="center"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textColor="#5D5D5D"
+                            android:layout_marginTop="15dp"
+                            android:text="Interior\nDesign"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="15dp"
+                            android:id="@+id/inter" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#5D5D5D"/>
+
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#5D5D5D"/>
+
+
+
+
+
+
+
+
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/rlhorizontal"
+                android:layout_marginTop="1dp"
+                android:background="#fff"
+                android:layout_below="@+id/viewpager"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Articles"
+                    android:id="@+id/tvarticles"
+                    android:textColor="#000"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:paddingLeft="20dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/tvarticles"
+                    android:layout_marginTop="5dp"
+                    android:background="#8e8b8b"
+                    android:id="@+id/tvline1"
+                    android:layout_height="0.1dp" />
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:id="@+id/horizontalScrollView"
+                    android:layout_below="@+id/tvline1"
+                    android:scrollbars="none"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:id="@+id/linearlayouthorscroll"
+                        android:layout_height="wrap_content">
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:background="#fff"
+                android:layout_below="@+id/rlhorizontal"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="GetRepair Guarantee"
+                    android:id="@+id/tvguarantee"
+                    android:textColor="#000"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:paddingLeft="20dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/tvguarantee"
+                    android:layout_marginTop="5dp"
+                    android:background="#8e8b8b"
+                    android:id="@+id/tvline2"
+                    android:layout_height="0.1dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="4"
+                    android:layout_below="@+id/tvline2"
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:id="@+id/ivrepair"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="5dp"
+                            android:src="@drawable/notebook"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:gravity="center"
+                            android:paddingTop="5dp"
+                            android:id="@+id/tvverify"
+                            android:textSize="10dp"
+                            android:textColor="#000"
+                            android:text="Verified"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ivrepair"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:text="Professionals"
+                            android:textSize="10dp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvverify"/>
+                    </RelativeLayout>
+                    <TextView
+                        android:layout_width="1dp"
+                        android:background="#dddddd"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="match_parent" />
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:text="Insured"
+                            android:gravity="center"
+                            android:paddingTop="5dp"
+                            android:id="@+id/tvinsured"
+                            android:textSize="10dp"
+                            android:textColor="#000"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ivrepair1"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_below="@+id/tvinsured"
+                            android:text="Work"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:textSize="10dp"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:id="@+id/ivrepair1"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="5dp"
+                            android:src="@drawable/correct"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true" />
+                    </RelativeLayout>
+                    <TextView
+                        android:layout_width="1dp"
+                        android:background="#dddddd"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="match_parent" />
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:id="@+id/tvsatisfaction"
+                            android:text="Satisfaction"
+                            android:gravity="center"
+                            android:paddingTop="5dp"
+                            android:textSize="10dp"
+                            android:textColor="#000"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ivrepair2"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Guaranteed"
+                            android:textSize="10dp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_below="@+id/tvsatisfaction"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:id="@+id/ivrepair2"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="5dp"
+                            android:src="@drawable/trophy"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true" />
+                    </RelativeLayout>
+                    <TextView
+                        android:layout_width="1dp"
+                        android:background="#dddddd"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="match_parent" />
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:id="@+id/ivrepair3"
+                            android:src="@drawable/creditcard"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="5dp"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Easy"
+                            android:textSize="10dp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:id="@+id/tveasy"
+                            android:layout_below="@+id/ivrepair3"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="10dp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_below="@+id/tveasy"
+                            android:text="Payment"/>
+                    </RelativeLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

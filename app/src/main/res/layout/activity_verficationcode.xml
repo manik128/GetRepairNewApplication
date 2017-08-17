@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_verficationcode"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+ android:gravity="center"
+    android:background="#45bcf1"
+    tools:context="com.atss.getrepairnewapplication.Verficationcode">
+
+
+    <TextView
+        android:text="Six digit verfication code send to your EmailId/ Phone number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="30dp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:id="@+id/tvmail" />
+
+
+    <Button
+        android:text="Verify"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="70dp"
+        android:id="@+id/btnverify"
+        android:background="#0077A4"
+        android:textColor="#ffff"
+       android:layout_centerInParent="true"
+          android:layout_below="@+id/input_layout_email"
+
+        />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_email"
+        android:layout_width="match_parent"
+        android:textColorHint="#FFFFFF"
+    android:layout_marginTop="40dp"
+        android:textColor="#FFFFFF"
+        android:inputType="number"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvmail"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/etemail"
+            android:hint="Enter verfication code "
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#FFFFFF"
+
+            android:padding="15dp"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:drawableLeft="@drawable/key"
+            android:drawablePadding="10dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:paddingTop="8dp"
+
+            android:layout_marginBottom="5dp"
+            android:paddingBottom="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_centerHorizontal="true" />
+
+    </android.support.design.widget.TextInputLayout>
+</RelativeLayout>

@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_servicing"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFD7E1E1"
+    tools:context="com.atss.getrepairnewapplication.ServicingActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+
+
+        android:background="#0077A4"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+
+        android:id="@+id/linearLayout2">
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Add to Cart"
+            android:background="#0189B1"
+            android:id="@+id/btnadd"
+            android:textColor="#ffffff"
+
+            />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Continue"
+            android:id="@+id/btncontinue"
+            android:background="#01799E"
+            android:textColor="#ffff"
+            android:layout_weight="1"
+
+            />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/scrollView"
+        android:fillViewport="false"
+        android:layout_above="@+id/linearLayout2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rltop">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="Add This Service"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:background="@drawable/myedittextrec"
+        android:layout_marginRight="1dp"
+        android:layout_marginLeft="1dp"
+        android:paddingRight="10dp"
+        android:textColor="#808080"
+
+        android:id="@+id/tvselectmake"
+        android:layout_marginTop="1dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+
+        />
+        <LinearLayout
+            android:id="@+id/contacts_type"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvselectmake"
+            android:visibility="gone"
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:text="Name of the Company:"
+                android:textColorHint="#017FA5"
+                android:textColor="#017FA5"
+                android:inputType="time"
+
+
+                android:layout_marginTop="10dp"
+                android:textSize="17dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:id="@+id/tvcompany"
+
+
+                />
+            <MultiAutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ex:Adikarah tech Software System"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="20dp"
+                android:background="@drawable/myborderbuilding"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="#017FA5"
+                android:textColorHint="#AB017FA5"
+                android:textSize="18dp"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/multiAutoCompleteTextViews"
+                android:layout_below="@+id/multiAutoCompleteTextView"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/contact"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/myboarderrec"
+            android:layout_below="@+id/tvselectmake"
+
+            >
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="Add This Service"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+
+                android:layout_marginRight="1dp"
+                android:layout_marginLeft="1dp"
+                android:paddingRight="10dp"
+                android:textColor="#808080"
+
+                android:id="@+id/tvselectmakes"
+                android:layout_marginTop="1dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="30dp"
+
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_below="@+id/tvselectmakes"
+                android:layout_marginTop="0dp"
+                android:background="#8e8b8b"
+                android:id="@+id/tvline4"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="210dp"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="Add This Service"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+
+                android:layout_marginRight="1dp"
+                android:layout_marginLeft="1dp"
+                android:paddingRight="10dp"
+                android:textColor="#808080"
+
+                android:id="@+id/tvrequested"
+                android:layout_marginTop="1dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="30dp"
+
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="Ex:Engine oil"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+
+                android:layout_marginRight="1dp"
+                android:layout_marginLeft="1dp"
+                android:paddingRight="10dp"
+                android:textColor="#808080"
+                android:layout_below="@+id/contacts_type"
+                android:id="@+id/tventer"
+                android:layout_marginTop="1dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="30dp"
+
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/contact"
+            android:id="@+id/rlselectmake">
+        </LinearLayout>
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="#ecf7f7"-->
+        <!--android:layout_marginLeft="1dp"-->
+
+        <!--android:layout_marginRight="1dp"-->
+        <!--android:layout_below="@+id/tvselectmake"-->
+        <!--android:id="@+id/rlselectmakes">-->
+
+        <!--<android.support.v7.widget.RecyclerView-->
+            <!--android:id="@+id/recycler_view"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:scrollbars="vertical"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_alignParentStart="true" />-->
+
+        <!--<ListView-->
+            <!--android:id="@+id/listView1"-->
+
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_alignParentStart="true">-->
+        <!--</ListView>-->
+    <!--</RelativeLayout>-->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:hint="Please enter your issue here"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@+id/rlselectmake"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColorHint="#8f8f8f"
+        android:background="@drawable/myborder"
+        android:id="@+id/etselectmakes"
+        android:layout_marginTop="30dp"
+android:layout_marginBottom="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+
+        />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/rlhorizontal"
+            android:layout_marginTop="5dp"
+            android:background="#fff"
+            android:layout_below="@+id/etselectmakes"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_below="@+id/tvarticles"
+                android:layout_marginTop="5dp"
+                android:background="#8e8b8b"
+                android:id="@+id/tvline1"
+                android:layout_height="0.1dp" />
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:id="@+id/horizontalScrollView"
+                android:layout_below="@+id/tvline1"
+                android:scrollbars="none"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:id="@+id/linearlayouthorscroll"
+                    android:layout_height="wrap_content">
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Articles"
+                android:id="@+id/tvarticles"
+                android:textColor="#000"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:paddingLeft="20dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:background="#fff"
+            android:layout_below="@+id/rlhorizontal"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="GetRepair Guarantee"
+                android:id="@+id/tvguarantee"
+                android:textColor="#000"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:paddingLeft="20dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_below="@+id/tvguarantee"
+                android:layout_marginTop="5dp"
+                android:background="#8e8b8b"
+                android:id="@+id/tvline2"
+                android:layout_height="0.1dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                android:id="@+id/linearguarantee"
+                android:layout_below="@+id/tvline2"
+                android:layout_height="wrap_content">
+
+
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:paddingTop="5dp"
+                        android:id="@+id/tvverify"
+                        android:textSize="10dp"
+                        android:textColor="#000"
+                        android:text="Verified"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ivrepair"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:text="Professionals"
+                        android:textSize="10dp"
+                        android:textColor="#000"
+                        android:gravity="center"
+                        android:id="@+id/tvprofessional"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvverify"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:id="@+id/ivrepair"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="35dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="5dp"
+                        android:src="@drawable/notebook"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />
+                </RelativeLayout>
+                <TextView
+                    android:layout_width="1dp"
+                    android:background="#dddddd"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_height="match_parent" />
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:text="Insured"
+                        android:gravity="center"
+                        android:paddingTop="5dp"
+                        android:id="@+id/tvinsured"
+                        android:textSize="10dp"
+                        android:textColor="#000"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ivrepair1"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_below="@+id/tvinsured"
+                        android:text="Work"
+                        android:textColor="#000"
+                        android:gravity="center"
+                        android:textSize="10dp"
+                        android:id="@+id/tvwork"
+                        android:layout_height="wrap_content" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:id="@+id/ivrepair1"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="35dp"
+                        android:src="@drawable/correct"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true" />
+                </RelativeLayout>
+                <TextView
+                    android:layout_width="1dp"
+                    android:background="#dddddd"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_height="match_parent" />
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:id="@+id/tvsatisfaction"
+                        android:text="Satisfaction"
+                        android:gravity="center"
+                        android:paddingTop="5dp"
+                        android:textSize="10dp"
+                        android:textColor="#000"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ivrepair2"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Guaranteed"
+                        android:textSize="10dp"
+                        android:textColor="#000"
+                        android:gravity="center"
+                        android:id="@+id/tvguaranteed"
+                        android:layout_below="@+id/tvsatisfaction"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:id="@+id/ivrepair2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="35dp"
+                        android:paddingTop="5dp"
+                        android:gravity="center"
+                        android:paddingRight="5dp"
+                        android:src="@drawable/trophy"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />
+                </RelativeLayout>
+
+
+            </LinearLayout>
+        </RelativeLayout>
+
+</RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

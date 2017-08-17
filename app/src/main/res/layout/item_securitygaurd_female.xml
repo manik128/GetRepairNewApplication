@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#ecf7f7"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/plus"
+        android:id="@+id/imageView6" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/plus"
+        android:id="@+id/imageView5" />
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+
+            android:orientation="horizontal"
+            android:weightSum="2"
+           android:layout_below="@+id/radioGrp"
+            android:id="@+id/linearshiftqty"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Duty Shift"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="#CDE6ED"
+                android:id="@+id/tvduty"
+                android:textColor="#017FA5"
+                android:textSize="18dp"
+
+
+                />
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+
+                android:background="#7CC8E0"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Qty"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center"
+                android:background="#CDE6ED"
+                android:textColor="#017FA5"
+                android:textSize="18dp"
+                android:id="@+id/tvqty"
+
+                />
+        </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:inputType="time"
+        android:hint="Outtime"
+        android:gravity="center"
+        android:textColor="#017FA5"
+        android:textColorHint="#017FA5"
+        android:ems="8"
+        android:background="@drawable/myborderbuilding"
+        android:layout_alignTop="@+id/tvintime"
+        android:layout_toRightOf="@+id/tvintime"
+        android:layout_toEndOf="@+id/tvintime"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:id="@+id/tvouttime" />
+
+    <TextView
+        android:text="Number of Weekoffs:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:textColor="#017FA5"
+        android:layout_below="@+id/radiogp"
+         android:layout_marginLeft="27dp"
+        android:layout_marginTop="25dp"
+        android:id="@+id/tvweekoff" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3"
+
+        android:layout_below="@+id/tvweekoff"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="190dp"
+        android:layout_weight="1">
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/ic_remove_circle_outline_black_24dp"
+        android:id="@+id/ivminus4"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/tvcount4"
+        android:textColor="#0280A6"
+        android:textColorHint="#0280A6"
+        android:layout_gravity="center"
+        android:paddingLeft="7dp"
+        android:paddingRight="3dp"
+        android:paddingTop="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:textSize="20dp"
+        android:hint="00"
+        />
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/ic_add_circle_outline_black_24dp"
+        android:id="@+id/ivplus4"/>
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:id="@+id/llinear"
+        android:orientation="horizontal"
+        android:layout_below="@+id/linearshiftqty"
+       >
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="3"
+
+            android:layout_weight="1">
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textColor="#5D5D5D"
+                android:gravity="center"
+                android:textSize="18dp"
+                android:background="@drawable/myborderbuilding"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+
+                android:layout_marginRight="20dp"
+                android:text="4 Hrs"
+                android:id="@+id/tvfour"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textSize="18dp"
+                android:gravity="center"
+                android:background="@drawable/myborderbuilding"
+                android:textColor="#5D5D5D"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="8 Hrs"
+                android:id="@+id/tveight"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textSize="18dp"
+                android:gravity="center"
+                android:background="@drawable/myborderbuilding"
+                android:textColor="#5D5D5D"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="12 Hrs"
+                android:id="@+id/tvfive"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="3"
+
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:weightSum="3"
+
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/ic_remove_circle_outline_black_24dp"
+                    android:id="@+id/ivminus1"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/tvcount1"
+                    android:textColor="#0280A6"
+                    android:textColorHint="#0280A6"
+                    android:gravity="center"
+
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="20dp"
+                    android:text="00"
+                    />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/ic_add_circle_outline_black_24dp"
+                    android:id="@+id/ivplusone"/>
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/ic_remove_circle_outline_black_24dp"
+                    android:id="@+id/ivminus2"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/tvcount2"
+                    android:textColor="#0280A6"
+                    android:textColorHint="#0280A6"
+                    android:gravity="center"
+
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="20dp"
+                    android:text="00"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/ic_add_circle_outline_black_24dp"
+                    android:id="@+id/ivplus2"/>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/ic_remove_circle_outline_black_24dp"
+                    android:id="@+id/ivminus3"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/tvcount3"
+                    android:textColor="#0280A6"
+                    android:textColorHint="#0280A6"
+                    android:gravity="center"
+
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="20dp"
+                    android:text="00"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/ic_add_circle_outline_black_24dp"
+                    android:id="@+id/ivplus3"/>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Intime"
+        android:textColorHint="#017FA5"
+        android:textColor="#017FA5"
+        android:inputType="time"
+        android:ems="8"
+        android:background="@drawable/myborderbuilding"
+        android:gravity="center"
+
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="14dp"
+        android:id="@+id/tvintime"
+        android:layout_below="@+id/llinear"
+        android:layout_toRightOf="@+id/imageView6"
+        android:layout_toEndOf="@+id/imageView6"
+        android:layout_marginStart="14dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:hint="Choose Your Service Type:"
+        android:textColorHint="#017FA5"
+        android:textColor="#017FA5"
+        android:inputType="time"
+
+
+
+        android:textSize="17dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/tvsericetype"
+        android:layout_below="@+id/tvintime"
+        android:layout_toRightOf="@+id/imageView6"
+        android:layout_toEndOf="@+id/imageView6"
+         />
+
+    <RadioGroup
+        android:layout_width="fill_parent"
+        android:layout_height="90dp"
+        android:layout_below="@+id/tvsericetype"
+
+        android:weightSum="3"
+
+        android:id="@+id/radiogp"
+        >
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Parttime Services"
+            android:layout_weight="1"
+            android:textColor="#017FA5"
+            android:id="@+id/radioButton"
+            android:layout_marginLeft="20dp"
+            android:checked="false"
+            android:textSize="15dp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Monthly Services"
+            android:id="@+id/radioButton2"
+            android:layout_marginLeft="20dp"
+            android:checked="false"
+            android:textColor="#017FA5"
+            android:textSize="15dp"
+            android:layout_weight="1" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AMC Services"
+            android:textColor="#017FA5"
+            android:layout_weight="1"
+            android:id="@+id/radioButton3"
+            android:layout_marginLeft="20dp"
+            android:checked="false"
+            android:textSize="15dp"
+/>
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/radioGrp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+      android:layout_below="@+id/tvgender"
+
+        >
+        <RadioButton
+            android:id="@+id/radioM"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:checked="false"
+            android:layout_weight="1"
+            android:textSize="14dp"
+            android:textColor="#017FA5"
+            android:layout_marginLeft="20dp"
+            android:text="Male"
+            />
+        <RadioButton
+            android:id="@+id/radioF"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:textColor="#017FA5"
+            android:checked="false"
+            android:layout_weight="1"
+            android:textSize="14dp"
+            android:text="Female"
+            />
+    </RadioGroup>
+    <LinearLayout
+        android:id="@+id/contacts_type"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:visibility="gone"
+
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="Name of the Company:"
+            android:textColorHint="#017FA5"
+            android:textColor="#017FA5"
+            android:inputType="time"
+
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:textSize="17dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/tvcompany"
+
+
+            />
+        <MultiAutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ex:Adikarah tech Software System"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="20dp"
+            android:background="@drawable/myborderbuilding"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="#017FA5"
+            android:textColorHint="#AB017FA5"
+            android:textSize="18dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/multiAutoCompleteTextView1"
+            android:layout_below="@+id/multiAutoCompleteTextView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Select Your Gender:"
+        android:textColorHint="#017FA5"
+        android:textColor="#017FA5"
+        android:inputType="time"
+        android:textSize="17dp"
+
+        android:id="@+id/tvgender"
+
+
+        android:layout_alignTop="@+id/imageView6"
+        android:layout_alignLeft="@+id/tvsericetype"
+        android:layout_alignStart="@+id/tvsericetype" />
+
+</RelativeLayout>

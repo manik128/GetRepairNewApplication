@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_ordersummary"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.atss.getrepairnewapplication.OrdersummaryActivity">
+
+
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#FFD7E1E1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/scrollView"
+            android:layout_above="@+id/la"
+            android:fillViewport="false">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/rltop">
+
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="selectmake"
+                    android:text="Building/Construction"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+
+                    android:layout_marginRight="1dp"
+                    android:layout_marginLeft="1dp"
+
+                    android:textColor="#0088AD"
+                    android:background="#fff"
+                    android:id="@+id/tvselectmake"
+                    android:layout_marginTop="1dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+
+                    />
+
+                <LinearLayout
+
+                    android:background="#ecf7f7"
+
+
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+
+                    android:layout_below="@+id/tvselectmake"
+                    android:id="@+id/rlselectmake">
+
+
+                </LinearLayout>
+
+
+
+
+                <CheckBox
+                    android:id="@+id/basicCheckBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rlselectmake"
+                    android:checked="false"
+                    android:padding="15dp"
+                    android:text=" "
+                    android:layout_marginTop="10dp"
+                    android:textSize="15dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="I  agree  to pay  After  Service  and  to the "
+                    android:id="@+id/tvterm"
+                    android:layout_alignTop="@+id/basicCheckBox"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="40dp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+
+                    android:background="#fff"
+                    android:id="@+id/relativeLayout2"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/basicCheckBox">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Scheduled Date and Time"
+                        android:textColor="#1d1d1d"
+                        android:layout_marginLeft="20dp"
+                        android:id="@+id/tvdate"
+                        android:layout_marginTop="15dp"
+
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#FFDAD8D8"
+                        android:layout_below="@+id/tvdate"
+
+                        android:id="@+id/tvline"
+                        android:layout_marginTop="15dp"
+
+                        />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:weightSum="3"
+                        android:background="#fff"
+                        android:id="@+id/relativeLayout6"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/tvline">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="04-February-2017 | "
+                        android:layout_weight="0.5"
+                        android:layout_marginLeft="20dp"
+                        android:id="@+id/tvdates"
+                        android:textColor="#1d1d1d"
+                        android:layout_marginTop="20dp"
+
+                        />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="11:00 AM-01:00 PM"
+                            android:layout_weight="0.5"
+                            android:layout_marginLeft="140dp"
+                            android:id="@+id/tvtimes"
+                            android:textColor="#1d1d1d"
+                            android:layout_marginTop="20dp"
+
+                            />
+                        </RelativeLayout>
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:id="@+id/relativeLayout3"
+                    android:layout_marginTop="10dp"
+                    android:background="#ffff"
+                    android:layout_below="@+id/relativeLayout2"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Contact Details"
+                        android:id="@+id/tvcontact"
+                        android:textColor="#1d1d1d"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
+
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#FFDAD8D8"
+                        android:layout_below="@+id/tvcontact"
+
+                        android:id="@+id/tvline1"
+                        android:layout_marginTop="15dp"
+
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Name"
+                        android:id="@+id/tvname"
+                        android:layout_below="@+id/tvline1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="vundavallimahi"
+                        android:textColor="#1d1d1d"
+                        android:id="@+id/tvuser"
+                        android:layout_marginLeft="140dp"
+                        android:layout_below="@+id/tvline1"
+                        android:layout_marginTop="5dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mobile No"
+
+                        android:id="@+id/tvmobile"
+                        android:layout_below="@+id/tvname"
+                        android:layout_alignLeft="@+id/tvname"
+                        android:layout_alignStart="@+id/tvname" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8147041121"
+                        android:textColor="#1d1d1d"
+                        android:id="@+id/tvnumber"
+                        android:layout_below="@+id/tvuser"
+                        android:layout_centerHorizontal="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Address"
+                        android:id="@+id/tvaddress"
+                        android:layout_below="@+id/tvmobile"
+                        android:layout_alignLeft="@+id/tvmobile"
+                        android:layout_alignStart="@+id/tvmobile" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="vundavalli mahi:8147041121
+                22
+                Monahan  Bangalore
+                Karnataka"
+                        android:id="@+id/tvuseraddress"
+                        android:textColor="#1d1d1d"
+                        android:layout_marginLeft="140dp"
+                        android:layout_below="@+id/tvnumber"
+                        />
+                </RelativeLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/your_string"
+                    android:id="@+id/textView"
+                    android:layout_marginBottom="8dp"
+                    android:layout_alignBottom="@+id/basicCheckBox"
+                    android:layout_alignLeft="@+id/tvterm"
+                    android:layout_alignStart="@+id/tvterm" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#FFDAD8D8"
+                    android:id="@+id/textView2"
+                    android:layout_below="@+id/tvselectmake"
+
+                    />
+
+            </RelativeLayout>
+        </ScrollView>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/la"
+            android:layout_alignParentBottom="true">
+
+            <Button
+                android:layout_width="match_parent"
+                android:text="Confirm Order"
+                android:textAllCaps="false"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttons"
+                android:textColor="#ffffff"
+                android:background="#0077A4"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

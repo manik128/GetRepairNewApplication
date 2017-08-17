@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.atss.getrepairnewapplication.ChangeAddressPage.AddadressActivity">
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_number"
+        android:layout_width="match_parent"
+        android:textColorHint="#000"
+        android:textColor="#000"
+        android:layout_below="@+id/input_layout_name"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etaddresslist"
+            android:hint="Address"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="17dp"
+            android:paddingTop="8dp"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:paddingBottom="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_centerHorizontal="true" />
+    </android.support.design.widget.TextInputLayout>
+   <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_email"
+        android:layout_width="match_parent"
+        android:textColorHint="#000"
+        android:textColor="#000"
+        android:layout_below="@+id/input_layout_number"
+        android:layout_height="wrap_content">
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etmobilelist"
+            android:hint="Mobile Number"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="17dp"
+            android:paddingTop="8dp"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:inputType="number"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:paddingBottom="8dp"
+            android:maxLength="10"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_below="@+id/input_layout_number"
+            android:layout_centerHorizontal="true" />
+    </android.support.design.widget.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+
+       >
+
+        <Button
+            android:id="@+id/btn_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="update" />
+
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.80"
+            android:text="delete" />
+    </LinearLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_name"
+        android:layout_width="match_parent"
+        android:textColorHint="#000"
+        android:textColor="#000"
+        android:inputType="textPersonName"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etnamelist"
+            android:hint="Name"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:textSize="17dp"
+            android:paddingTop="8dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:paddingBottom="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_centerHorizontal="true" />
+
+    </android.support.design.widget.TextInputLayout>
+</RelativeLayout>

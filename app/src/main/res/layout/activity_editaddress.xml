@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFD7E1E1"
+    tools:context="com.atss.getrepairnewapplication.ChangeAddressPage.AddadressActivity">
+
+
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_name"
+        android:layout_width="match_parent"
+        android:textColorHint="#000"
+        android:textColor="#000"
+        android:theme="@style/AppThemes"
+        android:inputType="textPersonName"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etnameedit"
+            android:hint="name"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:textSize="17dp"
+            android:paddingTop="8dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:paddingBottom="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_centerHorizontal="true" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_housenumber"
+        android:layout_width="match_parent"
+        android:textColorHint="#000"
+        android:textColor="#000"
+        android:theme="@style/AppThemes"
+        android:layout_below="@+id/input_layout_name"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etstreetedit"
+            android:hint="Area"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="17dp"
+            android:paddingTop="8dp"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:paddingBottom="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ethouseedit"
+            android:hint="house/streetno"
+            android:paddingLeft="20dp"
+            android:textColor="@color/text_color"
+            android:textColorHighlight="@color/text_color"
+            android:textColorHint="@color/text_color"
+            android:paddingRight="20dp"
+            android:textSize="17dp"
+            android:paddingTop="8dp"
+            android:singleLine="true"
+            android:inputType="number"
+            android:maxLines="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:paddingBottom="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_centerHorizontal="true" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_number"
+        android:layout_width="match_parent"
+        android:textColorHint="#000"
+        android:textColor="#000"
+        android:theme="@style/AppThemes"
+        android:layout_below="@+id/input_layout_street"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etaddressedit"
+            android:hint="City"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="17dp"
+            android:paddingTop="8dp"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:paddingBottom="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_centerHorizontal="true" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_email"
+        android:layout_width="match_parent"
+        android:textColorHint="#000"
+        android:textColor="#000"
+        android:theme="@style/AppThemes"
+        android:layout_below="@+id/input_layout_number"
+        android:layout_height="wrap_content">
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etmobileedit"
+            android:hint="Mobile Number"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="17dp"
+            android:paddingTop="8dp"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:inputType="number"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:paddingBottom="8dp"
+            android:maxLength="10"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_below="@+id/input_layout_number"
+            android:layout_centerHorizontal="true" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <Button
+        android:text="Save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnsaveedit"
+        android:background="#0189b1"
+        android:textColor="#ffff"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_street"
+        android:layout_width="match_parent"
+        android:textColorHint="#000"
+        android:textColor="#000"
+        android:theme="@style/AppThemes"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/input_layout_housenumber"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+    </android.support.design.widget.TextInputLayout>
+
+</RelativeLayout>

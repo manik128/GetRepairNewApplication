@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#ffff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:text="Home Appliances"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvhome"
+        android:textSize="18dp"
+        android:layout_gravity="center"
+        android:padding="5dp"
+      android:textColor="#000"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/tvlineschedule"
+        android:layout_below="@+id/tvhome"
+        android:background="#E9E9E9"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearlayout1"
+        android:orientation="vertical"
+
+        android:layout_below="@+id/tvhome"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Television"
+            android:drawableRight="@drawable/plus"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:paddingRight="10dp"
+            android:textSize="16dp"
+            android:textColor="#5D5D5D"
+            android:id="@+id/tvtelevision"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+
+            android:paddingLeft="20dp"
+
+            />
+
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvtelevision"
+            android:id="@+id/rlselectmake">
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DVD Player"
+            android:drawableRight="@drawable/plus"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_below="@+id/rlselectmake"
+            android:textSize="16dp"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvdvd"
+            android:layout_marginTop="1dp"
+            android:paddingTop="10dp"
+            android:textColor="#5D5D5D"
+            android:paddingLeft="20dp"
+            android:paddingRight="10dp"
+
+            />
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvdvd"
+            android:id="@+id/ldvd">
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Refrigerator"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:drawableRight="@drawable/plus"
+            android:layout_below="@+id/ldvd"
+            android:textSize="16dp"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvrefrigerator"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textColor="#5D5D5D"
+            android:paddingLeft="20dp"
+
+            />
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvrefrigerator"
+            android:id="@+id/lrefri">
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Washing Machine"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:drawableRight="@drawable/plus"
+            android:layout_below="@+id/tvrefrigerator"
+            android:textSize="16dp"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvwashing"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textColor="#5D5D5D"
+            android:paddingLeft="20dp"
+
+            />
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvwashing"
+            android:id="@+id/lwashing">
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Home Theatre"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:drawableRight="@drawable/plus"
+            android:layout_below="@+id/tvrefrigerator"
+            android:textColor="#5D5D5D"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvtheatre"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textSize="16dp"
+            android:paddingLeft="20dp"
+
+            />
+
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvtheatre"
+            android:id="@+id/lhome">
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Geyser"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:drawableRight="@drawable/plus"
+            android:layout_below="@+id/tvrefrigerator"
+            android:textColor="#5D5D5D"
+            android:paddingBottom="10dp"
+            android:id="@+id/tvgeyser"
+            android:layout_marginTop="1dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textSize="16dp"
+            android:paddingLeft="20dp"
+
+            />
+        <LinearLayout
+
+
+
+            android:background="#ecf7f7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_below="@+id/tvgeyser"
+            android:id="@+id/lgeyser">
+
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

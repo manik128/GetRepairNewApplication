@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#0189b1"
+    android:id="@+id/relativeactionbarhome"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/leftarrow"
+        android:paddingTop="10dp"
+
+        android:paddingBottom="10dp"
+        android:id="@+id/ivactionmenu"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Address"
+        android:id="@+id/tvinspection"
+        android:textSize="17dp"
+        android:paddingTop="10dp"
+        android:textColor="#FFFF"
+        android:paddingBottom="10dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/ivactionmenu"
+        android:layout_toEndOf="@+id/ivactionmenu" />
+
+
+</RelativeLayout>
+
+
+

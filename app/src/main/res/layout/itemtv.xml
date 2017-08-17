@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:background="#ecf7f7"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sony"
+
+
+                android:paddingLeft="35dp"
+                android:layout_marginTop="1dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+
+                android:id="@+id/tvacer"
+
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="samsung"
+
+
+                android:paddingLeft="35dp"
+                android:layout_marginTop="1dp"
+
+                android:layout_below="@+id/tvdell"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:id="@+id/tvsamsung"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lenovo"
+
+
+                android:paddingLeft="35dp"
+                android:layout_below="@+id/tvsamsung"
+                android:layout_marginTop="1dp"
+
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:id="@+id/tvlenevo"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="LG"
+
+
+                android:paddingLeft="35dp"
+
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:id="@+id/tvdell"
+                android:layout_below="@+id/tvacer"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Toshiba"
+
+
+                android:paddingLeft="35dp"
+
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:id="@+id/tvToshiba"
+
+
+                android:layout_below="@+id/tvlenevo"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Panasonic"
+
+
+                android:paddingLeft="35dp"
+
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:id="@+id/tvPanasonic"
+
+
+                android:layout_below="@+id/tvToshiba"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="micromax"
+
+
+                android:paddingLeft="35dp"
+
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:id="@+id/tvmicromax"
+
+
+                android:layout_below="@+id/tvPanasonic"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Haier"
+
+
+                android:paddingLeft="35dp"
+
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:id="@+id/tvHaier"
+
+
+                android:layout_below="@+id/tvmicromax"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hitachi"
+
+
+                android:paddingLeft="35dp"
+
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:id="@+id/tvHitachi"
+
+
+                android:layout_below="@+id/tvHaier"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hyundai"
+
+
+                android:paddingLeft="35dp"
+
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:id="@+id/tvHyundai"
+
+
+                android:layout_below="@+id/tvHitachi"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Onida"
+
+
+                android:paddingLeft="35dp"
+
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:id="@+id/tvOnida"
+
+
+                android:layout_below="@+id/tvMitashi"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="philips"
+
+
+                android:paddingLeft="35dp"
+
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:id="@+id/tvphilips"
+
+
+                android:layout_below="@+id/tvOnida"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sansui"
+
+
+
+                android:paddingLeft="35dp"
+
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:id="@+id/tvSansui"
+
+
+                android:layout_below="@+id/tvphilips"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mitashi"
+
+
+                android:paddingLeft="35dp"
+
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:id="@+id/tvMitashi"
+
+
+                android:layout_below="@+id/tvHyundai"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="sharp"
+
+
+                android:paddingLeft="35dp"
+
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:id="@+id/tvsharp"
+
+
+                android:layout_below="@+id/tvSansui"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Videocon"
+
+
+                android:paddingLeft="35dp"
+
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:id="@+id/tvVideocon"
+
+
+                android:layout_below="@+id/tvsharp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="vu
+"
+
+
+                android:paddingLeft="35dp"
+
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:id="@+id/tvvu"
+
+
+                android:layout_below="@+id/tvVideocon"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

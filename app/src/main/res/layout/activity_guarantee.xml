@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_guarantee"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.atss.getrepairnewapplication.GuaranteeActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/notebook"
+    android:id="@+id/ivnote"
+    android:layout_marginTop="20dp"
+    android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/ivnote"
+            android:layout_marginTop="10dp"
+            android:text="Verified Professionals"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#000"
+            android:id="@+id/tvverified"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="All our professionals are background checked and verified to\nensure your complete safety. For detailed information kindly"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textSize="12dp"
+            android:id="@+id/tvnote"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/tvverified"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvnote1"
+            android:textSize="12dp"
+            android:layout_centerHorizontal="true"
+            android:text="refer our Terms of Service section."
+            android:layout_below="@+id/tvnote"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/ivinsured"
+            android:src="@drawable/correct"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/tvnote1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/ivinsured"
+            android:layout_marginTop="10dp"
+            android:text="Insured Work"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#000"
+            android:id="@+id/tvinsured"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="All our professionals are background checked and verified to\nensure your complete safety. For detailed information kindly"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textSize="12dp"
+            android:id="@+id/tvnote2"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/tvinsured"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvnote3"
+            android:textSize="12dp"
+            android:layout_centerHorizontal="true"
+            android:text="refer our Terms of Service section."
+            android:layout_below="@+id/tvnote2"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/ivsatisfaction"
+            android:src="@drawable/trophy"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/tvnote3"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/ivsatisfaction"
+            android:layout_marginTop="10dp"
+            android:text="Satisfaction Guaranteed"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#000"
+            android:id="@+id/tvsatisfaction"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="All our professionals are background checked and verified to\nensure your complete safety. For detailed information kindly"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textSize="12dp"
+            android:id="@+id/tvnote4"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/tvsatisfaction"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvnote5"
+            android:textSize="12dp"
+            android:layout_centerHorizontal="true"
+            android:text="refer our Terms of Service section."
+            android:layout_below="@+id/tvnote4"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/ivpayment"
+            android:src="@drawable/creditcard"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/tvnote5"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/ivpayment"
+            android:layout_marginTop="10dp"
+            android:text="Easy Payment"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#000"
+            android:id="@+id/tvpayment"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="All our professionals are background checked and verified to\nensure your complete safety. For detailed information kindly"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textSize="12dp"
+            android:id="@+id/tvnote6"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/tvpayment"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvnote7"
+            android:textSize="12dp"
+            android:layout_marginBottom="20dp"
+            android:layout_centerHorizontal="true"
+            android:text="refer our Terms of Service section."
+            android:layout_below="@+id/tvnote6"/>
+    </RelativeLayout>
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+</ScrollView>
