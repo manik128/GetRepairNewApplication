@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.atss.getrepairnewapplication.Mainclass;
 import com.atss.getrepairnewapplication.R;
@@ -142,15 +143,20 @@ public  class FunctionhallFragment extends Fragment {
 
                            @Override
                            public void onClick(View v) {
-
-                               Intent intent = new Intent(getContext(), ServicingActivity.class);
-                               intent.putExtra("sertyp", 0);
-                               mclass.setType("Function");
-                               mclass.setModel(etemail.getText().toString());
-                               intent.putExtra("service",etemail.getText().toString());
-                               startActivity(intent);
+                               if (etemail.getText().toString().equals("")) {
+                                   Toast.makeText(getActivity(), "Events type field Should not be blank", Toast.LENGTH_LONG).show();
+//
+                               } else {
+                                   Intent intent = new Intent(getContext(), ServicingActivity.class);
+                                   intent.putExtra("sertyp", 0);
+                                   mclass.setType("Function");
+                                   mclass.setModel(etemail.getText().toString());
+                                   intent.putExtra("service", etemail.getText().toString());
+                                   startActivity(intent);
+                               }
                            }
                        });
+
                        builder.setView(vw);
                        alertDialog = builder.create();
                        alertDialog.show();

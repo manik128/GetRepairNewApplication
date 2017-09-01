@@ -58,7 +58,7 @@
                 android:drawablePadding="10dp"
                 android:paddingBottom="15dp"
                 android:paddingTop="10dp"
-                android:id="@+id/textView1"
+                android:id="@+id/tvorders"
                 android:textSize="16dp"/>
 
                 <TextView

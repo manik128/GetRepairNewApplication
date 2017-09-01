@@ -254,7 +254,7 @@ ivedit=(ImageView)findViewById(R.id.ivedit);
 
             k = Integer.parseInt(calender[0])-1;
             fmur=k;
-        final SimpleDateFormat sdf_ = new SimpleDateFormat("EE");
+        final SimpleDateFormat sdf_ = new SimpleDateFormat("EEE");
        String s=sdf_ .format(dt);
         for (int m = 0; m < weeks.length; m++) {
             if (sdf_.format(dt).equals(weeks[m])) {

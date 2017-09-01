@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
@@ -51,6 +52,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Logger;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 import static java.security.AccessController.getContext;
 
 public class MainActivity12 extends AppCompatActivity {
@@ -62,6 +65,7 @@ public class MainActivity12 extends AppCompatActivity {
     int noofsize=3;
     int position;
     Typeface font;
+
     boolean clk=true;
 Button  btnno;
     Timer timer;
@@ -1008,62 +1012,64 @@ Button  btnno;
 
                                                 @Override
                                                 public void onClick(View v) {
+                                                    if (etemail.getText().toString().equals("")) {
 
+                                                        Snackbar.make(v, "Brand field Should not be blank", Snackbar.LENGTH_LONG)
+                                                                .setAction("Action", null).show();
+                                                    } else {
 
-                                                    builder = new AlertDialog.Builder(MainActivity12.this);
-                                                    View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
-                                                    final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
-                                                    final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
-                                                    final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
-                                                    Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
-                                                    gr.grfonttxt(tvservices);
-                                                    gr.grfonttxt(tvrepair);
-                                                    gr.grfonttxt(tvselect);
-                                                    gr.grfontbut(btnsubmit);
+                                                        builder = new AlertDialog.Builder(MainActivity12.this);
+                                                        View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
+                                                        final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
+                                                        final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
+                                                        final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
+                                                        Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
+                                                        gr.grfonttxt(tvservices);
+                                                        gr.grfonttxt(tvrepair);
+                                                        gr.grfonttxt(tvselect);
+                                                        gr.grfontbut(btnsubmit);
 
-                                                    final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
-                                                    final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
+                                                        final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
+                                                        final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
 
-                                                    btnsubmit.setOnClickListener(new View.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(View v) {
-                                                            if ( ivlist.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState()&& ivlist1.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState() )
-                                                            {
-                                                                Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
-                                                                // new RegisterAsyntaskNew().execute();
+                                                        btnsubmit.setOnClickListener(new View.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(View v) {
+                                                                if (ivlist.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState() && ivlist1.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState()) {
+                                                                    Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
+                                                                    // new RegisterAsyntaskNew().execute();
+                                                                } else if (count == 1 & count1 == 0) {
+                                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                    intent.putExtra("message", tvservices.getText().toString());
+                                                                    intent.putExtra("sertyp", 0);
+                                                                    mclass.setType("Television");
+                                                                    mclass.setModel(tvhomes.getText().toString());
+                                                                    mclass.setService(tvservices.getText().toString());
+                                                                    intent.putExtra("servicing", tvtelevision.getText().toString());
+                                                                    intent.putExtra("service", etemail.getText().toString());
+                                                                    startActivity(intent);
+                                                                } else if (count1 == 1 & count == 0) {
+                                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                    intent.putExtra("message", tvrepair.getText().toString());
+                                                                    intent.putExtra("sertyp", 0);
+                                                                    mclass.setType("Television");
+                                                                    mclass.setModel(tvhomes.getText().toString());
+                                                                    mclass.setService(tvrepair.getText().toString());
+                                                                    intent.putExtra("servicing", tvtelevision.getText().toString());
+                                                                    intent.putExtra("service", etemail.getText().toString());
+                                                                    startActivity(intent);
+                                                                }
                                                             }
-                                                          else   if (count == 1 & count1 == 0) {
-                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                                intent.putExtra("message", tvservices.getText().toString());
-                                                                intent.putExtra("sertyp", 0);
-                                                                mclass.setType("Television");
-                                                                mclass.setModel(tvhomes.getText().toString());
-                                                                mclass.setService(tvservices.getText().toString());
-                                                                intent.putExtra("servicing", tvtelevision.getText().toString());
-                                                                intent.putExtra("service", etemail.getText().toString());
-                                                                startActivity(intent);
-                                                            } else if (count1 == 1 & count == 0) {
-                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                                intent.putExtra("message", tvrepair.getText().toString());
-                                                                intent.putExtra("sertyp", 0);
-                                                                mclass.setType("Television");
-                                                                mclass.setModel(tvhomes.getText().toString());
-                                                                mclass.setService(tvrepair.getText().toString());
-                                                                intent.putExtra("servicing", tvtelevision.getText().toString());
-                                                                intent.putExtra("service", etemail.getText().toString());
-                                                                startActivity(intent);
-                                                            }
-                                                        }
-                                                    });
-                                                    tvservices.setOnClickListener(new View.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(View v) {
-                                                            count = 1;
-                                                            count1 = 0;
-                                                            ivlist.setImageResource(R.drawable.checkbox2);
-                                                            tvrepair.setTextColor(Color.parseColor("#737272"));
-                                                            ivlist1.setImageResource(R.drawable.checkbox);
-                                                            tvservices.setTextColor(Color.parseColor("#4fc5e6"));
+                                                        });
+                                                        tvservices.setOnClickListener(new View.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(View v) {
+                                                                count = 1;
+                                                                count1 = 0;
+                                                                ivlist.setImageResource(R.drawable.checkbox2);
+                                                                tvrepair.setTextColor(Color.parseColor("#737272"));
+                                                                ivlist1.setImageResource(R.drawable.checkbox);
+                                                                tvservices.setTextColor(Color.parseColor("#4fc5e6"));
 
 //count++;
 /*else {
@@ -1073,20 +1079,20 @@ Button  btnno;
     tvservices.setTextColor(Color.parseColor("#737272"));
     count++;
 }*/
-                                                        }
-                                                    });
+                                                            }
+                                                        });
 
-                                                    tvrepair.setOnClickListener(new View.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(View v) {
-                                                            count1 = 1;
-                                                            count = 0;
-                                                            tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
-                                                            ivlist.setImageResource(R.drawable.checkbox);
-                                                            tvservices.setTextColor(Color.parseColor("#737272"));
-                                                            ivlist1.setImageResource(R.drawable.checkbox2);
+                                                        tvrepair.setOnClickListener(new View.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(View v) {
+                                                                count1 = 1;
+                                                                count = 0;
+                                                                tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
+                                                                ivlist.setImageResource(R.drawable.checkbox);
+                                                                tvservices.setTextColor(Color.parseColor("#737272"));
+                                                                ivlist1.setImageResource(R.drawable.checkbox2);
 
-                                                            //  count1++;
+                                                                //  count1++;
 /*else {
     count1=0;
 
@@ -1094,11 +1100,12 @@ Button  btnno;
     ivlist1.setImageResource(R.drawable.checkbox);
     count1++;
 }*/
-                                                        }
-                                                    });
-                                                    builder.setView(vw);
-                                                    alertDialog = builder.create();
-                                                    alertDialog.show();
+                                                            }
+                                                        });
+                                                        builder.setView(vw);
+                                                        alertDialog = builder.create();
+                                                        alertDialog.show();
+                                                    }
                                                 }
                                             });
 
@@ -1748,60 +1755,62 @@ Button  btnno;
 
                                             @Override
                                             public void onClick(View v) {
+                                                if (etemail.getText().toString().equals("")) {
 
-                                                builder = new AlertDialog.Builder(MainActivity12.this);
-                                        View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
-                                        final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
-                                        final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
-                                        final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
-                                        final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
-                                        Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
-                                        final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
-                                        gr.grfonttxt(tvservices);
-                                        gr.grfonttxt(tvrepair);
-                                        gr.grfonttxt(tvselect);
-                                        gr.grfontbut(btnsubmit);
+                                                    Snackbar.make(v, "Brand field Should not be blank", Snackbar.LENGTH_LONG)
+                                                            .setAction("Action", null).show();
+                                                } else {
+                                                    builder = new AlertDialog.Builder(MainActivity12.this);
+                                                    View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
+                                                    final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
+                                                    final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
+                                                    final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
+                                                    final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
+                                                    Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
+                                                    final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
+                                                    gr.grfonttxt(tvservices);
+                                                    gr.grfonttxt(tvrepair);
+                                                    gr.grfonttxt(tvselect);
+                                                    gr.grfontbut(btnsubmit);
 
-                                        btnsubmit.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                if ( ivlist.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState()&& ivlist1.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState() )
-                                                {
-                                                    Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
-                                                    // new RegisterAsyntaskNew().execute();
-                                                }
-                                            else  if (count == 1 & count1 == 0) {
-                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                    intent.putExtra("message", tvservices.getText().toString());
-                                                    intent.putExtra("service", etemail.getText().toString());
-                                                    intent.putExtra("servicing", tvdvd.getText().toString());
-                                                    mclass.setType("DVD Player");
-                                                    mclass.setModel(etemail.getText().toString());
-                                                    mclass.setService(tvservices.getText().toString());
-                                                    intent.putExtra("sertyp", 1);
-                                                    startActivity(intent);
-                                                } else if (count1 == 1 & count == 0) {
-                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                    intent.putExtra("message", tvrepair.getText().toString());
-                                                    intent.putExtra("sertyp", 1);
-                                                    mclass.setType("DVD Player");
-                                                    mclass.setModel(etemail.getText().toString());
-                                                    mclass.setService(tvrepair.getText().toString());
-                                                    intent.putExtra("service", etemail.getText().toString());
-                                                    intent.putExtra("servicing", tvdvd.getText().toString());
-                                                    startActivity(intent);
-                                                }
-                                            }
-                                        });
-                                        tvservices.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                count = 1;
-                                                count1 = 0;
-                                                ivlist.setImageResource(R.drawable.checkbox2);
-                                                tvrepair.setTextColor(Color.parseColor("#737272"));
-                                                ivlist1.setImageResource(R.drawable.checkbox);
-                                                tvservices.setTextColor(Color.parseColor("#4fc5e6"));
+                                                    btnsubmit.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            if (ivlist.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState() && ivlist1.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState()) {
+                                                                Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
+                                                                // new RegisterAsyntaskNew().execute();
+                                                            } else if (count == 1 & count1 == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvservices.getText().toString());
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                intent.putExtra("servicing", tvdvd.getText().toString());
+                                                                mclass.setType("DVD Player");
+                                                                mclass.setModel(etemail.getText().toString());
+                                                                mclass.setService(tvservices.getText().toString());
+                                                                intent.putExtra("sertyp", 1);
+                                                                startActivity(intent);
+                                                            } else if (count1 == 1 & count == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvrepair.getText().toString());
+                                                                intent.putExtra("sertyp", 1);
+                                                                mclass.setType("DVD Player");
+                                                                mclass.setModel(etemail.getText().toString());
+                                                                mclass.setService(tvrepair.getText().toString());
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                intent.putExtra("servicing", tvdvd.getText().toString());
+                                                                startActivity(intent);
+                                                            }
+                                                        }
+                                                    });
+                                                    tvservices.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count = 1;
+                                                            count1 = 0;
+                                                            ivlist.setImageResource(R.drawable.checkbox2);
+                                                            tvrepair.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox);
+                                                            tvservices.setTextColor(Color.parseColor("#4fc5e6"));
 
 //count++;
 /*else {
@@ -1811,20 +1820,20 @@ Button  btnno;
     tvservices.setTextColor(Color.parseColor("#737272"));
     count++;
 }*/
-                                            }
-                                        });
+                                                        }
+                                                    });
 
-                                        tvrepair.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                count1 = 1;
-                                                count = 0;
-                                                tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
-                                                ivlist.setImageResource(R.drawable.checkbox);
-                                                tvservices.setTextColor(Color.parseColor("#737272"));
-                                                ivlist1.setImageResource(R.drawable.checkbox2);
+                                                    tvrepair.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count1 = 1;
+                                                            count = 0;
+                                                            tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
+                                                            ivlist.setImageResource(R.drawable.checkbox);
+                                                            tvservices.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox2);
 
-                                                //  count1++;
+                                                            //  count1++;
 /*else {
     count1=0;
 
@@ -1832,12 +1841,13 @@ Button  btnno;
     ivlist1.setImageResource(R.drawable.checkbox);
     count1++;
 }*/
-                                            }
-                                        });
+                                                        }
+                                                    });
 
-                                                builder.setView(vw);
-                                                alertDialog = builder.create();
-                                                alertDialog.show();
+                                                    builder.setView(vw);
+                                                    alertDialog = builder.create();
+                                                    alertDialog.show();
+                                                }
                                             }
                                         });
 
@@ -2498,62 +2508,65 @@ Button  btnno;
                                             @Override
                                             public void onClick(View v) {
 
-                                        builder = new AlertDialog.Builder(MainActivity12.this);
-                                        View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
-                                        final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
-                                        final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
-                                        final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
-                                        final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
-                                        Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
-                                        final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
-                                        gr.grfonttxt(tvservices);
-                                        gr.grfonttxt(tvrepair);
-                                        gr.grfonttxt(tvselect);
-                                        gr.grfontbut(btnsubmit);
+                                                if (etemail.getText().toString().equals("")) {
 
-                                        btnsubmit.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                if ( ivlist.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState()&& ivlist1.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState() )
-                                                {
-                                                    Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
-                                                    // new RegisterAsyntaskNew().execute();
-                                                }
-                                            else  if (count == 1 & count1 == 0) {
-                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                    intent.putExtra("message", tvservices.getText().toString());
-                                                    intent.putExtra("sertyp", 2);
-                                                    intent.putExtra("service",etemail.getText().toString());
-                                                    mclass.setType("Refrigerator");
-                                                    mclass.setModel(etemail.getText().toString());
-                                                    mclass.setService(tvservices.getText().toString());
-                                                    intent.putExtra("servicing", tvrefrigerator.getText().toString());
+                                                    Snackbar.make(v, "Brand field Should not be blank", Snackbar.LENGTH_LONG)
+                                                            .setAction("Action", null).show();
+                                                } else {
+                                                    builder = new AlertDialog.Builder(MainActivity12.this);
+                                                    View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
+                                                    final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
+                                                    final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
+                                                    final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
+                                                    final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
+                                                    Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
+                                                    final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
+                                                    gr.grfonttxt(tvservices);
+                                                    gr.grfonttxt(tvrepair);
+                                                    gr.grfonttxt(tvselect);
+                                                    gr.grfontbut(btnsubmit);
 
-                                                    startActivity(intent);
-                                                } else if (count1 == 1 & count == 0) {
-                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                    intent.putExtra("message", tvrepair.getText().toString());
-                                                    intent.putExtra("sertyp", 2);
-                                                    intent.putExtra("service", etemail.getText().toString());
-                                                    mclass.setType("Refrigerator");
-                                                    mclass.setModel(etemail.getText().toString());
-                                                    mclass.setService(tvrepair.getText().toString());
-                                                    intent.putExtra("servicing", tvrefrigerator.getText().toString());
+                                                    btnsubmit.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            if (ivlist.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState() && ivlist1.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState()) {
+                                                                Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
+                                                                // new RegisterAsyntaskNew().execute();
+                                                            } else if (count == 1 & count1 == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvservices.getText().toString());
+                                                                intent.putExtra("sertyp", 2);
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                mclass.setType("Refrigerator");
+                                                                mclass.setModel(etemail.getText().toString());
+                                                                mclass.setService(tvservices.getText().toString());
+                                                                intent.putExtra("servicing", tvrefrigerator.getText().toString());
+
+                                                                startActivity(intent);
+                                                            } else if (count1 == 1 & count == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvrepair.getText().toString());
+                                                                intent.putExtra("sertyp", 2);
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                mclass.setType("Refrigerator");
+                                                                mclass.setModel(etemail.getText().toString());
+                                                                mclass.setService(tvrepair.getText().toString());
+                                                                intent.putExtra("servicing", tvrefrigerator.getText().toString());
 
 
-                                                    startActivity(intent);
-                                                }
-                                            }
-                                        });
-                                        tvservices.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                count = 1;
-                                                count1 = 0;
-                                                ivlist.setImageResource(R.drawable.checkbox2);
-                                                tvrepair.setTextColor(Color.parseColor("#737272"));
-                                                ivlist1.setImageResource(R.drawable.checkbox);
-                                                tvservices.setTextColor(Color.parseColor("#4fc5e6"));
+                                                                startActivity(intent);
+                                                            }
+                                                        }
+                                                    });
+                                                    tvservices.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count = 1;
+                                                            count1 = 0;
+                                                            ivlist.setImageResource(R.drawable.checkbox2);
+                                                            tvrepair.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox);
+                                                            tvservices.setTextColor(Color.parseColor("#4fc5e6"));
 
 //count++;
 /*else {
@@ -2563,20 +2576,20 @@ Button  btnno;
     tvservices.setTextColor(Color.parseColor("#737272"));
     count++;
 }*/
-                                            }
-                                        });
+                                                        }
+                                                    });
 
-                                        tvrepair.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                count1 = 1;
-                                                count = 0;
-                                                tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
-                                                ivlist.setImageResource(R.drawable.checkbox);
-                                                tvservices.setTextColor(Color.parseColor("#737272"));
-                                                ivlist1.setImageResource(R.drawable.checkbox2);
+                                                    tvrepair.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count1 = 1;
+                                                            count = 0;
+                                                            tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
+                                                            ivlist.setImageResource(R.drawable.checkbox);
+                                                            tvservices.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox2);
 
-                                                //  count1++;
+                                                            //  count1++;
 /*else {
     count1=0;
 
@@ -2584,12 +2597,13 @@ Button  btnno;
     ivlist1.setImageResource(R.drawable.checkbox);
     count1++;
 }*/
-                                            }
-                                        });
+                                                        }
+                                                    });
 
-                                                builder.setView(vw);
-                                                alertDialog = builder.create();
-                                                alertDialog.show();
+                                                    builder.setView(vw);
+                                                    alertDialog = builder.create();
+                                                    alertDialog.show();
+                                                }
                                             }
                                         });
 
@@ -3245,61 +3259,64 @@ Button  btnno;
 
                                             @Override
                                             public void onClick(View v) {
+                                                if (etemail.getText().toString().equals("")) {
 
-                                        builder = new AlertDialog.Builder(MainActivity12.this);
-                                        View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
-                                        final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
-                                        final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
-                                        final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
-                                        final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
-                                        Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
-                                        final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
-                                        gr.grfonttxt(tvservices);
-                                        gr.grfonttxt(tvrepair);
-                                        gr.grfonttxt(tvselect);
-                                        gr.grfontbut(btnsubmit);
+                                  Snackbar.make(v, "Brand field Should not be blank", Snackbar.LENGTH_LONG)
+                                                    .setAction("Action", null).show();
+                                                } else {
 
-                                        btnsubmit.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                if ( ivlist.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState()&& ivlist1.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState() )
-                                                {
-                                                    Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
-                                                    // new RegisterAsyntaskNew().execute();
-                                                }
-                                             else  if (count == 1 & count1 == 0) {
-                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                    intent.putExtra("message", tvservices.getText().toString());
-                                                    intent.putExtra("service", etemail.getText().toString());
-                                                    intent.putExtra("servicing", tvwashing.getText().toString());
-                                                    mclass.setType("Washing Machine");
-                                                    mclass.setModel(etemail.getText().toString());
-                                                    mclass.setService(tvservices.getText().toString());
-                                                    intent.putExtra("sertyp", 3);
-                                                    startActivity(intent);
-                                                } else if (count1 == 1 & count == 0) {
-                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                    intent.putExtra("message", tvrepair.getText().toString());
-                                                    intent.putExtra("sertyp", 3);
-                                                    mclass.setType("Washing Machine");
-                                                    mclass.setModel(etemail.getText().toString());
-                                                    mclass.setService(tvrepair.getText().toString());
-                                                    intent.putExtra("service", etemail.getText().toString());
-                                                    intent.putExtra("servicing", tvwashing.getText().toString());
+                                                    builder = new AlertDialog.Builder(MainActivity12.this);
+                                                    View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
+                                                    final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
+                                                    final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
+                                                    final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
+                                                    final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
+                                                    Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
+                                                    final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
+                                                    gr.grfonttxt(tvservices);
+                                                    gr.grfonttxt(tvrepair);
+                                                    gr.grfonttxt(tvselect);
+                                                    gr.grfontbut(btnsubmit);
 
-                                                    startActivity(intent);
-                                                }
-                                            }
-                                        });
-                                        tvservices.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                count = 1;
-                                                count1 = 0;
-                                                ivlist.setImageResource(R.drawable.checkbox2);
-                                                tvrepair.setTextColor(Color.parseColor("#737272"));
-                                                ivlist1.setImageResource(R.drawable.checkbox);
-                                                tvservices.setTextColor(Color.parseColor("#4fc5e6"));
+                                                    btnsubmit.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            if (ivlist.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState() && ivlist1.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState()) {
+                                                                Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
+                                                                // new RegisterAsyntaskNew().execute();
+                                                            } else if (count == 1 & count1 == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvservices.getText().toString());
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                intent.putExtra("servicing", tvwashing.getText().toString());
+                                                                mclass.setType("Washing Machine");
+                                                                mclass.setModel(etemail.getText().toString());
+                                                                mclass.setService(tvservices.getText().toString());
+                                                                intent.putExtra("sertyp", 3);
+                                                                startActivity(intent);
+                                                            } else if (count1 == 1 & count == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvrepair.getText().toString());
+                                                                intent.putExtra("sertyp", 3);
+                                                                mclass.setType("Washing Machine");
+                                                                mclass.setModel(etemail.getText().toString());
+                                                                mclass.setService(tvrepair.getText().toString());
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                intent.putExtra("servicing", tvwashing.getText().toString());
+
+                                                                startActivity(intent);
+                                                            }
+                                                        }
+                                                    });
+                                                    tvservices.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count = 1;
+                                                            count1 = 0;
+                                                            ivlist.setImageResource(R.drawable.checkbox2);
+                                                            tvrepair.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox);
+                                                            tvservices.setTextColor(Color.parseColor("#4fc5e6"));
 
 //count++;
 /*else {
@@ -3309,20 +3326,20 @@ Button  btnno;
     tvservices.setTextColor(Color.parseColor("#737272"));
     count++;
 }*/
-                                            }
-                                        });
+                                                        }
+                                                    });
 
-                                        tvrepair.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                count1 = 1;
-                                                count = 0;
-                                                tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
-                                                ivlist.setImageResource(R.drawable.checkbox);
-                                                tvservices.setTextColor(Color.parseColor("#737272"));
-                                                ivlist1.setImageResource(R.drawable.checkbox2);
+                                                    tvrepair.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count1 = 1;
+                                                            count = 0;
+                                                            tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
+                                                            ivlist.setImageResource(R.drawable.checkbox);
+                                                            tvservices.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox2);
 
-                                                //  count1++;
+                                                            //  count1++;
 /*else {
     count1=0;
 
@@ -3330,13 +3347,14 @@ Button  btnno;
     ivlist1.setImageResource(R.drawable.checkbox);
     count1++;
 }*/
-                                            }
-                                        });
+                                                        }
+                                                    });
 
 
-                                                builder.setView(vw);
-                                                alertDialog = builder.create();
-                                                alertDialog.show();
+                                                    builder.setView(vw);
+                                                    alertDialog = builder.create();
+                                                    alertDialog.show();
+                                                }
                                             }
                                         });
 
@@ -3984,60 +4002,63 @@ Button  btnno;
 
                                             @Override
                                             public void onClick(View v) {
-                                        builder = new AlertDialog.Builder(MainActivity12.this);
-                                        View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
-                                        final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
-                                        final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
-                                        final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
-                                        final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
-                                        Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
-                                        final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
-                                        gr.grfonttxt(tvservices);
-                                        gr.grfonttxt(tvrepair);
-                                        gr.grfonttxt(tvselect);
-                                        gr.grfontbut(btnsubmit);
+                                                if (etemail.getText().toString().equals("")) {
 
-                                        btnsubmit.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                if ( ivlist.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState()&& ivlist1.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState() )
-                                                {
-                                                    Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
-                                                    // new RegisterAsyntaskNew().execute();
-                                                }
-                                             else   if (count == 1 & count1 == 0) {
-                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                    intent.putExtra("message", tvservices.getText().toString());
-                                                    intent.putExtra("sertyp", 4);
-                                                    mclass.setType("Home Theatre");
-                                                    mclass.setModel(etemail.getText().toString());
-                                                    mclass.setService(tvservices.getText().toString());
-                                                    intent.putExtra("servicing", tvtheatre.getText().toString());
-                                                    intent.putExtra("service", etemail.getText().toString());
-                                                    startActivity(intent);
-                                                } else if (count1 == 1 & count == 0) {
-                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                    intent.putExtra("message", tvrepair.getText().toString());
-                                                    intent.putExtra("sertyp", 4);
-                                                    mclass.setType("Home Theatre");
-                                                    mclass.setModel(etemail.getText().toString());
-                                                    mclass.setService(tvrepair.getText().toString());
-                                                    intent.putExtra("servicing", tvtheatre.getText().toString());
-                                                    intent.putExtra("service", etemail.getText().toString());
+                                                    Snackbar.make(v, "Brand field Should not be blank", Snackbar.LENGTH_LONG)
+                                                            .setAction("Action", null).show();
+                                                } else {
+                                                    builder = new AlertDialog.Builder(MainActivity12.this);
+                                                    View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
+                                                    final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
+                                                    final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
+                                                    final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
+                                                    final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
+                                                    Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
+                                                    final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
+                                                    gr.grfonttxt(tvservices);
+                                                    gr.grfonttxt(tvrepair);
+                                                    gr.grfonttxt(tvselect);
+                                                    gr.grfontbut(btnsubmit);
 
-                                                    startActivity(intent);
-                                                }
-                                            }
-                                        });
-                                        tvservices.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                count = 1;
-                                                count1 = 0;
-                                                ivlist.setImageResource(R.drawable.checkbox2);
-                                                tvrepair.setTextColor(Color.parseColor("#737272"));
-                                                ivlist1.setImageResource(R.drawable.checkbox);
-                                                tvservices.setTextColor(Color.parseColor("#4fc5e6"));
+                                                    btnsubmit.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            if (ivlist.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState() && ivlist1.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState()) {
+                                                                Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
+                                                                // new RegisterAsyntaskNew().execute();
+                                                            } else if (count == 1 & count1 == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvservices.getText().toString());
+                                                                intent.putExtra("sertyp", 4);
+                                                                mclass.setType("Home Theatre");
+                                                                mclass.setModel(etemail.getText().toString());
+                                                                mclass.setService(tvservices.getText().toString());
+                                                                intent.putExtra("servicing", tvtheatre.getText().toString());
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                startActivity(intent);
+                                                            } else if (count1 == 1 & count == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvrepair.getText().toString());
+                                                                intent.putExtra("sertyp", 4);
+                                                                mclass.setType("Home Theatre");
+                                                                mclass.setModel(etemail.getText().toString());
+                                                                mclass.setService(tvrepair.getText().toString());
+                                                                intent.putExtra("servicing", tvtheatre.getText().toString());
+                                                                intent.putExtra("service", etemail.getText().toString());
+
+                                                                startActivity(intent);
+                                                            }
+                                                        }
+                                                    });
+                                                    tvservices.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count = 1;
+                                                            count1 = 0;
+                                                            ivlist.setImageResource(R.drawable.checkbox2);
+                                                            tvrepair.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox);
+                                                            tvservices.setTextColor(Color.parseColor("#4fc5e6"));
 
 //count++;
 /*else {
@@ -4047,20 +4068,20 @@ Button  btnno;
     tvservices.setTextColor(Color.parseColor("#737272"));
     count++;
 }*/
-                                            }
-                                        });
+                                                        }
+                                                    });
 
-                                        tvrepair.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                count1 = 1;
-                                                count = 0;
-                                                tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
-                                                ivlist.setImageResource(R.drawable.checkbox);
-                                                tvservices.setTextColor(Color.parseColor("#737272"));
-                                                ivlist1.setImageResource(R.drawable.checkbox2);
+                                                    tvrepair.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count1 = 1;
+                                                            count = 0;
+                                                            tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
+                                                            ivlist.setImageResource(R.drawable.checkbox);
+                                                            tvservices.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox2);
 
-                                                //  count1++;
+                                                            //  count1++;
 /*else {
     count1=0;
 
@@ -4068,12 +4089,13 @@ Button  btnno;
     ivlist1.setImageResource(R.drawable.checkbox);
     count1++;
 }*/
-                                            }
-                                        });
+                                                        }
+                                                    });
 
-                                                builder.setView(vw);
-                                                alertDialog = builder.create();
-                                                alertDialog.show();
+                                                    builder.setView(vw);
+                                                    alertDialog = builder.create();
+                                                    alertDialog.show();
+                                                }
                                             }
                                         });
 
@@ -4628,59 +4650,62 @@ Button  btnno;
 
                                             @Override
                                             public void onClick(View v) {
-                                        builder = new AlertDialog.Builder(MainActivity12.this);
-                                        View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
-                                        final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
-                                        final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
-                                        final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
-                                        final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
-                                        Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
-                                        final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
-                                        gr.grfonttxt(tvservices);
-                                        gr.grfonttxt(tvrepair);
-                                        gr.grfonttxt(tvselect);
-                                        gr.grfontbut(btnsubmit);
+                                                if (etemail.getText().toString().equals("")) {
 
-                                        btnsubmit.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                if ( ivlist.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState()&& ivlist1.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState() )
-                                                {
-                                                    Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
-                                                    // new RegisterAsyntaskNew().execute();
-                                                }
-                                             else    if (count == 1 & count1 == 0) {
-                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                    intent.putExtra("message", tvservices.getText().toString());
-                                                    intent.putExtra("sertyp", 5);
-                                                    mclass.setType("Geyser");
-                                                    mclass.setModel(etemail.getText().toString());
-                                                    mclass.setService(tvservices.getText().toString());
-                                                    intent.putExtra("servicing", tvgeyser.getText().toString());
-                                                    intent.putExtra("service", etemail.getText().toString());
-                                                    startActivity(intent);
-                                                } else if (count1 == 1 & count == 0) {
-                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                    intent.putExtra("message", tvrepair.getText().toString());
-                                                    intent.putExtra("sertyp", 5);
-                                                    mclass.setType("Geyser");
-                                                    mclass.setModel(etemail.getText().toString());
-                                                    mclass.setService(tvrepair.getText().toString());
-                                                    intent.putExtra("servicing", tvgeyser.getText().toString());
-                                                    intent.putExtra("service", etemail.getText().toString());
-                                                    startActivity(intent);
-                                                }
-                                            }
-                                        });
-                                        tvservices.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                count = 1;
-                                                count1 = 0;
-                                                ivlist.setImageResource(R.drawable.checkbox2);
-                                                tvrepair.setTextColor(Color.parseColor("#737272"));
-                                                ivlist1.setImageResource(R.drawable.checkbox);
-                                                tvservices.setTextColor(Color.parseColor("#4fc5e6"));
+                                                    Snackbar.make(v, "Brand field Should not be blank", Snackbar.LENGTH_LONG)
+                                                            .setAction("Action", null).show();
+                                                } else {
+                                                    builder = new AlertDialog.Builder(MainActivity12.this);
+                                                    View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
+                                                    final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
+                                                    final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
+                                                    final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
+                                                    final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
+                                                    Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
+                                                    final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
+                                                    gr.grfonttxt(tvservices);
+                                                    gr.grfonttxt(tvrepair);
+                                                    gr.grfonttxt(tvselect);
+                                                    gr.grfontbut(btnsubmit);
+
+                                                    btnsubmit.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            if (ivlist.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState() && ivlist1.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState()) {
+                                                                Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
+                                                                // new RegisterAsyntaskNew().execute();
+                                                            } else if (count == 1 & count1 == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvservices.getText().toString());
+                                                                intent.putExtra("sertyp", 5);
+                                                                mclass.setType("Geyser");
+                                                                mclass.setModel(etemail.getText().toString());
+                                                                mclass.setService(tvservices.getText().toString());
+                                                                intent.putExtra("servicing", tvgeyser.getText().toString());
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                startActivity(intent);
+                                                            } else if (count1 == 1 & count == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvrepair.getText().toString());
+                                                                intent.putExtra("sertyp", 5);
+                                                                mclass.setType("Geyser");
+                                                                mclass.setModel(etemail.getText().toString());
+                                                                mclass.setService(tvrepair.getText().toString());
+                                                                intent.putExtra("servicing", tvgeyser.getText().toString());
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                startActivity(intent);
+                                                            }
+                                                        }
+                                                    });
+                                                    tvservices.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count = 1;
+                                                            count1 = 0;
+                                                            ivlist.setImageResource(R.drawable.checkbox2);
+                                                            tvrepair.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox);
+                                                            tvservices.setTextColor(Color.parseColor("#4fc5e6"));
 
 //count++;
 /*else {
@@ -4690,20 +4715,20 @@ Button  btnno;
     tvservices.setTextColor(Color.parseColor("#737272"));
     count++;
 }*/
-                                            }
-                                        });
+                                                        }
+                                                    });
 
-                                        tvrepair.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                count1 = 1;
-                                                count = 0;
-                                                tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
-                                                ivlist.setImageResource(R.drawable.checkbox);
-                                                tvservices.setTextColor(Color.parseColor("#737272"));
-                                                ivlist1.setImageResource(R.drawable.checkbox2);
+                                                    tvrepair.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count1 = 1;
+                                                            count = 0;
+                                                            tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
+                                                            ivlist.setImageResource(R.drawable.checkbox);
+                                                            tvservices.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox2);
 
-                                                //  count1++;
+                                                            //  count1++;
 /*else {
     count1=0;
 
@@ -4711,13 +4736,14 @@ Button  btnno;
     ivlist1.setImageResource(R.drawable.checkbox);
     count1++;
 }*/
-                                            }
-                                        });
+                                                        }
+                                                    });
 
 
-                                                builder.setView(vw);
-                                                alertDialog = builder.create();
-                                                alertDialog.show();
+                                                    builder.setView(vw);
+                                                    alertDialog = builder.create();
+                                                    alertDialog.show();
+                                                }
                                             }
                                         });
 
@@ -5314,51 +5340,54 @@ Button  btnno;
 
                                                                      @Override
                                                                      public void onClick(View v) {
+                                                                         if (etemail.getText().toString().equals("")) {
+                                                                             Snackbar.make(v, "Electrical work field Should not be blank", Snackbar.LENGTH_LONG)
+                                                                                     .setAction("Action", null).show();
+                                                                         } else {
 
-                                                                         View vw = null, vw2;
-                                        builder = new AlertDialog.Builder(MainActivity12.this);
-                                        vw2 = getLayoutInflater().inflate(R.layout.linearlayout, null);
-                                        LayoutInflater layoutInflator = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                                        LinearLayout insertPoint = (LinearLayout) vw2.findViewById(R.id.linear);
-                                        final Button btnsubmit = (Button) vw2.findViewById(R.id.btnsubmit);
-                                                                         final TextView tvselect = (TextView) vw2.findViewById(R.id.tvselect);
+                                                                             View vw = null, vw2;
+                                                                             builder = new AlertDialog.Builder(MainActivity12.this);
+                                                                             vw2 = getLayoutInflater().inflate(R.layout.linearlayout, null);
+                                                                             LayoutInflater layoutInflator = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                                                                             LinearLayout insertPoint = (LinearLayout) vw2.findViewById(R.id.linear);
+                                                                             final Button btnsubmit = (Button) vw2.findViewById(R.id.btnsubmit);
+                                                                             final TextView tvselect = (TextView) vw2.findViewById(R.id.tvselect);
 
 
+                                                                             gr.grfonttxt(tvselect);
+                                                                             gr.grfontbut(btnsubmit);
+                                                                             for (int i = 0; i < 2; i++) {
+                                                                                 vw = getLayoutInflater().inflate(R.layout.popup, null);
 
-                                                                         gr.grfonttxt(tvselect);
-                                                                         gr.grfontbut(btnsubmit);
-                                        for (int i = 0; i < 2; i++) {
-                                            vw = getLayoutInflater().inflate(R.layout.popup, null);
+                                                                                 final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
+                                                                                 gr.grfonttxt(tvrepair);
+                                                                                 tvrepair.setText(one[i]);
+                                                                                 insertPoint.addView(vw);
+                                                                                 final View finalVw = vw;
+                                                                                 finalVw.setOnClickListener(new View.OnClickListener() {
+                                                                                     @Override
+                                                                                     public void onClick(View v) {
+                                                                                         //View v3 = finalVw;
+                                                                                         if (v2 != null) {
+                                                                                             mclass.setService(tvrepair.getText().toString());
+                                                                                             final TextView tv2 = (TextView) v2.findViewById(R.id.tvrepair);
+                                                                                             tv2.setTextColor(Color.parseColor("#737272"));
+                                                                                             final ImageView iv3 = (ImageView) v2.findViewById(R.id.ivlist);
+                                                                                             iv3.setImageResource(R.drawable.checkbox);
+                                                                                             v2.setBackgroundColor(Color.parseColor("#ffffff"));
+                                                                                         }
+                                                                                         //if (count ==1) {
+                                                                                         //ivlist.setImageResource(R.drawable.checkbox2);
+                                                                                         mclass.setService(tvrepair.getText().toString());
+                                                                                         v.setBackgroundColor(Color.parseColor("#ecf0f1"));
+                                                                                         final TextView tv3 = (TextView) v.findViewById(R.id.tvrepair);
+                                                                                         final ImageView iv3 = (ImageView) v.findViewById(R.id.ivlist);
+                                                                                         iv3.setImageResource(R.drawable.checkbox2);
+                                                                                         tv3.setTextColor(Color.parseColor("#4fc5e6"));
+                                                                                         v2 = v;
+                                                                                         //Button btnsubmit = (Button) v.findViewById(R.id.btnsubmit);
 
-                                            final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
-                                            gr.grfonttxt(tvrepair);
-                                            tvrepair.setText(one[i]);
-                                            insertPoint.addView(vw);
-                                            final View finalVw = vw;
-                                            finalVw.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    //View v3 = finalVw;
-                                                    if (v2 != null) {
-                                                        mclass.setService(tvrepair.getText().toString());
-                                                        final TextView tv2 = (TextView) v2.findViewById(R.id.tvrepair);
-                                                        tv2.setTextColor(Color.parseColor("#737272"));
-                                                        final ImageView iv3 = (ImageView) v2.findViewById(R.id.ivlist);
-                                                        iv3.setImageResource(R.drawable.checkbox);
-                                                        v2.setBackgroundColor(Color.parseColor("#ffffff"));
-                                                    }
-                                                    //if (count ==1) {
-                                                    //ivlist.setImageResource(R.drawable.checkbox2);
-                                                    mclass.setService(tvrepair.getText().toString());
-                                                    v.setBackgroundColor(Color.parseColor("#ecf0f1"));
-                                                    final TextView tv3 = (TextView) v.findViewById(R.id.tvrepair);
-                                                    final ImageView iv3 = (ImageView) v.findViewById(R.id.ivlist);
-                                                    iv3.setImageResource(R.drawable.checkbox2);
-                                                    tv3.setTextColor(Color.parseColor("#4fc5e6"));
-                                                    v2 = v;
-                                                    //Button btnsubmit = (Button) v.findViewById(R.id.btnsubmit);
-
-                                                    //count++;
+                                                                                         //count++;
                                             /*}else{
     count=0;
 
@@ -5366,37 +5395,37 @@ Button  btnno;
     tvservices.setTextColor(Color.parseColor("#737272"));
     count++;
 }*/
-                                                }
-                                            });
+                                                                                     }
+                                                                                 });
 //
-                                            btnsubmit.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    if ( v2==null )
-                                                    {
-                                                        Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
-                                                        // new RegisterAsyntaskNew().execute();
-                                                    }else {
-                                                        Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                        intent.putExtra("message", tvrepair.getText().toString());
-                                                        intent.putExtra("sertyp", 0);
-                                                        mclass.setType("Electrical Work");
-                                                        mclass.setModel(tvelectrician.getText().toString());
+                                                                                 btnsubmit.setOnClickListener(new View.OnClickListener() {
+                                                                                     @Override
+                                                                                     public void onClick(View v) {
+                                                                                         if (v2 == null) {
+                                                                                             Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
+                                                                                             // new RegisterAsyntaskNew().execute();
+                                                                                         } else {
+                                                                                             Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                                             intent.putExtra("message", tvrepair.getText().toString());
+                                                                                             intent.putExtra("sertyp", 0);
+                                                                                             mclass.setType("Electrical Work");
+                                                                                             mclass.setModel(tvelectrician.getText().toString());
 
 
-                                                        intent.putExtra("service", etemail.getText().toString());
-                                                      //  intent.putExtra("sercat", tv3.getText().toString());
-                                                        startActivity(intent);
-                                                    }
-                                                }
+                                                                                             intent.putExtra("service", etemail.getText().toString());
+                                                                                             //  intent.putExtra("sercat", tv3.getText().toString());
+                                                                                             startActivity(intent);
+                                                                                         }
+                                                                                     }
 
-                                            });
+                                                                                 });
 
-                                        }
-                                                                         builder.setView(vw2);
+                                                                             }
+                                                                             builder.setView(vw2);
 
-                                                                         alertDialog = builder.create();
-                                                                         alertDialog.show();
+                                                                             alertDialog = builder.create();
+                                                                             alertDialog.show();
+                                                                         }
                                                                      }
                                         });
                                         builder.setView(vw);
@@ -5849,52 +5878,56 @@ Button  btnno;
 
                                                                      @Override
                                                                      public void onClick(View v) {
-
-                                        View vw = null, vw2;
-                                        builder = new AlertDialog.Builder(MainActivity12.this);
-                                        vw2 = getLayoutInflater().inflate(R.layout.linearlayout, null);
-                                        LayoutInflater layoutInflator = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                                        LinearLayout insertPoint = (LinearLayout) vw2.findViewById(R.id.linear);
-                                        final Button btnsubmit = (Button) vw2.findViewById(R.id.btnsubmit);
-                                                                         final TextView tvselect = (TextView) vw2.findViewById(R.id.tvselect);
+                                                                         if (etemail.getText().toString().equals("")) {
+                                                                             Snackbar.make(v, "Air Conditioner type field Should not be blank", Snackbar.LENGTH_LONG)
+                                                                                     .setAction("Action", null).show();
+                                                                         } else {
 
 
-
-                                                                         gr.grfonttxt(tvselect);
-                                                                         gr.grfontbut(btnsubmit);
-                                        for (int i = 0; i < 2; i++) {
-                                            vw = getLayoutInflater().inflate(R.layout.popup, null);
-
-                                            final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
-                                            gr.grfonttxt(tvrepair);
-                                            tvrepair.setText(one[i]);
-                                            insertPoint.addView(vw);
-                                            final View finalVw = vw;
-                                            finalVw.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    //View v3 = finalVw;
-                                                    if (v2 != null) {
-                                                        mclass.setService(tvrepair.getText().toString());
-                                                        final TextView tv2 = (TextView) v2.findViewById(R.id.tvrepair);
-                                                        tv2.setTextColor(Color.parseColor("#737272"));
-                                                        final ImageView iv3 = (ImageView) v2.findViewById(R.id.ivlist);
-                                                        iv3.setImageResource(R.drawable.checkbox);
-                                                        v2.setBackgroundColor(Color.parseColor("#ffffff"));
-                                                    }
-                                                    //if (count ==1) {
-                                                    //ivlist.setImageResource(R.drawable.checkbox2);
-                                                    mclass.setService(tvrepair.getText().toString());
-                                                    v.setBackgroundColor(Color.parseColor("#ecf0f1"));
-                                                    final TextView tv3 = (TextView) v.findViewById(R.id.tvrepair);
-                                                    final ImageView iv3 = (ImageView) v.findViewById(R.id.ivlist);
-                                                    iv3.setImageResource(R.drawable.checkbox2);
-                                                    tv3.setTextColor(Color.parseColor("#4fc5e6"));
-                                                    v2 = v;
-                                                    //Button btnsubmit = (Button) v.findViewById(R.id.btnsubmit);
+                                                                             View vw = null, vw2;
+                                                                             builder = new AlertDialog.Builder(MainActivity12.this);
+                                                                             vw2 = getLayoutInflater().inflate(R.layout.linearlayout, null);
+                                                                             LayoutInflater layoutInflator = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                                                                             LinearLayout insertPoint = (LinearLayout) vw2.findViewById(R.id.linear);
+                                                                             final Button btnsubmit = (Button) vw2.findViewById(R.id.btnsubmit);
+                                                                             final TextView tvselect = (TextView) vw2.findViewById(R.id.tvselect);
 
 
-                                                    //count++;
+                                                                             gr.grfonttxt(tvselect);
+                                                                             gr.grfontbut(btnsubmit);
+                                                                             for (int i = 0; i < 2; i++) {
+                                                                                 vw = getLayoutInflater().inflate(R.layout.popup, null);
+
+                                                                                 final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
+                                                                                 gr.grfonttxt(tvrepair);
+                                                                                 tvrepair.setText(one[i]);
+                                                                                 insertPoint.addView(vw);
+                                                                                 final View finalVw = vw;
+                                                                                 finalVw.setOnClickListener(new View.OnClickListener() {
+                                                                                     @Override
+                                                                                     public void onClick(View v) {
+                                                                                         //View v3 = finalVw;
+                                                                                         if (v2 != null) {
+                                                                                             mclass.setService(tvrepair.getText().toString());
+                                                                                             final TextView tv2 = (TextView) v2.findViewById(R.id.tvrepair);
+                                                                                             tv2.setTextColor(Color.parseColor("#737272"));
+                                                                                             final ImageView iv3 = (ImageView) v2.findViewById(R.id.ivlist);
+                                                                                             iv3.setImageResource(R.drawable.checkbox);
+                                                                                             v2.setBackgroundColor(Color.parseColor("#ffffff"));
+                                                                                         }
+                                                                                         //if (count ==1) {
+                                                                                         //ivlist.setImageResource(R.drawable.checkbox2);
+                                                                                         mclass.setService(tvrepair.getText().toString());
+                                                                                         v.setBackgroundColor(Color.parseColor("#ecf0f1"));
+                                                                                         final TextView tv3 = (TextView) v.findViewById(R.id.tvrepair);
+                                                                                         final ImageView iv3 = (ImageView) v.findViewById(R.id.ivlist);
+                                                                                         iv3.setImageResource(R.drawable.checkbox2);
+                                                                                         tv3.setTextColor(Color.parseColor("#4fc5e6"));
+                                                                                         v2 = v;
+                                                                                         //Button btnsubmit = (Button) v.findViewById(R.id.btnsubmit);
+
+
+                                                                                         //count++;
                                             /*}else{
     count=0;
 
@@ -5902,36 +5935,36 @@ Button  btnno;
     tvservices.setTextColor(Color.parseColor("#737272"));
     count++;
 }*/
-                                                }
-                                            });
+                                                                                     }
+                                                                                 });
 //
-                                            btnsubmit.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    if ( v2==null )
-                                                    {
-                                                        Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
-                                                        // new RegisterAsyntaskNew().execute();
-                                                    }else {
+                                                                                 btnsubmit.setOnClickListener(new View.OnClickListener() {
+                                                                                     @Override
+                                                                                     public void onClick(View v) {
+                                                                                         if (v2 == null) {
+                                                                                             Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
+                                                                                             // new RegisterAsyntaskNew().execute();
+                                                                                         } else {
 
-                                                        Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                        intent.putExtra("message", tvrepair.getText().toString());
-                                                        intent.putExtra("sertyp", 2);
-                                                        mclass.setType("Air Conditioner");
-                                                        mclass.setModel(etemail.getText().toString());
+                                                                                             Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                                             intent.putExtra("message", tvrepair.getText().toString());
+                                                                                             intent.putExtra("sertyp", 2);
+                                                                                             mclass.setType("Air Conditioner");
+                                                                                             mclass.setModel(etemail.getText().toString());
 
-                                                        intent.putExtra("service", etemail.getText().toString());
-                                                       // intent.putExtra("sercat", tv3.getText().toString());
-                                                        startActivity(intent);
-                                                    }
-                                                }
+                                                                                             intent.putExtra("service", etemail.getText().toString());
+                                                                                             // intent.putExtra("sercat", tv3.getText().toString());
+                                                                                             startActivity(intent);
+                                                                                         }
+                                                                                     }
 
-                                            });
-                                        }
-                                                                         builder.setView(vw2);
+                                                                                 });
+                                                                             }
+                                                                             builder.setView(vw2);
 
-                                                                         alertDialog = builder.create();
-                                                                         alertDialog.show();
+                                                                             alertDialog = builder.create();
+                                                                             alertDialog.show();
+                                                                         }
                                                                      }
                                         });
                                         builder.setView(vw);
@@ -6082,18 +6115,25 @@ Button  btnno;
 
                                             @Override
                                             public void onClick(View v) {
-                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                intent.putExtra("message", tvprojector.getText().toString());
-                                                intent.putExtra("service", etemail.getText().toString());
-                                                mclass.setType("Projector Service");
-                                                mclass.setModel(etemail.getText().toString());
-                                                intent.putExtra("sertyp", 3);
-                                                startActivity(intent);
+                                                if (etemail.getText().toString().equals("")) {
+                                                    Snackbar.make(v, "Projector type field Should not be blank", Snackbar.LENGTH_LONG)
+                                                            .setAction("Action", null).show();
+                                                } else {
+
+                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                    intent.putExtra("message", tvprojector.getText().toString());
+                                                    intent.putExtra("service", etemail.getText().toString());
+                                                    mclass.setType("Projector Service");
+                                                    mclass.setModel(etemail.getText().toString());
+                                                    intent.putExtra("sertyp", 3);
+                                                    startActivity(intent);
+                                                }
                                             }
                                         });
                                         builder.setView(vw);
                                         alertDialog = builder.create();
                                         alertDialog.show();
+
                                     }
 
                                 }
@@ -6608,52 +6648,56 @@ Button  btnno;
 
                                                                      @Override
                                                                      public void onClick(View v) {
-
-                                                                         View vw = null, vw2;
-                                        builder = new AlertDialog.Builder(MainActivity12.this);
-                                        vw2 = getLayoutInflater().inflate(R.layout.linearlayout, null);
-                                        LayoutInflater layoutInflator = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                                        LinearLayout insertPoint = (LinearLayout) vw2.findViewById(R.id.linear);
-                                        final Button btnsubmit = (Button) vw2.findViewById(R.id.btnsubmit);
-                                                                         final TextView tvselect = (TextView) vw2.findViewById(R.id.tvselect);
+                                                                         if (etemail.getText().toString().equals("")) {
+                                                                             Snackbar.make(v, "Plumber work type field Should not be blank", Snackbar.LENGTH_LONG)
+                                                                                     .setAction("Action", null).show();
+                                                                         } else {
 
 
-
-                                                                         gr.grfonttxt(tvselect);
-                                                                         gr.grfontbut(btnsubmit);
-                                        for (int i = 0; i < 2; i++) {
-                                            vw = getLayoutInflater().inflate(R.layout.popup, null);
-
-                                            final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
-                                            gr.grfonttxt(tvrepair);
-                                            tvrepair.setText(one[i]);
-                                            insertPoint.addView(vw);
-                                            final View finalVw = vw;
-                                            finalVw.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    //View v3 = finalVw;
-                                                    if (v2 != null) {
-                                                        mclass.setService(tvrepair.getText().toString());
-                                                        final TextView tv2 = (TextView) v2.findViewById(R.id.tvrepair);
-                                                        tv2.setTextColor(Color.parseColor("#737272"));
-                                                        final ImageView iv3 = (ImageView) v2.findViewById(R.id.ivlist);
-                                                        iv3.setImageResource(R.drawable.checkbox);
-                                                        v2.setBackgroundColor(Color.parseColor("#ffffff"));
-                                                    }
-                                                    //if (count ==1) {
-                                                    //ivlist.setImageResource(R.drawable.checkbox2);
-                                                    mclass.setService(tvrepair.getText().toString());
-                                                    v.setBackgroundColor(Color.parseColor("#ecf0f1"));
-                                                    final TextView tv3 = (TextView) v.findViewById(R.id.tvrepair);
-                                                    final ImageView iv3 = (ImageView) v.findViewById(R.id.ivlist);
-                                                    iv3.setImageResource(R.drawable.checkbox2);
-                                                    tv3.setTextColor(Color.parseColor("#4fc5e6"));
-                                                    v2 = v;
-                                                    //Button btnsubmit = (Button) v.findViewById(R.id.btnsubmit);
+                                                                             View vw = null, vw2;
+                                                                             builder = new AlertDialog.Builder(MainActivity12.this);
+                                                                             vw2 = getLayoutInflater().inflate(R.layout.linearlayout, null);
+                                                                             LayoutInflater layoutInflator = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                                                                             LinearLayout insertPoint = (LinearLayout) vw2.findViewById(R.id.linear);
+                                                                             final Button btnsubmit = (Button) vw2.findViewById(R.id.btnsubmit);
+                                                                             final TextView tvselect = (TextView) vw2.findViewById(R.id.tvselect);
 
 
-                                                    //count++;
+                                                                             gr.grfonttxt(tvselect);
+                                                                             gr.grfontbut(btnsubmit);
+                                                                             for (int i = 0; i < 2; i++) {
+                                                                                 vw = getLayoutInflater().inflate(R.layout.popup, null);
+
+                                                                                 final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
+                                                                                 gr.grfonttxt(tvrepair);
+                                                                                 tvrepair.setText(one[i]);
+                                                                                 insertPoint.addView(vw);
+                                                                                 final View finalVw = vw;
+                                                                                 finalVw.setOnClickListener(new View.OnClickListener() {
+                                                                                     @Override
+                                                                                     public void onClick(View v) {
+                                                                                         //View v3 = finalVw;
+                                                                                         if (v2 != null) {
+                                                                                             mclass.setService(tvrepair.getText().toString());
+                                                                                             final TextView tv2 = (TextView) v2.findViewById(R.id.tvrepair);
+                                                                                             tv2.setTextColor(Color.parseColor("#737272"));
+                                                                                             final ImageView iv3 = (ImageView) v2.findViewById(R.id.ivlist);
+                                                                                             iv3.setImageResource(R.drawable.checkbox);
+                                                                                             v2.setBackgroundColor(Color.parseColor("#ffffff"));
+                                                                                         }
+                                                                                         //if (count ==1) {
+                                                                                         //ivlist.setImageResource(R.drawable.checkbox2);
+                                                                                         mclass.setService(tvrepair.getText().toString());
+                                                                                         v.setBackgroundColor(Color.parseColor("#ecf0f1"));
+                                                                                         final TextView tv3 = (TextView) v.findViewById(R.id.tvrepair);
+                                                                                         final ImageView iv3 = (ImageView) v.findViewById(R.id.ivlist);
+                                                                                         iv3.setImageResource(R.drawable.checkbox2);
+                                                                                         tv3.setTextColor(Color.parseColor("#4fc5e6"));
+                                                                                         v2 = v;
+                                                                                         //Button btnsubmit = (Button) v.findViewById(R.id.btnsubmit);
+
+
+                                                                                         //count++;
                                             /*}else{
     count=0;
 
@@ -6661,34 +6705,34 @@ Button  btnno;
     tvservices.setTextColor(Color.parseColor("#737272"));
     count++;
 }*/
-                                                }
-                                            });
+                                                                                     }
+                                                                                 });
 //
-                                            btnsubmit.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    if ( v2==null )
-                                                    {
-                                                        Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
-                                                        // new RegisterAsyntaskNew().execute();
-                                                    }else {
-                                                        Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                        intent.putExtra("message", tvrepair.getText().toString());
-                                                        intent.putExtra("sertyp", 4);
-                                                        mclass.setType("Plumber Work");
-                                                        mclass.setModel(etemail.getText().toString());
-                                                     //   intent.putExtra("sercat", tv3.getText().toString());
-                                                        intent.putExtra("service", etemail.getText().toString());
-                                                        startActivity(intent);
-                                                    }
-                                                }
+                                                                                 btnsubmit.setOnClickListener(new View.OnClickListener() {
+                                                                                     @Override
+                                                                                     public void onClick(View v) {
+                                                                                         if (v2 == null) {
+                                                                                             Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
+                                                                                             // new RegisterAsyntaskNew().execute();
+                                                                                         } else {
+                                                                                             Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                                             intent.putExtra("message", tvrepair.getText().toString());
+                                                                                             intent.putExtra("sertyp", 4);
+                                                                                             mclass.setType("Plumber Work");
+                                                                                             mclass.setModel(etemail.getText().toString());
+                                                                                             //   intent.putExtra("sercat", tv3.getText().toString());
+                                                                                             intent.putExtra("service", etemail.getText().toString());
+                                                                                             startActivity(intent);
+                                                                                         }
+                                                                                     }
 
-                                            });
-                                        }
-                                                                         builder.setView(vw2);
+                                                                                 });
+                                                                             }
+                                                                             builder.setView(vw2);
 
-                                                                         alertDialog = builder.create();
-                                                                         alertDialog.show();
+                                                                             alertDialog = builder.create();
+                                                                             alertDialog.show();
+                                                                         }
                                                                      }
                                         });
                                         builder.setView(vw);
@@ -7446,52 +7490,56 @@ Button  btnno;
 
                                                                      @Override
                                                                      public void onClick(View v) {
-                                        View vw = null, vw2;
-                                        builder = new AlertDialog.Builder(MainActivity12.this);
-                                        vw2 = getLayoutInflater().inflate(R.layout.linearlayout, null);
-                                        LayoutInflater layoutInflator = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                                        LinearLayout insertPoint = (LinearLayout) vw2.findViewById(R.id.linear);
-                                        final Button btnsubmit = (Button) vw2.findViewById(R.id.btnsubmit);
-                                                                         final TextView tvselect = (TextView) vw2.findViewById(R.id.tvselect);
+                                                                         if (etemail.getText().toString().equals("")) {
+                                                                             Snackbar.make(v, "Carpentry Work type field Should not be blank", Snackbar.LENGTH_LONG)
+                                                                                     .setAction("Action", null).show();
+                                                                         } else {
+
+                                                                             View vw = null, vw2;
+                                                                             builder = new AlertDialog.Builder(MainActivity12.this);
+                                                                             vw2 = getLayoutInflater().inflate(R.layout.linearlayout, null);
+                                                                             LayoutInflater layoutInflator = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                                                                             LinearLayout insertPoint = (LinearLayout) vw2.findViewById(R.id.linear);
+                                                                             final Button btnsubmit = (Button) vw2.findViewById(R.id.btnsubmit);
+                                                                             final TextView tvselect = (TextView) vw2.findViewById(R.id.tvselect);
 
 
+                                                                             gr.grfonttxt(tvselect);
+                                                                             gr.grfontbut(btnsubmit);
+                                                                             for (int i = 0; i < 2; i++) {
+                                                                                 vw = getLayoutInflater().inflate(R.layout.popup, null);
 
-                                                                         gr.grfonttxt(tvselect);
-                                                                         gr.grfontbut(btnsubmit);
-                                        for (int i = 0; i < 2; i++) {
-                                            vw = getLayoutInflater().inflate(R.layout.popup, null);
-
-                                            final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
-                                            gr.grfonttxt(tvrepair);
-                                            tvrepair.setText(one[i]);
-                                            insertPoint.addView(vw);
-                                            final View finalVw = vw;
-                                            finalVw.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    //View v3 = finalVw;
-                                                    if (v2 != null) {
-                                                        //
-                                                        mclass.setService(tvrepair.getText().toString());
-                                                        final TextView tv2 = (TextView) v2.findViewById(R.id.tvrepair);
-                                                        tv2.setTextColor(Color.parseColor("#737272"));
-                                                        final ImageView iv3 = (ImageView) v2.findViewById(R.id.ivlist);
-                                                        iv3.setImageResource(R.drawable.checkbox);
-                                                        v2.setBackgroundColor(Color.parseColor("#ffffff"));
-                                                    }
-                                                    //if (count ==1) {
-                                                    //ivlist.setImageResource(R.drawable.checkbox2);
-                                                    mclass.setService(tvrepair.getText().toString());
-                                                    v.setBackgroundColor(Color.parseColor("#ecf0f1"));
-                                                    final TextView tv3 = (TextView) v.findViewById(R.id.tvrepair);
-                                                    final ImageView iv3 = (ImageView) v.findViewById(R.id.ivlist);
-                                                    iv3.setImageResource(R.drawable.checkbox2);
-                                                    tv3.setTextColor(Color.parseColor("#4fc5e6"));
-                                                    v2 = v;
-                                                    //Button btnsubmit = (Button) v.findViewById(R.id.btnsubmit);
+                                                                                 final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
+                                                                                 gr.grfonttxt(tvrepair);
+                                                                                 tvrepair.setText(one[i]);
+                                                                                 insertPoint.addView(vw);
+                                                                                 final View finalVw = vw;
+                                                                                 finalVw.setOnClickListener(new View.OnClickListener() {
+                                                                                     @Override
+                                                                                     public void onClick(View v) {
+                                                                                         //View v3 = finalVw;
+                                                                                         if (v2 != null) {
+                                                                                             //
+                                                                                             mclass.setService(tvrepair.getText().toString());
+                                                                                             final TextView tv2 = (TextView) v2.findViewById(R.id.tvrepair);
+                                                                                             tv2.setTextColor(Color.parseColor("#737272"));
+                                                                                             final ImageView iv3 = (ImageView) v2.findViewById(R.id.ivlist);
+                                                                                             iv3.setImageResource(R.drawable.checkbox);
+                                                                                             v2.setBackgroundColor(Color.parseColor("#ffffff"));
+                                                                                         }
+                                                                                         //if (count ==1) {
+                                                                                         //ivlist.setImageResource(R.drawable.checkbox2);
+                                                                                         mclass.setService(tvrepair.getText().toString());
+                                                                                         v.setBackgroundColor(Color.parseColor("#ecf0f1"));
+                                                                                         final TextView tv3 = (TextView) v.findViewById(R.id.tvrepair);
+                                                                                         final ImageView iv3 = (ImageView) v.findViewById(R.id.ivlist);
+                                                                                         iv3.setImageResource(R.drawable.checkbox2);
+                                                                                         tv3.setTextColor(Color.parseColor("#4fc5e6"));
+                                                                                         v2 = v;
+                                                                                         //Button btnsubmit = (Button) v.findViewById(R.id.btnsubmit);
 
 
-                                                    //count++;
+                                                                                         //count++;
                                             /*}else{
     count=0;
 
@@ -7499,34 +7547,34 @@ Button  btnno;
     tvservices.setTextColor(Color.parseColor("#737272"));
     count++;
 }*/
-                                                }
-                                            });
+                                                                                     }
+                                                                                 });
 //
-                                            btnsubmit.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    if ( v2==null )
-                                                    {
-                                                        Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
-                                                        // new RegisterAsyntaskNew().execute();
-                                                    }else {
-                                                        Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                        intent.putExtra("message", tvrepair.getText().toString());
-                                                        intent.putExtra("sertyp", 6);
-                                                        mclass.setType("Carpentry Work");
-                                                        mclass.setModel(etemail.getText().toString());
-                                                       // intent.putExtra("sercat", tv3.getText().toString());
-                                                        intent.putExtra("service", etemail.getText().toString());
-                                                        startActivity(intent);
-                                                    }
-                                                }
+                                                                                 btnsubmit.setOnClickListener(new View.OnClickListener() {
+                                                                                     @Override
+                                                                                     public void onClick(View v) {
+                                                                                         if (v2 == null) {
+                                                                                             Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
+                                                                                             // new RegisterAsyntaskNew().execute();
+                                                                                         } else {
+                                                                                             Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                                             intent.putExtra("message", tvrepair.getText().toString());
+                                                                                             intent.putExtra("sertyp", 6);
+                                                                                             mclass.setType("Carpentry Work");
+                                                                                             mclass.setModel(etemail.getText().toString());
+                                                                                             // intent.putExtra("sercat", tv3.getText().toString());
+                                                                                             intent.putExtra("service", etemail.getText().toString());
+                                                                                             startActivity(intent);
+                                                                                         }
+                                                                                     }
 
-                                            });
-                                        }
-                                                                         builder.setView(vw2);
+                                                                                 });
+                                                                             }
+                                                                             builder.setView(vw2);
 
-                                                                         alertDialog = builder.create();
-                                                                         alertDialog.show();
+                                                                             alertDialog = builder.create();
+                                                                             alertDialog.show();
+                                                                         }
                                                                      }
                                         });
                                         builder.setView(vw);
@@ -8201,61 +8249,63 @@ Button  btnno;
 
                                             @Override
                                             public void onClick(View v) {
+                                                if (etemail.getText().toString().equals("")) {
+                                                    Snackbar.make(v, " Laptop Service type field Should not be blank", Snackbar.LENGTH_LONG)
+                                                            .setAction("Action", null).show();
+                                                } else {
 
 
-                                                builder = new AlertDialog.Builder(MainActivity12.this);
-                                                View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
-                                                final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
-                                                final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
-                                                final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
-                                                Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
-                                                gr.grfonttxt(tvservices);
-                                                gr.grfonttxt(tvrepair);
-                                                gr.grfonttxt(tvselect);
-                                                gr.grfontbut(btnsubmit);
+                                                    builder = new AlertDialog.Builder(MainActivity12.this);
+                                                    View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
+                                                    final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
+                                                    final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
+                                                    final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
+                                                    Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
+                                                    gr.grfonttxt(tvservices);
+                                                    gr.grfonttxt(tvrepair);
+                                                    gr.grfonttxt(tvselect);
+                                                    gr.grfontbut(btnsubmit);
 
-                                                final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
-                                                final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
+                                                    final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
+                                                    final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
 
-                                                btnsubmit.setOnClickListener(new View.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(View v) {
-                                                        if ( ivlist.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState()&& ivlist1.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState() )
-                                                        {
-                                                            Toast.makeText( MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
-                                                            // new RegisterAsyntaskNew().execute();
+                                                    btnsubmit.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            if (ivlist.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState() && ivlist1.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState()) {
+                                                                Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
+                                                                // new RegisterAsyntaskNew().execute();
+                                                            } else if (count == 1 & count1 == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvservices.getText().toString());
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                intent.putExtra("sertyp", 8);
+                                                                mclass.setType("Laptop Service");
+                                                                mclass.setModel(etemail.getText().toString());
+                                                                mclass.setService(tvservices.getText().toString());
+                                                                startActivity(intent);
+                                                            } else if (count1 == 1 & count == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvrepair.getText().toString());
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                intent.putExtra("sertyp", 8);
+                                                                mclass.setType("Laptop Service");
+                                                                mclass.setModel(etemail.getText().toString());
+                                                                mclass.setService(tvrepair.getText().toString());
+                                                                startActivity(intent);
+                                                            }
                                                         }
-                                                     else   if (count == 1 & count1 == 0) {
-                                                            Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                            intent.putExtra("message", tvservices.getText().toString());
-                                                            intent.putExtra("service", etemail.getText().toString());
-                                                            intent.putExtra("sertyp", 8);
-                                                            mclass.setType("Laptop Service");
-                                                            mclass.setModel(etemail.getText().toString());
-                                                            mclass.setService(tvservices.getText().toString());
-                                                            startActivity(intent);
-                                                        } else if (count1 == 1 & count == 0) {
-                                                            Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                            intent.putExtra("message", tvrepair.getText().toString());
-                                                            intent.putExtra("service", etemail.getText().toString());
-                                                            intent.putExtra("sertyp", 8);
-                                                            mclass.setType("Laptop Service");
-                                                            mclass.setModel(etemail.getText().toString());
-                                                            mclass.setService(tvrepair.getText().toString());
-                                                            startActivity(intent);
-                                                        }
-                                                    }
-                                                });
-                                                tvservices.setOnClickListener(new View.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(View v) {
-                                                        count = 1;
-                                                        count1 = 0;
-                                                        ivlist.setImageResource(R.drawable.checkbox2);
-                                                        tvrepair.setTextColor(Color.parseColor("#737272"));
-                                                        ivlist1.setImageResource(R.drawable.checkbox);
+                                                    });
+                                                    tvservices.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count = 1;
+                                                            count1 = 0;
+                                                            ivlist.setImageResource(R.drawable.checkbox2);
+                                                            tvrepair.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox);
 
-                                                        tvservices.setTextColor(Color.parseColor("#4fc5e6"));
+                                                            tvservices.setTextColor(Color.parseColor("#4fc5e6"));
 
 //count++;
 /*else {
@@ -8265,20 +8315,20 @@ Button  btnno;
     tvservices.setTextColor(Color.parseColor("#737272"));
     count++;
 }*/
-                                                    }
-                                                });
+                                                        }
+                                                    });
 
-                                                tvrepair.setOnClickListener(new View.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(View v) {
-                                                        count1 = 1;
-                                                        count = 0;
-                                                        tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
-                                                        ivlist.setImageResource(R.drawable.checkbox);
-                                                        tvservices.setTextColor(Color.parseColor("#737272"));
-                                                        ivlist1.setImageResource(R.drawable.checkbox2);
+                                                    tvrepair.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count1 = 1;
+                                                            count = 0;
+                                                            tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
+                                                            ivlist.setImageResource(R.drawable.checkbox);
+                                                            tvservices.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox2);
 
-                                                        //  count1++;
+                                                            //  count1++;
 /*else {
     count1=0;
 
@@ -8286,13 +8336,14 @@ Button  btnno;
     ivlist1.setImageResource(R.drawable.checkbox);
     count1++;
 }*/
-                                                    }
-                                                });
+                                                        }
+                                                    });
 
-                                                builder.setView(vw);
+                                                    builder.setView(vw);
 
-                                                alertDialog = builder.create();
-                                                alertDialog.show();
+                                                    alertDialog = builder.create();
+                                                    alertDialog.show();
+                                                }
                                             }
                                         });
                                         builder.setView(vw);
@@ -8940,61 +8991,63 @@ Button  btnno;
 
                                             @Override
                                             public void onClick(View v) {
+                                                if (etemail.getText().toString().equals("")) {
+                                                    Snackbar.make(v, "Service type field Should not be blank", Snackbar.LENGTH_LONG)
+                                                            .setAction("Action", null).show();
+                                                } else {
 
-                                                builder = new AlertDialog.Builder(MainActivity12.this);
-                                        View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
-                                        final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
-                                        final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
-                                        final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
-                                        Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
-                                                grfont gr = new grfont(MainActivity12.this);
-                                        gr.grfonttxt(tvservices);
-                                        gr.grfonttxt(tvrepair);
-                                        gr.grfonttxt(tvselect);
-                                        gr.grfontbut(btnsubmit);
+                                                    builder = new AlertDialog.Builder(MainActivity12.this);
+                                                    View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
+                                                    final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
+                                                    final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
+                                                    final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
+                                                    Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
+                                                    grfont gr = new grfont(MainActivity12.this);
+                                                    gr.grfonttxt(tvservices);
+                                                    gr.grfonttxt(tvrepair);
+                                                    gr.grfonttxt(tvselect);
+                                                    gr.grfontbut(btnsubmit);
 
-                                        final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
-                                        final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
+                                                    final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
+                                                    final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
 
-                                        btnsubmit.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                if ( ivlist.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState()&& ivlist1.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState() )
-                                                {
-                                                    Toast.makeText( MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
-                                                    // new RegisterAsyntaskNew().execute();
-                                                }
-                                             else   if (count == 1 & count1 == 0) {
-                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                    intent.putExtra("message", tvrepair.getText().toString());
-                                                    intent.putExtra("service", etemail.getText().toString());
-                                                    intent.putExtra("sertyp", 8);
-                                                    mclass.setType("Desktop Service");
-                                                    mclass.setModel(tvplumber.getText().toString());
-                                                    mclass.setService(tvservices.getText().toString());
-                                                    startActivity(intent);
-                                                } else if (count1 == 1 & count == 0) {
-                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                    intent.putExtra("message", tvrepair.getText().toString());
-                                                    intent.putExtra("service", etemail.getText().toString());
-                                                    intent.putExtra("sertyp", 8);
-                                                    mclass.setType("Desktop Service");
-                                                    mclass.setModel(tvplumber.getText().toString());
-                                                    mclass.setService(tvrepair.getText().toString());
-                                                    startActivity(intent);
-                                                }
-                                            }
-                                        });
-                                        tvservices.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                count = 1;
-                                                count1 = 0;
-                                                ivlist.setImageResource(R.drawable.checkbox2);
-                                                tvrepair.setTextColor(Color.parseColor("#737272"));
-                                                ivlist1.setImageResource(R.drawable.checkbox);
+                                                    btnsubmit.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            if (ivlist.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState() && ivlist1.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState()) {
+                                                                Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
+                                                                // new RegisterAsyntaskNew().execute();
+                                                            } else if (count == 1 & count1 == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvrepair.getText().toString());
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                intent.putExtra("sertyp", 8);
+                                                                mclass.setType("Desktop Service");
+                                                                mclass.setModel(tvplumber.getText().toString());
+                                                                mclass.setService(tvservices.getText().toString());
+                                                                startActivity(intent);
+                                                            } else if (count1 == 1 & count == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvrepair.getText().toString());
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                intent.putExtra("sertyp", 8);
+                                                                mclass.setType("Desktop Service");
+                                                                mclass.setModel(tvplumber.getText().toString());
+                                                                mclass.setService(tvrepair.getText().toString());
+                                                                startActivity(intent);
+                                                            }
+                                                        }
+                                                    });
+                                                    tvservices.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count = 1;
+                                                            count1 = 0;
+                                                            ivlist.setImageResource(R.drawable.checkbox2);
+                                                            tvrepair.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox);
 
-                                                tvservices.setTextColor(Color.parseColor("#4fc5e6"));
+                                                            tvservices.setTextColor(Color.parseColor("#4fc5e6"));
 
 //count++;
 /*else {
@@ -9004,20 +9057,20 @@ Button  btnno;
     tvservices.setTextColor(Color.parseColor("#737272"));
     count++;
 }*/
-                                            }
-                                        });
+                                                        }
+                                                    });
 
-                                        tvrepair.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                count1 = 1;
-                                                count = 0;
-                                                tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
-                                                ivlist.setImageResource(R.drawable.checkbox);
-                                                tvservices.setTextColor(Color.parseColor("#737272"));
-                                                ivlist1.setImageResource(R.drawable.checkbox2);
+                                                    tvrepair.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count1 = 1;
+                                                            count = 0;
+                                                            tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
+                                                            ivlist.setImageResource(R.drawable.checkbox);
+                                                            tvservices.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox2);
 
-                                                //  count1++;
+                                                            //  count1++;
 /*else {
     count1=0;
 
@@ -9025,12 +9078,13 @@ Button  btnno;
     ivlist1.setImageResource(R.drawable.checkbox);
     count1++;
 }*/
-                                            }
-                                        });
+                                                        }
+                                                    });
 
-                                                builder.setView(vw);
-                                                alertDialog = builder.create();
-                                                alertDialog.show();
+                                                    builder.setView(vw);
+                                                    alertDialog = builder.create();
+                                                    alertDialog.show();
+                                                }
                                             }
                                         });
 
@@ -9668,59 +9722,61 @@ Button  btnno;
 
                                             @Override
                                             public void onClick(View v) {
+                                                if (etemail.getText().toString().equals("")) {
+                                                    Snackbar.make(v, "Brand field Should not be blank", Snackbar.LENGTH_LONG)
+                                                            .setAction("Action", null).show();
+                                                } else {
 
-                                                builder = new AlertDialog.Builder(MainActivity12.this);
-                                        View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
-                                        final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
-                                        final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
-                                        final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
-                                        Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
-                                        gr.grfonttxt(tvservices);
-                                        gr.grfonttxt(tvrepair);
-                                        gr.grfonttxt(tvselect);
-                                        gr.grfontbut(btnsubmit);
+                                                    builder = new AlertDialog.Builder(MainActivity12.this);
+                                                    View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
+                                                    final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
+                                                    final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
+                                                    final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
+                                                    Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
+                                                    gr.grfonttxt(tvservices);
+                                                    gr.grfonttxt(tvrepair);
+                                                    gr.grfonttxt(tvselect);
+                                                    gr.grfontbut(btnsubmit);
 
-                                        final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
-                                        final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
+                                                    final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
+                                                    final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
 
-                                        btnsubmit.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                if ( ivlist.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState()&& ivlist1.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState() )
-                                                {
-                                                    Toast.makeText( MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
-                                                    // new RegisterAsyntaskNew().execute();
-                                                }
-                                              else  if (count == 1 & count1 == 0) {
-                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                    intent.putExtra("message", tvservices.getText().toString());
-                                                    intent.putExtra("sertyp", 9);
-                                                    mclass.setType("CCTV Camera Service");
-                                                    mclass.setModel(etemail.getText().toString());
-                                                    mclass.setService(tvservices.getText().toString());
-                                                    intent.putExtra("service",etemail.getText().toString());
-                                                    startActivity(intent);
-                                                } else if (count1 == 1 & count == 0) {
-                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                    intent.putExtra("message", tvrepair.getText().toString());
-                                                    intent.putExtra("sertyp", 9);
-                                                    mclass.setType("CCTV Camera Service");
-                                                    mclass.setModel(etemail.getText().toString());
-                                                    mclass.setService(tvrepair.getText().toString());
-                                                    intent.putExtra("service", etemail.getText().toString());
-                                                    startActivity(intent);
-                                                }
-                                            }
-                                        });
-                                        tvservices.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                count = 1;
-                                                count1 = 0;
-                                                ivlist.setImageResource(R.drawable.checkbox2);
-                                                tvrepair.setTextColor(Color.parseColor("#737272"));
-                                                ivlist1.setImageResource(R.drawable.checkbox);
-                                                tvservices.setTextColor(Color.parseColor("#4fc5e6"));
+                                                    btnsubmit.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            if (ivlist.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState() && ivlist1.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState()) {
+                                                                Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
+                                                                // new RegisterAsyntaskNew().execute();
+                                                            } else if (count == 1 & count1 == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvservices.getText().toString());
+                                                                intent.putExtra("sertyp", 9);
+                                                                mclass.setType("CCTV Camera Service");
+                                                                mclass.setModel(etemail.getText().toString());
+                                                                mclass.setService(tvservices.getText().toString());
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                startActivity(intent);
+                                                            } else if (count1 == 1 & count == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvrepair.getText().toString());
+                                                                intent.putExtra("sertyp", 9);
+                                                                mclass.setType("CCTV Camera Service");
+                                                                mclass.setModel(etemail.getText().toString());
+                                                                mclass.setService(tvrepair.getText().toString());
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                startActivity(intent);
+                                                            }
+                                                        }
+                                                    });
+                                                    tvservices.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count = 1;
+                                                            count1 = 0;
+                                                            ivlist.setImageResource(R.drawable.checkbox2);
+                                                            tvrepair.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox);
+                                                            tvservices.setTextColor(Color.parseColor("#4fc5e6"));
 
 //count++;
 /*else {
@@ -9730,20 +9786,20 @@ Button  btnno;
     tvservices.setTextColor(Color.parseColor("#737272"));
     count++;
 }*/
-                                            }
-                                        });
+                                                        }
+                                                    });
 
-                                        tvrepair.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                count1 = 1;
-                                                count = 0;
-                                                tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
-                                                ivlist.setImageResource(R.drawable.checkbox);
-                                                tvservices.setTextColor(Color.parseColor("#737272"));
-                                                ivlist1.setImageResource(R.drawable.checkbox2);
+                                                    tvrepair.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count1 = 1;
+                                                            count = 0;
+                                                            tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
+                                                            ivlist.setImageResource(R.drawable.checkbox);
+                                                            tvservices.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox2);
 
-                                                //  count1++;
+                                                            //  count1++;
 /*else {
     count1=0;
 
@@ -9751,11 +9807,12 @@ Button  btnno;
     ivlist1.setImageResource(R.drawable.checkbox);
     count1++;
 }*/
-                                            }
-                                        });
-                                                builder.setView(vw);
-                                                alertDialog = builder.create();
-                                                alertDialog.show();
+                                                        }
+                                                    });
+                                                    builder.setView(vw);
+                                                    alertDialog = builder.create();
+                                                    alertDialog.show();
+                                                }
                                             }
                                         });
 
@@ -10409,59 +10466,61 @@ Button  btnno;
 
                                             @Override
                                             public void onClick(View v) {
+                                                if (etemail.getText().toString().equals("")) {
+                                                    Snackbar.make(v, "Cleaning Equipment field Should not be blank", Snackbar.LENGTH_LONG)
+                                                            .setAction("Action", null).show();
+                                                } else {
 
-                                                builder = new AlertDialog.Builder(MainActivity12.this);
-                                        View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
-                                        final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
-                                        final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
-                                        final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
-                                        Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
-                                        gr.grfonttxt(tvservices);
-                                        gr.grfonttxt(tvrepair);
-                                        gr.grfonttxt(tvselect);
-                                        gr.grfontbut(btnsubmit);
+                                                    builder = new AlertDialog.Builder(MainActivity12.this);
+                                                    View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
+                                                    final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
+                                                    final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
+                                                    final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
+                                                    Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
+                                                    gr.grfonttxt(tvservices);
+                                                    gr.grfonttxt(tvrepair);
+                                                    gr.grfonttxt(tvselect);
+                                                    gr.grfontbut(btnsubmit);
 
-                                        final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
-                                        final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
+                                                    final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
+                                                    final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
 
-                                        btnsubmit.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                if ( ivlist.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState()&& ivlist1.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState() )
-                                                {
-                                                    Toast.makeText( MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
-                                                    // new RegisterAsyntaskNew().execute();
-                                                }
-                                            else    if (count == 1 & count1 == 0) {
-                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                    intent.putExtra("message", tvservices.getText().toString());
-                                                    intent.putExtra("sertyp", 11);
-                                                    mclass.setType("Cleaning Equipments Work");
-                                                    mclass.setModel(etemail.getText().toString());
-                                                    mclass.setService(tvservices.getText().toString());
-                                                    intent.putExtra("service", etemail.getText().toString());
-                                                    startActivity(intent);
-                                                } else if (count1 == 1 & count == 0) {
-                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                    intent.putExtra("message", tvrepair.getText().toString());
-                                                    intent.putExtra("sertyp", 11);
-                                                    mclass.setType("Cleaning Equipments Work");
-                                                    mclass.setModel(etemail.getText().toString());
-                                                    mclass.setService(tvrepair.getText().toString());
-                                                    intent.putExtra("service", etemail.getText().toString());
-                                                    startActivity(intent);
-                                                }
-                                            }
-                                        });
-                                        tvservices.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                count = 1;
-                                                count1 = 0;
-                                                ivlist.setImageResource(R.drawable.checkbox2);
-                                                tvrepair.setTextColor(Color.parseColor("#737272"));
-                                                ivlist1.setImageResource(R.drawable.checkbox);
-                                                tvservices.setTextColor(Color.parseColor("#4fc5e6"));
+                                                    btnsubmit.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            if (ivlist.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState() && ivlist1.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState()) {
+                                                                Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
+                                                                // new RegisterAsyntaskNew().execute();
+                                                            } else if (count == 1 & count1 == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvservices.getText().toString());
+                                                                intent.putExtra("sertyp", 11);
+                                                                mclass.setType("Cleaning Equipments Work");
+                                                                mclass.setModel(etemail.getText().toString());
+                                                                mclass.setService(tvservices.getText().toString());
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                startActivity(intent);
+                                                            } else if (count1 == 1 & count == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvrepair.getText().toString());
+                                                                intent.putExtra("sertyp", 11);
+                                                                mclass.setType("Cleaning Equipments Work");
+                                                                mclass.setModel(etemail.getText().toString());
+                                                                mclass.setService(tvrepair.getText().toString());
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                startActivity(intent);
+                                                            }
+                                                        }
+                                                    });
+                                                    tvservices.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count = 1;
+                                                            count1 = 0;
+                                                            ivlist.setImageResource(R.drawable.checkbox2);
+                                                            tvrepair.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox);
+                                                            tvservices.setTextColor(Color.parseColor("#4fc5e6"));
 
 //count++;
 /*else {
@@ -10471,20 +10530,20 @@ Button  btnno;
     tvservices.setTextColor(Color.parseColor("#737272"));
     count++;
 }*/
-                                            }
-                                        });
+                                                        }
+                                                    });
 
-                                        tvrepair.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                count1 = 1;
-                                                count = 0;
-                                                tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
-                                                ivlist.setImageResource(R.drawable.checkbox);
-                                                tvservices.setTextColor(Color.parseColor("#737272"));
-                                                ivlist1.setImageResource(R.drawable.checkbox2);
+                                                    tvrepair.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count1 = 1;
+                                                            count = 0;
+                                                            tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
+                                                            ivlist.setImageResource(R.drawable.checkbox);
+                                                            tvservices.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox2);
 
-                                                //  count1++;
+                                                            //  count1++;
 /*else {
     count1=0;
 
@@ -10492,14 +10551,15 @@ Button  btnno;
     ivlist1.setImageResource(R.drawable.checkbox);
     count1++;
 }*/
-                                            }
-                                        });
+                                                        }
+                                                    });
 
-                                                builder.setView(vw);
-                                                alertDialog = builder.create();
-                                                alertDialog.show();
+                                                    builder.setView(vw);
+                                                    alertDialog = builder.create();
+                                                    alertDialog.show();
 //
 
+                                                }
                                             }
 
                                         });
@@ -11048,60 +11108,62 @@ Button  btnno;
 
                                             @Override
                                             public void onClick(View v) {
+                                                if (etemail.getText().toString().equals("")) {
+                                                    Snackbar.make(v, "Brand field Should not be blank", Snackbar.LENGTH_LONG)
+                                                            .setAction("Action", null).show();
+                                                } else {
 
 
-                                                builder = new AlertDialog.Builder(MainActivity12.this);
-                                        View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
-                                        final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
-                                        final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
-                                        final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
-                                        Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
-                                        gr.grfonttxt(tvservices);
-                                        gr.grfonttxt(tvrepair);
-                                        gr.grfonttxt(tvselect);
-                                        gr.grfontbut(btnsubmit);
+                                                    builder = new AlertDialog.Builder(MainActivity12.this);
+                                                    View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
+                                                    final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
+                                                    final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
+                                                    final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
+                                                    Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
+                                                    gr.grfonttxt(tvservices);
+                                                    gr.grfonttxt(tvrepair);
+                                                    gr.grfonttxt(tvselect);
+                                                    gr.grfontbut(btnsubmit);
 
-                                        final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
-                                        final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
+                                                    final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
+                                                    final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
 
-                                        btnsubmit.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                if ( ivlist.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState()&& ivlist1.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState() )
-                                                {
-                                                    Toast.makeText( MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
-                                                    // new RegisterAsyntaskNew().execute();
-                                                }
-                                             else   if (count == 1 & count1 == 0) {
-                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                    intent.putExtra("message", tvservices.getText().toString());
-                                                    intent.putExtra("service", etemail.getText().toString());
-                                                    intent.putExtra("sertyp", 12);
-                                                    mclass.setType("Printer Service");
-                                                    mclass.setModel(etemail.getText().toString());
-                                                    mclass.setService(tvservices.getText().toString());
-                                                    startActivity(intent);
-                                                } else if (count1 == 1 & count == 0) {
-                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                    intent.putExtra("message", tvrepair.getText().toString());
-                                                    intent.putExtra("sertyp", 12);
-                                                    mclass.setType("Printer Service");
-                                                    mclass.setModel(etemail.getText().toString());
-                                                    mclass.setService(tvrepair.getText().toString());
-                                                    intent.putExtra("service",etemail.getText().toString());
-                                                    startActivity(intent);
-                                                }
-                                            }
-                                        });
-                                        tvservices.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                count = 1;
-                                                count1 = 0;
-                                                ivlist.setImageResource(R.drawable.checkbox2);
-                                                tvrepair.setTextColor(Color.parseColor("#737272"));
-                                                ivlist1.setImageResource(R.drawable.checkbox);
-                                                tvservices.setTextColor(Color.parseColor("#4fc5e6"));
+                                                    btnsubmit.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            if (ivlist.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState() && ivlist1.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState()) {
+                                                                Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
+                                                                // new RegisterAsyntaskNew().execute();
+                                                            } else if (count == 1 & count1 == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvservices.getText().toString());
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                intent.putExtra("sertyp", 12);
+                                                                mclass.setType("Printer Service");
+                                                                mclass.setModel(etemail.getText().toString());
+                                                                mclass.setService(tvservices.getText().toString());
+                                                                startActivity(intent);
+                                                            } else if (count1 == 1 & count == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvrepair.getText().toString());
+                                                                intent.putExtra("sertyp", 12);
+                                                                mclass.setType("Printer Service");
+                                                                mclass.setModel(etemail.getText().toString());
+                                                                mclass.setService(tvrepair.getText().toString());
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                startActivity(intent);
+                                                            }
+                                                        }
+                                                    });
+                                                    tvservices.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count = 1;
+                                                            count1 = 0;
+                                                            ivlist.setImageResource(R.drawable.checkbox2);
+                                                            tvrepair.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox);
+                                                            tvservices.setTextColor(Color.parseColor("#4fc5e6"));
 
 //count++;
 /*else {
@@ -11111,20 +11173,20 @@ Button  btnno;
     tvservices.setTextColor(Color.parseColor("#737272"));
     count++;
 }*/
-                                            }
-                                        });
+                                                        }
+                                                    });
 
-                                        tvrepair.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                count1 = 1;
-                                                count = 0;
-                                                tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
-                                                ivlist.setImageResource(R.drawable.checkbox);
-                                                tvservices.setTextColor(Color.parseColor("#737272"));
-                                                ivlist1.setImageResource(R.drawable.checkbox2);
+                                                    tvrepair.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count1 = 1;
+                                                            count = 0;
+                                                            tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
+                                                            ivlist.setImageResource(R.drawable.checkbox);
+                                                            tvservices.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox2);
 
-                                                //  count1++;
+                                                            //  count1++;
 /*else {
     count1=0;
 
@@ -11132,14 +11194,14 @@ Button  btnno;
     ivlist1.setImageResource(R.drawable.checkbox);
     count1++;
 }*/
-                                            }
-                                        });
+                                                        }
+                                                    });
 
-                                                builder.setView(vw);
-                                                alertDialog = builder.create();
-                                                alertDialog.show();
+                                                    builder.setView(vw);
+                                                    alertDialog = builder.create();
+                                                    alertDialog.show();
 //
-
+                                                }
                                             }
 
                                         });
@@ -11782,59 +11844,61 @@ Button  btnno;
 
                                             @Override
                                             public void onClick(View v) {
+                                                if (etemail.getText().toString().equals("")) {
+                                                    Snackbar.make(v, "Chair type field Should not be blank", Snackbar.LENGTH_LONG)
+                                                            .setAction("Action", null).show();
+                                                } else {
 
-                                        builder = new AlertDialog.Builder(MainActivity12.this);
-                                        View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
-                                        final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
-                                        final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
-                                        final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
-                                        Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
-                                        gr.grfonttxt(tvservices);
-                                        gr.grfonttxt(tvrepair);
-                                        gr.grfonttxt(tvselect);
-                                        gr.grfontbut(btnsubmit);
+                                                    builder = new AlertDialog.Builder(MainActivity12.this);
+                                                    View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
+                                                    final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
+                                                    final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
+                                                    final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
+                                                    Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
+                                                    gr.grfonttxt(tvservices);
+                                                    gr.grfonttxt(tvrepair);
+                                                    gr.grfonttxt(tvselect);
+                                                    gr.grfontbut(btnsubmit);
 
-                                        final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
-                                        final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
+                                                    final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
+                                                    final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
 
-                                        btnsubmit.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                if ( ivlist.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState()&& ivlist1.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState() )
-                                                {
-                                                    Toast.makeText( MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
-                                                    // new RegisterAsyntaskNew().execute();
-                                                }
-                                              else  if (count == 1 & count1 == 0) {
-                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                    intent.putExtra("message", tvservices.getText().toString());
-                                                    intent.putExtra("sertyp", 13);
-                                                    mclass.setType("Chair Work");
-                                                    mclass.setModel(etemail.getText().toString());
-                                                    mclass.setService(tvservices.getText().toString());
-                                                    intent.putExtra("service", etemail.getText().toString());
-                                                    startActivity(intent);
-                                                } else if (count1 == 1 & count == 0) {
-                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                    intent.putExtra("message", tvrepair.getText().toString());
-                                                    intent.putExtra("service", etemail.getText().toString());
-                                                    intent.putExtra("sertyp", 13);
-                                                    mclass.setType("Chair Work");
-                                                    mclass.setModel(etemail.getText().toString());
-                                                    mclass.setService(tvrepair.getText().toString());
-                                                    startActivity(intent);
-                                                }
-                                            }
-                                        });
-                                        tvservices.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                count = 1;
-                                                count1 = 0;
-                                                ivlist.setImageResource(R.drawable.checkbox2);
-                                                tvrepair.setTextColor(Color.parseColor("#737272"));
-                                                ivlist1.setImageResource(R.drawable.checkbox);
-                                                tvservices.setTextColor(Color.parseColor("#4fc5e6"));
+                                                    btnsubmit.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            if (ivlist.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState() && ivlist1.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState()) {
+                                                                Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
+                                                                // new RegisterAsyntaskNew().execute();
+                                                            } else if (count == 1 & count1 == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvservices.getText().toString());
+                                                                intent.putExtra("sertyp", 13);
+                                                                mclass.setType("Chair Work");
+                                                                mclass.setModel(etemail.getText().toString());
+                                                                mclass.setService(tvservices.getText().toString());
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                startActivity(intent);
+                                                            } else if (count1 == 1 & count == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvrepair.getText().toString());
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                intent.putExtra("sertyp", 13);
+                                                                mclass.setType("Chair Work");
+                                                                mclass.setModel(etemail.getText().toString());
+                                                                mclass.setService(tvrepair.getText().toString());
+                                                                startActivity(intent);
+                                                            }
+                                                        }
+                                                    });
+                                                    tvservices.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count = 1;
+                                                            count1 = 0;
+                                                            ivlist.setImageResource(R.drawable.checkbox2);
+                                                            tvrepair.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox);
+                                                            tvservices.setTextColor(Color.parseColor("#4fc5e6"));
 
 //count++;
 /*else {
@@ -11844,20 +11908,20 @@ Button  btnno;
     tvservices.setTextColor(Color.parseColor("#737272"));
     count++;
 }*/
-                                            }
-                                        });
+                                                        }
+                                                    });
 
-                                        tvrepair.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                count1 = 1;
-                                                count = 0;
-                                                tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
-                                                ivlist.setImageResource(R.drawable.checkbox);
-                                                tvservices.setTextColor(Color.parseColor("#737272"));
-                                                ivlist1.setImageResource(R.drawable.checkbox2);
+                                                    tvrepair.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count1 = 1;
+                                                            count = 0;
+                                                            tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
+                                                            ivlist.setImageResource(R.drawable.checkbox);
+                                                            tvservices.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox2);
 
-                                                //  count1++;
+                                                            //  count1++;
 /*else {
     count1=0;
 
@@ -11865,14 +11929,14 @@ Button  btnno;
     ivlist1.setImageResource(R.drawable.checkbox);
     count1++;
 }*/
-                                            }
-                                        });
+                                                        }
+                                                    });
 
-                                                builder.setView(vw);
-                                                alertDialog = builder.create();
-                                                alertDialog.show();
+                                                    builder.setView(vw);
+                                                    alertDialog = builder.create();
+                                                    alertDialog.show();
 //
-
+                                                }
                                             }
 
                                         });
@@ -12515,60 +12579,62 @@ Button  btnno;
 
                                             @Override
                                             public void onClick(View v) {
+                                                if (etemail.getText().toString().equals("")) {
+                                                    Snackbar.make(v, "Model type field Should not be blank", Snackbar.LENGTH_LONG)
+                                                            .setAction("Action", null).show();
+                                                } else {
 
 
-                                                builder = new AlertDialog.Builder(MainActivity12.this);
-                                        View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
-                                        final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
-                                        final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
-                                        final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
-                                        Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
-                                        gr.grfonttxt(tvservices);
-                                        gr.grfonttxt(tvrepair);
-                                        gr.grfonttxt(tvselect);
-                                        gr.grfontbut(btnsubmit);
+                                                    builder = new AlertDialog.Builder(MainActivity12.this);
+                                                    View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
+                                                    final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
+                                                    final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
+                                                    final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
+                                                    Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
+                                                    gr.grfonttxt(tvservices);
+                                                    gr.grfonttxt(tvrepair);
+                                                    gr.grfonttxt(tvselect);
+                                                    gr.grfontbut(btnsubmit);
 
-                                        final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
-                                        final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
+                                                    final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
+                                                    final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
 
-                                        btnsubmit.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                if ( ivlist.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState()&& ivlist1.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState() )
-                                                {
-                                                    Toast.makeText( MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
-                                                    // new RegisterAsyntaskNew().execute();
-                                                }
-                                             else    if (count == 1 & count1 == 0) {
-                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                    intent.putExtra("message", tvservices.getText().toString());
-                                                    intent.putExtra("sertyp", 14);
-                                                    mclass.setType("Mobile Service");
-                                                    mclass.setModel(etemail.getText().toString());
-                                                    mclass.setService(tvservices.getText().toString());
-                                                    intent.putExtra("service", etemail.getText().toString());
-                                                    startActivity(intent);
-                                                } else if (count1 == 1 & count == 0) {
-                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                    intent.putExtra("message", tvrepair.getText().toString());
-                                                    intent.putExtra("sertyp", 14);
-                                                    mclass.setType("Mobile Service");
-                                                    mclass.setModel(etemail.getText().toString());
-                                                    mclass.setService(tvrepair.getText().toString());
-                                                    intent.putExtra("service", etemail.getText().toString());
-                                                    startActivity(intent);
-                                                }
-                                            }
-                                        });
-                                        tvservices.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                count = 1;
-                                                count1 = 0;
-                                                ivlist.setImageResource(R.drawable.checkbox2);
-                                                tvrepair.setTextColor(Color.parseColor("#737272"));
-                                                ivlist1.setImageResource(R.drawable.checkbox);
-                                                tvservices.setTextColor(Color.parseColor("#4fc5e6"));
+                                                    btnsubmit.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            if (ivlist.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState() && ivlist1.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState()) {
+                                                                Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
+                                                                // new RegisterAsyntaskNew().execute();
+                                                            } else if (count == 1 & count1 == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvservices.getText().toString());
+                                                                intent.putExtra("sertyp", 14);
+                                                                mclass.setType("Mobile Service");
+                                                                mclass.setModel(etemail.getText().toString());
+                                                                mclass.setService(tvservices.getText().toString());
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                startActivity(intent);
+                                                            } else if (count1 == 1 & count == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvrepair.getText().toString());
+                                                                intent.putExtra("sertyp", 14);
+                                                                mclass.setType("Mobile Service");
+                                                                mclass.setModel(etemail.getText().toString());
+                                                                mclass.setService(tvrepair.getText().toString());
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                startActivity(intent);
+                                                            }
+                                                        }
+                                                    });
+                                                    tvservices.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count = 1;
+                                                            count1 = 0;
+                                                            ivlist.setImageResource(R.drawable.checkbox2);
+                                                            tvrepair.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox);
+                                                            tvservices.setTextColor(Color.parseColor("#4fc5e6"));
 
 //count++;
 /*else {
@@ -12578,20 +12644,20 @@ Button  btnno;
     tvservices.setTextColor(Color.parseColor("#737272"));
     count++;
 }*/
-                                            }
-                                        });
+                                                        }
+                                                    });
 
-                                        tvrepair.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                count1 = 1;
-                                                count = 0;
-                                                tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
-                                                ivlist.setImageResource(R.drawable.checkbox);
-                                                tvservices.setTextColor(Color.parseColor("#737272"));
-                                                ivlist1.setImageResource(R.drawable.checkbox2);
+                                                    tvrepair.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count1 = 1;
+                                                            count = 0;
+                                                            tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
+                                                            ivlist.setImageResource(R.drawable.checkbox);
+                                                            tvservices.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox2);
 
-                                                //  count1++;
+                                                            //  count1++;
 /*else {
     count1=0;
 
@@ -12599,14 +12665,14 @@ Button  btnno;
     ivlist1.setImageResource(R.drawable.checkbox);
     count1++;
 }*/
-                                            }
-                                        });
+                                                        }
+                                                    });
 
-                                                builder.setView(vw);
-                                                alertDialog = builder.create();
-                                                alertDialog.show();
+                                                    builder.setView(vw);
+                                                    alertDialog = builder.create();
+                                                    alertDialog.show();
 //
-
+                                                }
                                             }
 
                                         });
@@ -13249,58 +13315,61 @@ Button  btnno;
 
                                             @Override
                                             public void onClick(View v) {
-                                        builder = new AlertDialog.Builder(MainActivity12.this);
-                                        View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
-                                        final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
-                                        final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
-                                        final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
-                                        Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
-                                        gr.grfonttxt(tvservices);
-                                        gr.grfonttxt(tvrepair);
-                                        gr.grfonttxt(tvselect);
-                                        gr.grfontbut(btnsubmit);
+                                                if (etemail.getText().toString().equals("")) {
+                                                    Snackbar.make(v, "Brand field Should not be blank", Snackbar.LENGTH_LONG)
+                                                            .setAction("Action", null).show();
+                                                } else {
 
-                                        final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
-                                        final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
+                                                    builder = new AlertDialog.Builder(MainActivity12.this);
+                                                    View vw = getLayoutInflater().inflate(R.layout.popupmenu, null);
+                                                    final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
+                                                    final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
+                                                    final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
+                                                    Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
+                                                    gr.grfonttxt(tvservices);
+                                                    gr.grfonttxt(tvrepair);
+                                                    gr.grfonttxt(tvselect);
+                                                    gr.grfontbut(btnsubmit);
 
-                                        btnsubmit.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                if ( ivlist.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState()&& ivlist1.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState() )
-                                                {
-                                                    Toast.makeText( MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
-                                                    // new RegisterAsyntaskNew().execute();
-                                                }
-                                              else  if (count == 1 & count1 == 0) {
-                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                    intent.putExtra("message", tvservices.getText().toString());
-                                                    intent.putExtra("sertyp", 15);
-                                                    mclass.setType("Tablet Service");
-                                                    mclass.setModel(etemail.getText().toString());
-                                                    mclass.setService(tvservices.getText().toString());
-                                                    intent.putExtra("service",etemail.getText().toString());
-                                                    startActivity(intent);
-                                                } else if (count1 == 1 & count == 0) {
-                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                    intent.putExtra("message", tvrepair.getText().toString());
-                                                    intent.putExtra("sertyp", 15);
-                                                    mclass.setType("Tablet Service");
-                                                    mclass.setModel(etemail.getText().toString());
-                                                    mclass.setService(tvrepair.getText().toString());
-                                                    intent.putExtra("service", etemail.getText().toString());
-                                                    startActivity(intent);
-                                                }
-                                            }
-                                        });
-                                        tvservices.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                count = 1;
-                                                count1 = 0;
-                                                ivlist.setImageResource(R.drawable.checkbox2);
-                                                tvrepair.setTextColor(Color.parseColor("#737272"));
-                                                ivlist1.setImageResource(R.drawable.checkbox);
-                                                tvservices.setTextColor(Color.parseColor("#4fc5e6"));
+                                                    final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
+                                                    final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
+
+                                                    btnsubmit.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            if (ivlist.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState() && ivlist1.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState()) {
+                                                                Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
+                                                                // new RegisterAsyntaskNew().execute();
+                                                            } else if (count == 1 & count1 == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvservices.getText().toString());
+                                                                intent.putExtra("sertyp", 15);
+                                                                mclass.setType("Tablet Service");
+                                                                mclass.setModel(etemail.getText().toString());
+                                                                mclass.setService(tvservices.getText().toString());
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                startActivity(intent);
+                                                            } else if (count1 == 1 & count == 0) {
+                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                intent.putExtra("message", tvrepair.getText().toString());
+                                                                intent.putExtra("sertyp", 15);
+                                                                mclass.setType("Tablet Service");
+                                                                mclass.setModel(etemail.getText().toString());
+                                                                mclass.setService(tvrepair.getText().toString());
+                                                                intent.putExtra("service", etemail.getText().toString());
+                                                                startActivity(intent);
+                                                            }
+                                                        }
+                                                    });
+                                                    tvservices.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count = 1;
+                                                            count1 = 0;
+                                                            ivlist.setImageResource(R.drawable.checkbox2);
+                                                            tvrepair.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox);
+                                                            tvservices.setTextColor(Color.parseColor("#4fc5e6"));
 
 //count++;
 /*else {
@@ -13310,20 +13379,20 @@ Button  btnno;
     tvservices.setTextColor(Color.parseColor("#737272"));
     count++;
 }*/
-                                            }
-                                        });
+                                                        }
+                                                    });
 
-                                        tvrepair.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                count1 = 1;
-                                                count = 0;
-                                                tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
-                                                ivlist.setImageResource(R.drawable.checkbox);
-                                                tvservices.setTextColor(Color.parseColor("#737272"));
-                                                ivlist1.setImageResource(R.drawable.checkbox2);
+                                                    tvrepair.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            count1 = 1;
+                                                            count = 0;
+                                                            tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
+                                                            ivlist.setImageResource(R.drawable.checkbox);
+                                                            tvservices.setTextColor(Color.parseColor("#737272"));
+                                                            ivlist1.setImageResource(R.drawable.checkbox2);
 
-                                                //  count1++;
+                                                            //  count1++;
 /*else {
     count1=0;
 
@@ -13331,14 +13400,14 @@ Button  btnno;
     ivlist1.setImageResource(R.drawable.checkbox);
     count1++;
 }*/
-                                            }
-                                        });
+                                                        }
+                                                    });
 
-                                                builder.setView(vw);
-                                                alertDialog = builder.create();
-                                                alertDialog.show();
+                                                    builder.setView(vw);
+                                                    alertDialog = builder.create();
+                                                    alertDialog.show();
 //
-
+                                                }
                                             }
 
                                         });
@@ -15518,59 +15587,61 @@ Button  btnno;
 
                                             @Override
                                             public void onClick(View v) {
+                                                if (etemail.getText().toString().equals("")) {
+                                                    Snackbar.make(v, "Service type field Should not be blank", Snackbar.LENGTH_LONG)
+                                                            .setAction("Action", null).show();
+                                                } else {
+
+                                                    View vw = null, vw2;
+                                                    builder = new AlertDialog.Builder(MainActivity12.this);
+                                                    vw2 = getLayoutInflater().inflate(R.layout.linearlayout, null);
+                                                    LayoutInflater layoutInflator = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                                                    LinearLayout insertPoint = (LinearLayout) vw2.findViewById(R.id.linear);
+
+                                                    final Button btnsubmit = (Button) vw2.findViewById(R.id.btnsubmit);
+                                                    final TextView tvselect = (TextView) vw2.findViewById(R.id.tvselect);
 
 
-                                                View vw = null, vw2;
-                                                builder = new AlertDialog.Builder(MainActivity12.this);
-                                                vw2 = getLayoutInflater().inflate(R.layout.linearlayout, null);
-                                                LayoutInflater layoutInflator = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                                                LinearLayout insertPoint = (LinearLayout) vw2.findViewById(R.id.linear);
+                                                    gr.grfonttxt(tvselect);
+                                                    gr.grfontbut(btnsubmit);
+                                                    for (int i = 0; i < 2; i++) {
+                                                        vw = getLayoutInflater().inflate(R.layout.popup, null);
 
-                                                final Button btnsubmit = (Button) vw2.findViewById(R.id.btnsubmit);
-                                                final TextView tvselect = (TextView) vw2.findViewById(R.id.tvselect);
-
-
-
-                                                gr.grfonttxt(tvselect);
-                                                gr.grfontbut(btnsubmit);
-                                                for (int i = 0; i < 2; i++) {
-                                                    vw = getLayoutInflater().inflate(R.layout.popup, null);
-
-                                                    final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
-                                                    gr.grfonttxt(tvrepair);
-                                                    final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
-                                                    tvrepair.setText(man[i]);
-                                                    insertPoint.addView(vw);
+                                                        final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
+                                                        gr.grfonttxt(tvrepair);
+                                                        final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
+                                                        tvrepair.setText(man[i]);
+                                                        insertPoint.addView(vw);
 
 
 //
-                                                    final View finalVw = vw;
-                                                    finalVw.setOnClickListener(new View.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(View v) {
-                                                            //View v3 = finalVw;
-                                                            if (v2 != null) {
-                                                                //
+                                                        final View finalVw = vw;
+                                                        finalVw.setOnClickListener(new View.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(View v) {
+                                                                //View v3 = finalVw;
+                                                                if (v2 != null) {
+                                                                    //
+                                                                    mclass.setService(tvrepair.getText().toString());
+                                                                    final TextView tv2 = (TextView) v2.findViewById(R.id.tvrepair);
+                                                                    tv2.setTextColor(Color.parseColor("#737272"));
+                                                                    final ImageView iv3 = (ImageView) v2.findViewById(R.id.ivlist);
+                                                                    iv3.setImageResource(R.drawable.checkbox);
+                                                                    v2.setBackgroundColor(Color.parseColor("#ffffff"));
+                                                                }
+                                                                //if (count ==1) {
+                                                                //ivlist.setImageResource(R.drawable.checkbox2);
                                                                 mclass.setService(tvrepair.getText().toString());
-                                                                final TextView tv2 = (TextView) v2.findViewById(R.id.tvrepair);
-                                                                tv2.setTextColor(Color.parseColor("#737272"));
-                                                                final ImageView iv3 = (ImageView) v2.findViewById(R.id.ivlist);
-                                                                iv3.setImageResource(R.drawable.checkbox);
-                                                                v2.setBackgroundColor(Color.parseColor("#ffffff"));
-                                                            }
-                                                            //if (count ==1) {
-                                                            //ivlist.setImageResource(R.drawable.checkbox2);
-                                                            mclass.setService(tvrepair.getText().toString());
-                                                            v.setBackgroundColor(Color.parseColor("#ecf0f1"));
-                                                            final TextView tv3 = (TextView) v.findViewById(R.id.tvrepair);
-                                                            final ImageView iv3 = (ImageView) v.findViewById(R.id.ivlist);
-                                                            iv3.setImageResource(R.drawable.checkbox2);
-                                                            tv3.setTextColor(Color.parseColor("#4fc5e6"));
-                                                            v2 = v;
-                                                            //Button btnsubmit = (Button) v.findViewById(R.id.btnsubmit);
+                                                                v.setBackgroundColor(Color.parseColor("#ecf0f1"));
+                                                                final TextView tv3 = (TextView) v.findViewById(R.id.tvrepair);
+                                                                final ImageView iv3 = (ImageView) v.findViewById(R.id.ivlist);
+                                                                iv3.setImageResource(R.drawable.checkbox2);
+                                                                tv3.setTextColor(Color.parseColor("#4fc5e6"));
+                                                                v2 = v;
+                                                                //Button btnsubmit = (Button) v.findViewById(R.id.btnsubmit);
 
 
-                                                            //count++;
+                                                                //count++;
                                             /*}else{
     count=0;
 
@@ -15578,34 +15649,34 @@ Button  btnno;
     tvservices.setTextColor(Color.parseColor("#737272"));
     count++;
 }*/
-                                                        }
-                                                    });
-//
-                                                    btnsubmit.setOnClickListener(new View.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(View v) {
-                                                            if ( v2==null )
-                                                            {
-                                                                Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
-                                                                // new RegisterAsyntaskNew().execute();
-                                                            }else {
-                                                                Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                                                intent.putExtra("message", tvrepair.getText().toString());
-                                                             //   intent.putExtra("sercat", tv3.getText().toString());
-                                                                intent.putExtra("sertyp", 13);
-                                                                mclass.setType("Skill Manpower Services");
-                                                                mclass.setModel(tvhomes.getText().toString());
-                                                                intent.putExtra("service", etemail.getText().toString());
-                                                                startActivity(intent);
                                                             }
-                                                        }
+                                                        });
+//
+                                                        btnsubmit.setOnClickListener(new View.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(View v) {
+                                                                if (v2 == null) {
+                                                                    Toast.makeText(MainActivity12.this, "Select atleast one service", Toast.LENGTH_LONG).show();
+                                                                    // new RegisterAsyntaskNew().execute();
+                                                                } else {
+                                                                    Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                                                    intent.putExtra("message", tvrepair.getText().toString());
+                                                                    //   intent.putExtra("sercat", tv3.getText().toString());
+                                                                    intent.putExtra("sertyp", 13);
+                                                                    mclass.setType("Skill Manpower Services");
+                                                                    mclass.setModel(tvhomes.getText().toString());
+                                                                    intent.putExtra("service", etemail.getText().toString());
+                                                                    startActivity(intent);
+                                                                }
+                                                            }
 
-                                                    });
+                                                        });
+                                                    }
+                                                    builder.setView(vw2);
+
+                                                    alertDialog = builder.create();
+                                                    alertDialog.show();
                                                 }
-                                                builder.setView(vw2);
-
-                                                alertDialog = builder.create();
-                                                alertDialog.show();
                                             }
                                         });
                                         builder.setView(vw);
@@ -16117,13 +16188,18 @@ Button  btnno;
 
                                     @Override
                                     public void onClick(View v) {
-                                        Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
-                                        intent.putExtra("sertyp", 0);
+                                        if (etemail.getText().toString().equals("")) {
+                                            Snackbar.make(v, "Financial Service field Should not be blank", Snackbar.LENGTH_LONG)
+                                                    .setAction("Action", null).show();
+                                        } else {
+                                            Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
+                                            intent.putExtra("sertyp", 0);
 
-                                        mclass.setType("Financial Service");
-                                        mclass.setModel(etemail.getText().toString());
-                                        intent.putExtra("service", etemail.getText().toString());
-                                        startActivity(intent);
+                                            mclass.setType("Financial Service");
+                                            mclass.setModel(etemail.getText().toString());
+                                            intent.putExtra("service", etemail.getText().toString());
+                                            startActivity(intent);
+                                        }
                                     }
                                 });
                                 builder.setView(vw);

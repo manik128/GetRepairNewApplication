@@ -745,62 +745,63 @@ public class CarFragment extends Fragment {
 
                             @Override
                             public void onClick(View v) {
+                                if (etemail.getText().toString().equals("")) {
+                                    Toast.makeText(getActivity(), "Brand field Should not be blank", Toast.LENGTH_LONG).show();
+//
+                                } else {
 
+                                    builder = new AlertDialog.Builder(getContext());
+                                    View vw = getLayoutInflater(savedInstanceState).inflate(R.layout.popupmenu, null);
+                                    final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
+                                    final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
+                                    final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
+                                    final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
+                                    Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
+                                    final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
+                                    grfont gr = new grfont(getContext());
+                                    gr.grfonttxt(tvservices);
+                                    gr.grfonttxt(tvrepair);
 
-                                builder = new AlertDialog.Builder(getContext());
-                                View vw = getLayoutInflater(savedInstanceState).inflate(R.layout.popupmenu, null);
-                                final TextView tvservices = (TextView) vw.findViewById(R.id.tvservices);
-                                final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
-                                final ImageView ivlist = (ImageView) vw.findViewById(R.id.ivlist);
-                                final ImageView ivlist1 = (ImageView) vw.findViewById(R.id.ivlist1);
-                                Button btnsubmit = (Button) vw.findViewById(R.id.btnsubmit);
-                                final TextView tvselect = (TextView) vw.findViewById(R.id.tvselect);
-                                grfont gr = new grfont(getContext());
-                                gr.grfonttxt(tvservices);
-                                gr.grfonttxt(tvrepair);
+                                    gr.grfonttxt(tvselect);
+                                    gr.grfontbut(btnsubmit);
 
-                                gr.grfonttxt(tvselect);
-                                gr.grfontbut(btnsubmit);
-
-                                btnsubmit.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        if ( ivlist.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState()&& ivlist1.getDrawable().getConstantState() == getResources().getDrawable( R.drawable.checkbox).getConstantState() )
-                                        {
-                                            Toast.makeText(getActivity(), "Select atleast one service", Toast.LENGTH_LONG).show();
-                                            // new RegisterAsyntaskNew().execute();
-                                        }
-                                     else   if (count == 1 & count1 == 0) {
-                                            Intent intent = new Intent(getContext(), ServicingActivity.class);
-                                            intent.putExtra("message", tvservices.getText().toString());
-                                            intent.putExtra("service", etemail.getText().toString());
-                                            mclass.setType("Cars");
-                                            mclass.setModel(tvproduct.getText().toString());
-                                            mclass.setService(tvservices.getText().toString());
-                                            intent.putExtra("sertyp", 1);
-                                            startActivity(intent);
-                                        } else if (count1 == 1 & count == 0) {
-                                            Intent intent = new Intent(getContext(), ServicingActivity.class);
-                                            intent.putExtra("message",tvrepair.getText().toString());
-                                            intent.putExtra("service",etemail.getText().toString());
-                                            mclass.setType("Cars");
-                                            mclass.setModel(tvproduct.getText().toString());
-                                            mclass.setService(tvrepair.getText().toString());
-                                            intent.putExtra("sertyp", 1);
+                                    btnsubmit.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            if (ivlist.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState() && ivlist1.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.checkbox).getConstantState()) {
+                                                Toast.makeText(getActivity(), "Select atleast one service", Toast.LENGTH_LONG).show();
+                                                // new RegisterAsyntaskNew().execute();
+                                            } else if (count == 1 & count1 == 0) {
+                                                Intent intent = new Intent(getContext(), ServicingActivity.class);
+                                                intent.putExtra("message", tvservices.getText().toString());
+                                                intent.putExtra("service", etemail.getText().toString());
+                                                mclass.setType("Cars");
+                                                mclass.setModel(etemail.getText().toString());
+                                                mclass.setService(tvservices.getText().toString());
+                                                intent.putExtra("sertyp", 1);
+                                                startActivity(intent);
+                                            } else if (count1 == 1 & count == 0) {
+                                                Intent intent = new Intent(getContext(), ServicingActivity.class);
+                                                intent.putExtra("message", tvrepair.getText().toString());
+                                                intent.putExtra("service", etemail.getText().toString());
+                                                mclass.setType("Cars");
+                                                mclass.setModel(etemail.getText().toString());
+                                                mclass.setService(tvrepair.getText().toString());
+                                                intent.putExtra("sertyp", 1);
 //                                    intent.putExtra("sertyp", position);
-                                            startActivity(intent);
+                                                startActivity(intent);
+                                            }
                                         }
-                                    }
-                                });
-                                tvservices.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        count = 1;
-                                        count1 = 0;
-                                        ivlist.setImageResource(R.drawable.checkbox2);
-                                        tvrepair.setTextColor(Color.parseColor("#737272"));
-                                        ivlist1.setImageResource(R.drawable.checkbox);
-                                        tvservices.setTextColor(Color.parseColor("#4fc5e6"));
+                                    });
+                                    tvservices.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            count = 1;
+                                            count1 = 0;
+                                            ivlist.setImageResource(R.drawable.checkbox2);
+                                            tvrepair.setTextColor(Color.parseColor("#737272"));
+                                            ivlist1.setImageResource(R.drawable.checkbox);
+                                            tvservices.setTextColor(Color.parseColor("#4fc5e6"));
 
 //count++;
 /*else {
@@ -810,20 +811,20 @@ public class CarFragment extends Fragment {
     tvservices.setTextColor(Color.parseColor("#737272"));
     count++;
 }*/
-                                    }
-                                });
+                                        }
+                                    });
 
-                                tvrepair.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        count1 = 1;
-                                        count = 0;
-                                        tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
-                                        ivlist.setImageResource(R.drawable.checkbox);
-                                        tvservices.setTextColor(Color.parseColor("#737272"));
-                                        ivlist1.setImageResource(R.drawable.checkbox2);
+                                    tvrepair.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            count1 = 1;
+                                            count = 0;
+                                            tvrepair.setTextColor(Color.parseColor("#4fc5e6"));
+                                            ivlist.setImageResource(R.drawable.checkbox);
+                                            tvservices.setTextColor(Color.parseColor("#737272"));
+                                            ivlist1.setImageResource(R.drawable.checkbox2);
 
-                                        //  count1++;
+                                            //  count1++;
 /*else {
     count1=0;
 
@@ -831,14 +832,14 @@ public class CarFragment extends Fragment {
     ivlist1.setImageResource(R.drawable.checkbox);
     count1++;
 }*/
-                                    }
-                                });
+                                        }
+                                    });
 
-                                builder.setView(vw);
-                                alertDialog = builder.create();
-                                alertDialog.show();
+                                    builder.setView(vw);
+                                    alertDialog = builder.create();
+                                    alertDialog.show();
 //
-
+                                }
                             }
 
                         });

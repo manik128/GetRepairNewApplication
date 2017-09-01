@@ -703,51 +703,55 @@ public  class MaleFragment extends Fragment {
 
                             @Override
                             public void onClick(View v) {
-                        builder = new AlertDialog.Builder(getContext());
+                                if (etemail.getText().toString().equals("")) {
+                                    Toast.makeText(getActivity(), "Service type field Should not be blank", Toast.LENGTH_LONG).show();
+//
+                                } else {
+                                    builder = new AlertDialog.Builder(getContext());
 
-                        View vw = null, vw2;
-                        builder = new AlertDialog.Builder(getContext());
-                        vw2 = getLayoutInflater(savedInstanceState).inflate(R.layout.linearlayout, null);
+                                    View vw = null, vw2;
+                                    builder = new AlertDialog.Builder(getContext());
+                                    vw2 = getLayoutInflater(savedInstanceState).inflate(R.layout.linearlayout, null);
 
-                        LinearLayout insertPoint = (LinearLayout) vw2.findViewById(R.id.linear);
-                        final Button btnsubmit = (Button) vw2.findViewById(R.id.btnsubmit);
-                                final TextView tvselect = (TextView) vw2.findViewById(R.id.tvselect);
-                                grfont gr = new grfont(getContext());
-                                gr.grfonttxt(tvselect);
-                                gr.grfontbut(btnsubmit);
-                        for (int i = 0; i < 2; i++) {
-                            vw = getLayoutInflater(savedInstanceState).inflate(R.layout.popup, null);
+                                    LinearLayout insertPoint = (LinearLayout) vw2.findViewById(R.id.linear);
+                                    final Button btnsubmit = (Button) vw2.findViewById(R.id.btnsubmit);
+                                    final TextView tvselect = (TextView) vw2.findViewById(R.id.tvselect);
+                                    grfont gr = new grfont(getContext());
+                                    gr.grfonttxt(tvselect);
+                                    gr.grfontbut(btnsubmit);
+                                    for (int i = 0; i < 2; i++) {
+                                        vw = getLayoutInflater(savedInstanceState).inflate(R.layout.popup, null);
 
-                            final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
-                            gr.grfonttxt(tvrepair);
-                            tvrepair.setText(cons[i]);
-                            insertPoint.addView(vw);
-                            final View finalVw = vw;
-                            finalVw.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    //View v3 = finalVw;
-                                    if (v2 != null) {
-                                        //
-                                        mclass.setService(tvrepair.getText().toString());
-                                        final TextView tv2 = (TextView) v2.findViewById(R.id.tvrepair);
-                                        tv2.setTextColor(Color.parseColor("#737272"));
-                                        final ImageView iv3 = (ImageView) v2.findViewById(R.id.ivlist);
-                                        iv3.setImageResource(R.drawable.checkbox);
-                                        v2.setBackgroundColor(Color.parseColor("#ffffff"));
-                                    }
-                                    //if (count ==1) {
-                                    //ivlist.setImageResource(R.drawable.checkbox2);
-                                    mclass.setService(tvrepair.getText().toString());
-                                    v.setBackgroundColor(Color.parseColor("#ecf0f1"));
-                                    final TextView tv3 = (TextView) v.findViewById(R.id.tvrepair);
-                                    final ImageView iv3 = (ImageView) v.findViewById(R.id.ivlist);
-                                    iv3.setImageResource(R.drawable.checkbox2);
-                                    tv3.setTextColor(Color.parseColor("#4fc5e6"));
-                                    v2 = v;
-                                    //Button btnsubmit = (Button) v.findViewById(R.id.btnsubmit);
+                                        final TextView tvrepair = (TextView) vw.findViewById(R.id.tvrepair);
+                                        gr.grfonttxt(tvrepair);
+                                        tvrepair.setText(cons[i]);
+                                        insertPoint.addView(vw);
+                                        final View finalVw = vw;
+                                        finalVw.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                //View v3 = finalVw;
+                                                if (v2 != null) {
+                                                    //
+                                                    mclass.setService(tvrepair.getText().toString());
+                                                    final TextView tv2 = (TextView) v2.findViewById(R.id.tvrepair);
+                                                    tv2.setTextColor(Color.parseColor("#737272"));
+                                                    final ImageView iv3 = (ImageView) v2.findViewById(R.id.ivlist);
+                                                    iv3.setImageResource(R.drawable.checkbox);
+                                                    v2.setBackgroundColor(Color.parseColor("#ffffff"));
+                                                }
+                                                //if (count ==1) {
+                                                //ivlist.setImageResource(R.drawable.checkbox2);
+                                                mclass.setService(tvrepair.getText().toString());
+                                                v.setBackgroundColor(Color.parseColor("#ecf0f1"));
+                                                final TextView tv3 = (TextView) v.findViewById(R.id.tvrepair);
+                                                final ImageView iv3 = (ImageView) v.findViewById(R.id.ivlist);
+                                                iv3.setImageResource(R.drawable.checkbox2);
+                                                tv3.setTextColor(Color.parseColor("#4fc5e6"));
+                                                v2 = v;
+                                                //Button btnsubmit = (Button) v.findViewById(R.id.btnsubmit);
 
-                                    //count++;
+                                                //count++;
                                             /*}else{
     count=0;
 
@@ -755,36 +759,36 @@ public  class MaleFragment extends Fragment {
     tvservices.setTextColor(Color.parseColor("#737272"));
     count++;
 }*/
-                                }
-                            });
+                                            }
+                                        });
 //
-                            btnsubmit.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    if ( v2==null )
-                                    {
-                                        Toast.makeText(getActivity(), "Select atleast one service", Toast.LENGTH_LONG).show();
-                                        // new RegisterAsyntaskNew().execute();
-                                    }else {
+                                        btnsubmit.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                if (v2 == null) {
+                                                    Toast.makeText(getActivity(), "Select atleast one service", Toast.LENGTH_LONG).show();
+                                                    // new RegisterAsyntaskNew().execute();
+                                                } else {
 
-                                        Intent intent = new Intent(getActivity(), ServicingActivity.class);
-                                        // intent.putExtra("message", tvtheatre.getText().toString());
-                                        intent.putExtra("sertyp", 0);
-                                        mclass.setType("Male");
-                                        mclass.setModel(etemail.getText().toString());
+                                                    Intent intent = new Intent(getActivity(), ServicingActivity.class);
+                                                    // intent.putExtra("message", tvtheatre.getText().toString());
+                                                    intent.putExtra("sertyp", 0);
+                                                    mclass.setType("Male");
+                                                    mclass.setModel(etemail.getText().toString());
 
-                                        intent.putExtra("service", etemail.getText().toString());
-                                        intent.putExtra("message", tvrepair.getText().toString());
-                                        startActivity(intent);
+                                                    intent.putExtra("service", etemail.getText().toString());
+                                                    intent.putExtra("message", tvrepair.getText().toString());
+                                                    startActivity(intent);
+                                                }
+                                            }
+
+                                        });
+
                                     }
+                                    builder.setView(vw2);
+                                    alertDialog = builder.create();
+                                    alertDialog.show();
                                 }
-
-                            });
-
-                        }
-                                builder.setView(vw2);
-                                alertDialog = builder.create();
-                                alertDialog.show();
                             }
                         });
 

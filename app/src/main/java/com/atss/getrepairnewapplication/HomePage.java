@@ -22,18 +22,20 @@ import com.atss.getrepairnewapplication.SchedulePage.Getrepairpojo;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class HomePage extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
     ViewPager viewPager;
     ImageView indicator1, indicator2, indicator3,ivactionhomemap;
     LinearLayout lcar,linearcart;
     ViewPagerAdapter viewadapter;
-    TextView title,bike,car,home,desktop,tvfacility,interior,loc,lochead,myprof,reward,wallet,share,notify,help,locmenu,tvarticles,tvguarantee,tvverify,tvprofessional,tvinsured,tvwork,tvsatisfaction,tvguarantees,tvbeauty,tvevents,tvloans, homeapp,repairtxt,tvinter;
+    TextView title,bike,car,home,desktop,tvfacility,interior,loc,lochead,myprof,reward,wallet,share,notify,help,locmenu,tvarticles,tvguarantee,tvverify,tvprofessional,tvinsured,tvwork,tvsatisfaction,tvguarantees,tvbeauty,tvevents,tvloans, homeapp,repairtxt,tvinter,tvorders;
     Timer timer;
     Mainclass mclass;
     int count = 0;
     int noofsize = 3;
     int position;
-
+    CircleImageView profile_image;
 
     int j;
     int[] mids = {
@@ -57,6 +59,23 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
         //toolbar.setTitle("");
         //StartLocationAlert startLocationAlert = new StartLocationAlert(HomePage.this);
         indicator1 = (ImageView)findViewById(R.id.imgslidecircle1);
+      tvorders = (TextView) findViewById(R.id.tvorders);
+        tvorders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomePage.this,OrderActivity.class);
+                startActivity(intent );
+            }
+        });
+        profile_image = (CircleImageView) findViewById(R.id. profile_image);
+        profile_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomePage.this,Profilepage.class);
+
+                startActivity(intent );
+            }
+        });
 
         indicator2 = (ImageView)findViewById(R.id.imgslidecircle2);
         indicator3 = (ImageView)findViewById(R.id.imgslidecircle3);
@@ -250,7 +269,7 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
         repairtxt=(TextView)findViewById(R.id.repairtxt);
         tvinter=(TextView)findViewById(R.id.tvinter);
         lochead=(TextView)findViewById(R.id.header);
-        myprof=(TextView)findViewById(R.id.textView1);
+       // myprof=(TextView)findViewById(R.id.textView1);
         reward=(TextView)findViewById(R.id.textView2);
         wallet=(TextView)findViewById(R.id.textView3);
         share=(TextView)findViewById(R.id.textView4);
@@ -348,7 +367,7 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
 
     public void setfont(){
         grfont gr= new grfont(HomePage.this);
-        gr.grfontlgttxt(myprof);
+        gr.grfontlgttxt(tvorders);
         gr.grfontlgttxt(reward);
         gr.grfontlgttxt(wallet);
         gr.grfontlgttxt(share);

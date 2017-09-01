@@ -113,7 +113,10 @@
         <activity android:name=".AddtocartActivity" />
         <activity android:name=".Forgotpassword" />
         <activity android:name=".Verficationcode" />
-        <activity android:name=".Newpassword"></activity>
+        <activity android:name=".Newpassword" />
+        <activity android:name=".Profilepage" />
+        <activity android:name=".OrderActivity" />
+        <activity android:name=".OrderfullActivity"></activity>
     </application>
 
 </manifest>
