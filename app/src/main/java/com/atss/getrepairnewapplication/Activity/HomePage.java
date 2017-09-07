@@ -1,13 +1,13 @@
-package com.atss.getrepairnewapplication;
+package com.atss.getrepairnewapplication.Activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -16,13 +16,35 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.atss.getrepairnewapplication.SchedulePage.Getrepairpojo;
+import com.atss.getrepairnewapplication.Adapter.ViewPagerAdapter;
 
+
+import com.atss.getrepairnewapplication.MInterface;
+import com.atss.getrepairnewapplication .MainActivity12;
+import com.atss.getrepairnewapplication.Mainclass;
+import com.atss.getrepairnewapplication.Pojoclass.Getrepairpojo;
+import com.atss.getrepairnewapplication.Pojoclass.grfont;
+import com.atss.getrepairnewapplication.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class HomePage extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
     ViewPager viewPager;
@@ -36,7 +58,7 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
     int noofsize = 3;
     int position;
     CircleImageView profile_image;
-
+    String url = "http://getrepair.in";
     int j;
     int[] mids = {
 
@@ -298,7 +320,10 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         viewPager = (ViewPager) findViewById(R.id.pager);
-        viewadapter = new ViewPagerAdapter(HomePage.this);
+
+        String[] images = {
+                String.valueOf(R.drawable.homeimages)};
+        viewadapter = new ViewPagerAdapter(HomePage.this,images);
         viewPager.setAdapter(viewadapter);
         viewPager.setCurrentItem(0);
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -363,7 +388,77 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
                 startActivity(n1);
             }
         });
+        RestAdapter radapter = new RestAdapter.Builder().setEndpoint(url).build();
+
+        MInterface restInt = radapter.create(MInterface.class);
+
+        restInt.insertUsers(
+
+                //Passing the values by getting it from editTexts
+                "home",
+
+                //Creating an anonymous callback
+                new Callback<Response>() {
+                    @Override
+                    public void success(Response result, Response response) {
+                        //On success we will read the server's output using bufferedreader
+                        //Creating a bufferedreader object
+                        BufferedReader reader = null;
+
+                        //An string to store output from the server
+                        String output = "";
+
+
+                        try {
+                            //Initializing buffered reader
+                            reader = new BufferedReader(new InputStreamReader(result.getBody().in()));
+
+                            //Reading the output in the string
+                            output = reader.readLine();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+
+                            JSONObject json_data = new JSONObject(output);
+                            //json_data.put("us", result);
+                            //Toast.makeText(getBaseContext(), "Inserted Successfully"+result+json_data,Toast.LENGTH_SHORT).show();
+                            //json_data.put("code", result);
+
+                            String code = json_data.getString("img1");
+                            String code1 = json_data.getString("img2");
+                            String code2 = json_data.getString("img3");
+                            //  String vendorid = json_data.getString("venid");
+                            String[] images = {
+                                    code,
+                                    code1,
+                                    code2,
+                                    // "http://getrepair.in/GetRepairApi/images/HomeBC.jpg",
+                                    //"http://getrepair.in/GetRepairApi/images/HomeCar.jpg"
+                            };
+                            ImageLoaderConfiguration config=new ImageLoaderConfiguration.Builder(HomePage.this).build();
+                            ImageLoader.getInstance().init(config);
+                            viewadapter = new ViewPagerAdapter(HomePage.this,images);
+                            viewPager.setAdapter(viewadapter);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        //Displaying the output as a toast
+                        //Toast.makeText(loginpageActivity.this, output, Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        //If any error occured displaying the error as toast
+                        Toast.makeText(HomePage.this, error.toString(), Toast.LENGTH_LONG).show();
+                    }
+                }
+        );
     }
+
+
+
+
 
     public void setfont(){
         grfont gr= new grfont(HomePage.this);
@@ -410,6 +505,10 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
+            Intent loginIntent = new Intent(HomePage.this, MainActivity.class);
+            loginIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(loginIntent);
+            finish();
             super.onBackPressed();
         }
 

@@ -1,45 +1,58 @@
-package com.atss.getrepairnewapplication;
+package com.atss.getrepairnewapplication.Activity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
-import android.location.Criteria;
-import android.location.Geocoder;
 import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationManager;
+import android.location.LocationListener;
 import android.net.Uri;
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.atss.getrepairnewapplication.Datalist;
+import com.atss.getrepairnewapplication.MInterface;
+import com.atss.getrepairnewapplication.Mainclass;
+import com.atss.getrepairnewapplication.Pojoclass.grfont;
+import com.atss.getrepairnewapplication.R;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
-import android.location.LocationListener;
-import android.widget.Toast;
-
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.model.LatLng;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, LocationListener{
@@ -55,12 +68,13 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     SharedPreferences sp;
     // Google client to interact with Google API
 
-
+ProgressDialog progressDialog;
     // boolean flag to toggle periodic location updates
     private boolean mRequestingLocationUpdates = false;
 
     private LocationRequest mLocationRequest;
-
+    String url = "http://getrepair.in";
+    String id="",username="", mail="",mobile="",password="";
     boolean press=true;
     EditText email,pass,name;
     private GoogleApiClient mGoogleApiClient;
@@ -86,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        Button b1 = (Button) findViewById(R.id.button);
+        final Button b1 = (Button) findViewById(R.id.button);
         email=(EditText)findViewById(R.id.etemail);
         pass=(EditText)findViewById(R.id.etpassword);
         name=(EditText)findViewById(R.id.etfullname);
@@ -114,9 +128,171 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent n = new Intent(getApplicationContext(), HomePage.class);
+
+                Intent n = new Intent(MainActivity.this, HomePage.class);
                 startActivity(n);
-            }
+//                final String emails = email.getText().toString();
+//
+//
+//
+//                    RestAdapter radapter = new RestAdapter.Builder().setEndpoint(url).build();
+//
+//                    MInterface restInt = radapter.create(MInterface.class);
+//
+//
+//                    if (!press) {
+//                        if (email.getText().toString().equals("") || pass.getText().toString().equals("")) {
+//                            Toast.makeText(MainActivity.this,"Please enter the form", Toast.LENGTH_SHORT).show();
+//                            // tvvalidation.setText("Please enter the form");
+//                        }else if(!validation(emails) ){
+//                            Snackbar.make(view, "Invalid email or phone number", Snackbar.LENGTH_LONG)
+//                                    .setAction("Action", null).show();
+//
+//                        }else {
+//                            progress();
+//                            restInt.insertlogin(
+//
+//                                    //Passing the values by getting it from editTexts
+//                                    email.getText().toString(),
+//                                    pass.getText().toString(),
+//
+//
+//                                    //Creating an anonymous callback
+//                                    new Callback<Response>() {
+//                                        @Override
+//                                        public void success(Response result, Response response) {
+//                                            //On success we will read the server's output using bufferedreader
+//                                            //Creating a bufferedreader object
+//                                            BufferedReader reader = null;
+//
+//                                            //An string to store output from the server
+//                                            String output = "";
+//
+//
+//                                            try {
+//                                                //Initializing buffered reader
+//                                                reader = new BufferedReader(new InputStreamReader(result.getBody().in()));
+//
+//                                                //Reading the output in the string
+//                                                output = reader.readLine();
+//                                            } catch (IOException e) {
+//                                                e.printStackTrace();
+//                                            }
+//                                            try {
+//
+//                                                JSONObject json_data = new JSONObject(output);
+//                                                //json_data.put("us", result);
+//                                                //Toast.makeText(getBaseContext(), "Inserted Successfully"+result+json_data,Toast.LENGTH_SHORT).show();
+//                                                //json_data.put("code", result);
+//                                                progressDialog.dismiss();
+//                                                String code = json_data.getString("status");
+//                                                //  String vendorid = json_data.getString("venid");
+//
+//
+//                                                if (code.equalsIgnoreCase("success")) {
+//
+//
+//                                                    // mclass.setVendorid(vendorid);
+//                                                    // mclass.setLogin(true);
+//                                                    Intent n = new Intent(MainActivity.this, HomePage.class);
+//                                                    startActivity(n);
+//                                                } else {
+//                                                    Toast.makeText(MainActivity.this, "Wrong Emailid and password", Toast.LENGTH_SHORT).show();
+//                                                }
+//                                            } catch (JSONException e) {
+//                                                e.printStackTrace();
+//                                            }
+//                                            //Displaying the output as a toast
+//                                            //Toast.makeText(loginpageActivity.this, output, Toast.LENGTH_LONG).show();
+//                                        }
+//
+//                                        @Override
+//                                        public void failure(RetrofitError error) {
+//                                            //If any error occured displaying the error as toast
+//                                            Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+//                                        }
+//                                    }
+//                            );
+//                        }
+//                    } else {
+//                        if (name.getText().toString().equals("")
+//                                || email.getText().toString().equals("") || pass.getText().toString().equals("")) {
+//                            Toast.makeText(MainActivity.this, "Please enter the form", Toast.LENGTH_SHORT).show();
+//                            // tvvalidation.setText("Please enter the form");
+//                        } else if (!validation(emails)) {
+//                            Snackbar.make(view, "Invalid email or phone number", Snackbar.LENGTH_LONG)
+//                                    .setAction("Action", null).show();
+//
+//                        } else {
+//                            progress();
+//                            restInt.insertUser(
+//
+//
+//                                    //Passing the values by getting it from editTexts
+//                                    email.getText().toString(),
+//                                    pass.getText().toString(),
+//                                    name.getText().toString(),
+//
+//                                    //Creating an anonymous callback
+//                                    new Callback<Response>() {
+//                                        @Override
+//                                        public void success(Response result, Response response) {
+//                                            //On success we will read the server's output using bufferedreader
+//                                            //Creating a bufferedreader object
+//                                            BufferedReader reader = null;
+//
+//                                            //An string to store output from the server
+//                                            String output = "";
+//
+//
+//                                            try {
+//                                                //Initializing buffered reader
+//                                                reader = new BufferedReader(new InputStreamReader(result.getBody().in()));
+//
+//                                                //Reading the output in the string
+//                                                output = reader.readLine();
+//                                            } catch (IOException e) {
+//                                                e.printStackTrace();
+//                                            }
+//                                            try {
+//
+//                                                JSONObject json_data = new JSONObject(output);
+//                                                //json_data.put("us", result);
+//                                                //Toast.makeText(getBaseContext(), "Inserted Successfully"+result+json_data,Toast.LENGTH_SHORT).show();
+//                                                //json_data.put("code", result);
+//                                                progressDialog.dismiss();
+//                                                String code = json_data.getString("status");
+//                                                //  String vendorid = json_data.getString("venid");
+//
+//
+//                                                if (code.equalsIgnoreCase("success")) {
+//
+//
+//                                                    // mclass.setVendorid(vendorid);
+//                                                    // mclass.setLogin(true);
+//                                                    Intent n = new Intent(MainActivity.this, HomePage.class);
+//                                                    startActivity(n);
+//                                                } else {
+//                                                    Toast.makeText(MainActivity.this, "Wrong Emailid and password", Toast.LENGTH_SHORT).show();
+//                                                }
+//                                            } catch (JSONException e) {
+//                                                e.printStackTrace();
+//                                            }
+//                                            //Displaying the output as a toast
+//                                            //Toast.makeText(loginpageActivity.this, output, Toast.LENGTH_LONG).show();
+//                                        }
+//
+//                                        @Override
+//                                        public void failure(RetrofitError error) {
+//                                            //If any error occured displaying the error as toast
+//                                            Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+//                                        }
+//                                    }
+//                            );
+//                        }
+//                    }
+               }
+
         });
         forgetpass.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,7 +307,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                 if(press==true) {
                     Drawable img = getBaseContext().getResources().getDrawable(R.drawable.checked);
                     img.setBounds(0, 0,  (int)(img.getIntrinsicWidth()),(int)(img.getIntrinsicHeight()));
-
+                   b1.setText("Login");
                     checkbut.setCompoundDrawables(img, null, null, null);
                     press=false;
                     txtlay.setVisibility(View.INVISIBLE);
@@ -140,7 +316,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                 else{
                     Drawable img = getBaseContext().getResources().getDrawable(R.drawable.dots_clear);
                     img.setBounds(0, 0, (int)(img.getIntrinsicWidth()),  (int)(img.getIntrinsicWidth()));
-
+                    b1.setText("Register");
                     checkbut.setCompoundDrawables(img, null, null, null);
                     press=true;
                     txtlay.setVisibility(View.VISIBLE);
@@ -151,6 +327,45 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
+
+    }
+//    private boolean isValidPhonenumber(String number) {
+//        String regEx = "^[0-9]{11,12}$";
+//        return number.matches(regEx);
+//        if (number !=null && number.length()<=10&&number.length()>=10){
+//            return true;
+//        }
+//        return false;
+//    }
+//    private boolean isValidEmail(String email) {
+//
+//        String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+//                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+//        Pattern pattern= Pattern.compile(EMAIL_PATTERN);
+//        Matcher matcher=pattern.matcher(email);
+//        return matcher.matches();
+//    }
+    public boolean validation(String email) {
+        String regEx = "[0-9]+";
+        //return email.matches(regEx);
+        String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        Pattern pattern= Pattern.compile(EMAIL_PATTERN);
+        Matcher matcher=pattern.matcher(email);
+        Pattern pattern1= Pattern.compile(regEx);
+        Matcher matcher1=pattern1.matcher(email);
+        if(matcher.matches()){
+            return true;
+        }
+        else if(matcher1.matches()){
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+       // return matcher.matches();
     }
 
     /**
@@ -455,5 +670,15 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     public void onConnectionFailed(ConnectionResult result) {
         Log.i(TAG, "Connection failed: ConnectionResult.getErrorCode() = "
                 + result.getErrorCode());
+    }
+    public void progress(){
+        progressDialog = new ProgressDialog(MainActivity.this);
+        progressDialog.setCancelable(true);
+        progressDialog.setMessage("Loading ...");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setProgress(0);
+
+        progressDialog.setMax(100);
+        progressDialog.show();
     }
 }

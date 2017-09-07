@@ -19,11 +19,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.atss.getrepairnewapplication.Activity.ServicingActivity;
 import com.atss.getrepairnewapplication.Mainclass;
+import com.atss.getrepairnewapplication.Pojoclass.Getrepairpojo;
+import com.atss.getrepairnewapplication.Pojoclass.grfont;
 import com.atss.getrepairnewapplication.R;
-import com.atss.getrepairnewapplication.SchedulePage.Getrepairpojo;
-import com.atss.getrepairnewapplication.ServicingActivity;
-import com.atss.getrepairnewapplication.grfont;
+
 
 
 /**

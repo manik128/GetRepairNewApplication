@@ -15,11 +15,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.atss.getrepairnewapplication.Activity.ServicingActivity;
 import com.atss.getrepairnewapplication.Mainclass;
+import com.atss.getrepairnewapplication.Pojoclass.Getrepairpojo;
+import com.atss.getrepairnewapplication.Pojoclass.grfont;
 import com.atss.getrepairnewapplication.R;
-import com.atss.getrepairnewapplication.SchedulePage.Getrepairpojo;
-import com.atss.getrepairnewapplication.ServicingActivity;
-import com.atss.getrepairnewapplication.grfont;
+
 
 
 /**
@@ -44,7 +45,7 @@ public class DecorationFragment extends Fragment {
         mclass=(Mainclass)getActivity().getApplicationContext();
         for( j=0;j<models.length;j++) {
 
-            Getrepairpojo pojo = new Getrepairpojo(new LinearLayout(getContext()), j);
+           Getrepairpojo pojo = new Getrepairpojo(new LinearLayout(getContext()), j);
             pojo.getLinearLayout().setOrientation(LinearLayout.VERTICAL);
             pojo.getLinearLayout().setPadding(10, 10, 10, 10);
             params1.setMargins(4, 0, 4, 0);

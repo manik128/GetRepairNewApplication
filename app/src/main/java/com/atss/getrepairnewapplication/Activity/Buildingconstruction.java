@@ -1,7 +1,9 @@
-package com.atss.getrepairnewapplication;
+package com.atss.getrepairnewapplication.Activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import com.atss.getrepairnewapplication.R;
 
 public class Buildingconstruction extends AppCompatActivity {
 
