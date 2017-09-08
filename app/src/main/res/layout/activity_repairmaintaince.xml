@@ -71,7 +71,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bio Metric Service"
+            android:text="Bio Metric Services"
             android:drawableRight="@drawable/plus"
             android:layout_marginRight="1dp"
             android:layout_marginLeft="1dp"
@@ -143,7 +143,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Projector Service"
+            android:text="Projector Services"
             android:layout_marginRight="1dp"
             android:layout_marginLeft="1dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -178,7 +178,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Plumber Work"
+            android:text="Plumbing Work"
             android:layout_marginRight="1dp"
             android:layout_marginLeft="1dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -212,7 +212,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="painter Work"
+            android:text="painting Work"
             android:layout_marginRight="1dp"
             android:layout_marginLeft="1dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -278,7 +278,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lan Networking Service"
+            android:text="Lan Networking Services"
             android:layout_marginRight="1dp"
             android:layout_marginLeft="1dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -298,7 +298,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Laptop Service"
+            android:text="Laptop Services"
             android:layout_marginRight="1dp"
             android:layout_marginLeft="1dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -333,7 +333,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CCTV Camera Service"
+            android:text="CCTV Camera Services"
             android:layout_marginRight="1dp"
             android:layout_marginLeft="1dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -413,7 +413,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Glass doors and Glass Work Service"
+            android:text="Glass doors and Glass Work Services"
             android:layout_marginRight="1dp"
             android:layout_marginLeft="1dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -467,7 +467,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Printer Service"
+            android:text="Printer Services"
             android:layout_marginRight="1dp"
             android:layout_marginLeft="1dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -533,7 +533,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mobiles Service"
+            android:text="Mobiles Services"
             android:layout_marginRight="1dp"
             android:layout_marginLeft="1dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -566,7 +566,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Desktop Service"
+            android:text="Desktop Services"
             android:layout_marginRight="1dp"
             android:layout_marginLeft="1dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -599,7 +599,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tablet Service"
+            android:text="Tablet Services"
             android:layout_marginRight="1dp"
             android:layout_marginLeft="1dp"
             android:textAppearance="?android:attr/textAppearanceMedium"

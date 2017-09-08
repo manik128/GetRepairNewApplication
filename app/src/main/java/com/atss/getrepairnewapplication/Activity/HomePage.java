@@ -22,13 +22,14 @@ import com.atss.getrepairnewapplication.Adapter.ViewPagerAdapter;
 
 
 import com.atss.getrepairnewapplication.MInterface;
-import com.atss.getrepairnewapplication .MainActivity12;
+import com.atss.getrepairnewapplication.MainActivity12;
 import com.atss.getrepairnewapplication.Mainclass;
 import com.atss.getrepairnewapplication.Pojoclass.Getrepairpojo;
 import com.atss.getrepairnewapplication.Pojoclass.grfont;
 import com.atss.getrepairnewapplication.R;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.squareup.picasso.Picasso;
 
 
 import org.json.JSONException;
@@ -54,6 +55,7 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
     TextView title,bike,car,home,desktop,tvfacility,interior,loc,lochead,myprof,reward,wallet,share,notify,help,locmenu,tvarticles,tvguarantee,tvverify,tvprofessional,tvinsured,tvwork,tvsatisfaction,tvguarantees,tvbeauty,tvevents,tvloans, homeapp,repairtxt,tvinter,tvorders;
     Timer timer;
     Mainclass mclass;
+
     int count = 0;
     int noofsize = 3;
     int position;
@@ -69,6 +71,7 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
 
 
     };
+    String[] articles=new String[3];
     String cat[] = {"Minearl or Synthetic\noil? What's better\nfor your car?", "4 car lover\nmust know",
             "Why does your car\nneed to be waxed?", "How do you care for\nyour motorcycle\nspark plug?"};
     @Override
@@ -102,50 +105,82 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
         indicator2 = (ImageView)findViewById(R.id.imgslidecircle2);
         indicator3 = (ImageView)findViewById(R.id.imgslidecircle3);
         loc=(TextView)findViewById(R.id.loc);
-        LinearLayout root = (LinearLayout) findViewById(R.id.linearlayouthorscroll);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
-        for (j = 0; j <= 3; j++) {
-            Getrepairpojo pojo = new Getrepairpojo(new LinearLayout(HomePage.this), j);
-            pojo.getLinearLayout().setOrientation(LinearLayout.VERTICAL);
-            //    pojo.getLinearLayout().setBackgroundColor(color[j]);
-            pojo.getLinearLayout().setPadding(10, 10, 10, 10);
 
-//ll.setDividerPadding(1);
-            params.setMargins(4, 0, 4, 0);
-            pojo.getLinearLayout().setLayoutParams(params);
-            pojo.getLinearLayout().setClickable(true);
-            final ImageView ivproduct = new ImageView(HomePage.this);
-            ivproduct.setImageResource(mids[j]);
-            // ivproduct.setBackgroundColor(color[j]);
-            //  ivproduct.setId(j+1);
-            ivproduct.setPadding(10, 10, 10, 10);
-            pojo.getLinearLayout().addView(ivproduct);
+        RestAdapter radapter = new RestAdapter.Builder().setEndpoint(url).build();
 
-            TextView product = new TextView(HomePage.this);
+        MInterface restInt = radapter.create(MInterface.class);
 
-            product.setText(cat[j]);
-            product.setGravity(Gravity.CENTER);
-            product.setPadding(10, 10, 10, 10);
-            //product.setTextColor(Color.parseColor("#ffffff"));
-            //product.setBackgroundColor(color[j]);
-            pojo.getLinearLayout().addView(product);
+        restInt.insertUsers(
 
-            final int positon = pojo.getPosition();
-            pojo.getLinearLayout().setOnClickListener(new View.OnClickListener() {
+                //Passing the values by getting it from editTexts
+                "home",
+                "article",
 
-                @Override
+                //Creating an anonymous callback
+                new Callback<Response>() {
+                    @Override
+                    public void success(Response result, Response response) {
+                        //On success we will read the server's output using bufferedreader
+                        //Creating a bufferedreader object
+                        BufferedReader reader = null;
 
-                public void onClick(View view) {
-                    //  Toast.makeText(SagarAssociatesActivity.this,"clickable",Toast.LENGTH_LONG).show();
-                    changeView(positon);
+                        //An string to store output from the server
+                        String output = "";
+
+
+                        try {
+                            //Initializing buffered reader
+                            reader = new BufferedReader(new InputStreamReader(result.getBody().in()));
+
+                            //Reading the output in the string
+                            output = reader.readLine();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+
+                            JSONObject json_data = new JSONObject(output);
+                            //json_data.put("us", result);
+                            //Toast.makeText(getBaseContext(), "Inserted Successfully"+result+json_data,Toast.LENGTH_SHORT).show();
+                            //json_data.put("code", result);
+
+                            String code = json_data.getString("img1");
+                            String code1 = json_data.getString("img2");
+                            String code2 = json_data.getString("img3");
+
+                            //  String vendorid = json_data.getString("venid");
+                            articles = new String[]{
+                                    code,
+                                    code1,
+                                    code2,
+
+                                    // "http://getrepair.in/GetRepairApi/images/HomeBC.jpg",
+                                    //"http://getrepair.in/GetRepairApi/images/HomeCar.jpg"
+                            };
+                           // Toast.makeText(HomePage.this,  "test"+articles[0]+articles[1], Toast.LENGTH_LONG).show();
+                            getdep();
+                            //Toast.makeText(HomePage.this, code+code1+code2, Toast.LENGTH_LONG).show();
+
+                            //Picasso.with(HomePage.this).load(articles[j-1]).into(ivproduct);
+//                                ImageLoaderConfiguration config=new ImageLoaderConfiguration.Builder(HomePage.this).build();
+//                                ImageLoader.getInstance().init(config);
+//                                viewadapter = new ViewPagerAdapter(HomePage.this,images);
+//                                viewPager.setAdapter(viewadapter);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        //Displaying the output as a toast
+                        //Toast.makeText(loginpageActivity.this, output, Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        //If any error occured displaying the error as toast
+                        Toast.makeText(HomePage.this, error.toString(), Toast.LENGTH_LONG).show();
+                    }
                 }
+        );
 
-            });
-
-            root.addView(pojo.getLinearLayout());
-
-        }
         final LinearLayout lcart=(LinearLayout)findViewById(R.id.linearcart);
         lcart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -388,14 +423,15 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
                 startActivity(n1);
             }
         });
-        RestAdapter radapter = new RestAdapter.Builder().setEndpoint(url).build();
+        RestAdapter  radapter1 = new RestAdapter.Builder().setEndpoint(url).build();
 
-        MInterface restInt = radapter.create(MInterface.class);
+        MInterface restInt1 = radapter1.create(MInterface.class);
 
-        restInt.insertUsers(
+        restInt1.insertUsers(
 
                 //Passing the values by getting it from editTexts
                 "home",
+                "banner",
 
                 //Creating an anonymous callback
                 new Callback<Response>() {
@@ -505,10 +541,7 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            Intent loginIntent = new Intent(HomePage.this, MainActivity.class);
-            loginIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(loginIntent);
-            finish();
+
             super.onBackPressed();
         }
 
@@ -584,4 +617,54 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
             //showGPSDisabledAlertToUser();
         }
     }*/
+    public void getdep(){
+        LinearLayout root = (LinearLayout) findViewById(R.id.linearlayouthorscroll);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        for(j=0;j<=2;j++) {
+            Getrepairpojo pojo = new Getrepairpojo(new LinearLayout(HomePage.this),j);
+            pojo.getLinearLayout().setOrientation(LinearLayout.VERTICAL);
+            //    pojo.getLinearLayout().setBackgroundColor(color[j]);
+            pojo.getLinearLayout().setPadding(10, 10, 10, 10);
+            //ImageView ivproduct ;
+//ll.setDividerPadding(1);
+            params.setMargins(4, 0, 4, 0);
+            pojo.getLinearLayout().setLayoutParams(params);
+            pojo.getLinearLayout().setClickable(true);
+            final ImageView ivproduct = new ImageView(HomePage.this);
+            //  ivproduct.setImageResource(mids[j]);
+           // Toast.makeText(HomePage.this,  "test"+articles[j], Toast.LENGTH_LONG).show();
+            Picasso.with(HomePage.this).load( articles[j]).into(ivproduct);
+
+            //Picasso.with(c).load(images[position]).into(image);
+            // ivproduct.setBackgroundColor(color[j]);
+            //  ivproduct.setId(j+1);
+            ivproduct.setPadding(10, 10, 10, 10);
+            pojo.getLinearLayout().addView(ivproduct);
+
+            TextView product = new TextView(HomePage.this);
+
+            product.setText(cat[j]);
+            product.setGravity(Gravity.CENTER);
+            product.setPadding(10, 10, 10, 10);
+            //product.setTextColor(Color.parseColor("#ffffff"));
+            //product.setBackgroundColor(color[j]);
+            pojo.getLinearLayout().addView(product);
+
+            final int positon = pojo.getPosition();
+            pojo.getLinearLayout().setOnClickListener(new View.OnClickListener() {
+
+                @Override
+
+                public void onClick(View view) {
+                    //  Toast.makeText(SagarAssociatesActivity.this,"clickable",Toast.LENGTH_LONG).show();
+                    changeView(positon);
+                }
+
+            });
+
+            root.addView(pojo.getLinearLayout());
+
+        }
+    }
 }

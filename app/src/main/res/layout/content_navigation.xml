@@ -515,17 +515,10 @@ android:layout_marginLeft="10dp"
                     android:paddingBottom="5dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:paddingLeft="20dp"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_below="@+id/tvarticles"
-                    android:layout_marginTop="5dp"
-                    android:background="#8e8b8b"
-                    android:id="@+id/tvline1"
-                    android:layout_height="0.1dp" />
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:id="@+id/horizontalScrollView"
-                    android:layout_below="@+id/tvline1"
+                    android:layout_below="@+id/tvarticles"
                     android:scrollbars="none"
                     android:layout_height="wrap_content">
                     <LinearLayout

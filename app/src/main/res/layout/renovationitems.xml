@@ -78,6 +78,34 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:id="@+id/relativespinnerfloors"
+        android:layout_marginTop="19dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/myborderbuilding"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvfloors"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+           android:paddingLeft="10dp"
+            android:text="One Floor"
+            android:textSize="18dp"
+            android:textColor="#787878"
+            android:id="@+id/spinnerfloors"
+
+            android:layout_height="wrap_content">
+
+        </Spinner>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:id="@+id/relativeselectarea"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvselectarea"
@@ -123,34 +151,6 @@
 
             </Spinner>
         </RelativeLayout>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:id="@+id/relativespinnerfloors"
-        android:layout_marginTop="19dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/myborderbuilding"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvfloors"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-           android:paddingLeft="10dp"
-            android:text="One Floor"
-            android:textSize="18dp"
-            android:textColor="#787878"
-            android:id="@+id/spinnerfloors"
-
-            android:layout_height="wrap_content">
-
-        </Spinner>
     </RelativeLayout>
 
 </RelativeLayout>

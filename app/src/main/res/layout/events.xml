@@ -31,9 +31,9 @@
             android:paddingTop="10dp"
 
             android:textSize="18dp"
-            android:textColor="#000"
+
             android:id="@+id/spvehicle"
-            android:popupBackground="#fdf9f9"
+            android:theme="@style/Spinner"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
