@@ -16453,11 +16453,11 @@ String cats="";
 
         MInterface restInt = radapter.create(MInterface.class);
 
-        restInt.insertUsers(
+        restInt.insertarticle(
 
                 //Passing the values by getting it from editTexts
-                cats,
-                "article",
+
+                "auto",
 
                 //Creating an anonymous callback
                 new Callback<Response>() {
@@ -16487,15 +16487,16 @@ String cats="";
                             //Toast.makeText(getBaseContext(), "Inserted Successfully"+result+json_data,Toast.LENGTH_SHORT).show();
                             //json_data.put("code", result);
 
-                            String code = json_data.getString("img1");
-                            String code1 = json_data.getString("img2");
-                            String code2 = json_data.getString("img3");
 
+
+                            String question = json_data.getString("ques");
+                            String code = json_data.getString("img");
+                            String  content= json_data.getString("cont");
                             //  String vendorid = json_data.getString("venid");
                             articles = new String[]{
+                                    question,
                                     code,
-                                    code1,
-                                    code2,
+                                    content,
 
                                     // "http://getrepair.in/GetRepairApi/images/HomeBC.jpg",
                                     //"http://getrepair.in/GetRepairApi/images/HomeCar.jpg"
@@ -16684,32 +16685,36 @@ Intent intent=new Intent(MainActivity12.this,ArticleActivity.class);
         LinearLayout root = (LinearLayout) findViewById(R.id.linearlayouthorscroll);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
+
         for(j=0;j<=2;j++) {
             Getrepairpojo pojo = new Getrepairpojo(new LinearLayout(MainActivity12.this),j);
             pojo.getLinearLayout().setOrientation(LinearLayout.VERTICAL);
+
+
             //    pojo.getLinearLayout().setBackgroundColor(color[j]);
-            pojo.getLinearLayout().setPadding(10, 10, 10, 10);
+           // pojo.getLinearLayout().setPadding(10, 10, 10, 10);
             //ImageView ivproduct ;
 //ll.setDividerPadding(1);
-            params.setMargins(4, 0, 4, 0);
+           // params.setMargins(4, 0, 4, 0);
             pojo.getLinearLayout().setLayoutParams(params);
             pojo.getLinearLayout().setClickable(true);
             final ImageView ivproduct = new ImageView(MainActivity12.this);
+
             //  ivproduct.setImageResource(mids[j]);
           //  Toast.makeText(MainActivity12.this,  "test"+articles[j], Toast.LENGTH_LONG).show();
-            Picasso.with(MainActivity12.this).load( articles[j]).into(ivproduct);
+            Picasso.with(MainActivity12.this).load(articles[1]).into(ivproduct);
 
             //Picasso.with(c).load(images[position]).into(image);
             // ivproduct.setBackgroundColor(color[j]);
             //  ivproduct.setId(j+1);
-            ivproduct.setPadding(10, 10, 10, 10);
+           // ivproduct.setPadding(10, 10, 10, 10);
             pojo.getLinearLayout().addView(ivproduct);
 
             TextView product = new TextView(MainActivity12.this);
 
-            product.setText(cat[j]);
-            product.setGravity(Gravity.CENTER);
-            product.setPadding(10, 10, 10, 10);
+            product.setText(articles[0]);
+           // product.setGravity(Gravity.NO_GRAVITY);
+           // product.setPadding(10, 10, 10, 10);
             //product.setTextColor(Color.parseColor("#ffffff"));
             //product.setBackgroundColor(color[j]);
             pojo.getLinearLayout().addView(product);
