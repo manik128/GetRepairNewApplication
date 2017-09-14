@@ -55,6 +55,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -72,7 +73,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 public class MainActivity12 extends AppCompatActivity {
-    TextView tvwhy,tvpnt1,tvpnt2,tvpnt3,tvarticles,tvguarantee,tvverify,tvprofessional,tvinsured,tvwork,tvsatisfaction,tvguaranteed,tveasy,tvpayment,tvbuilding,tvhome,tvacer, tvdell,tvhp,tvlenevo,tvtelevision,tvdvd,tvrefrigerator,tvwashing,tvtheatre,tvgeyser,tvrepair,tvselect,tvcarpentry,tvlan,tvlaptop,tvcamera,tvmanson,tvglass,tvcleaning,tvprinter,tvchair,tvmobile,tvmenpower,tvonetime,tvmovers,tvreal,tvtours,tvpest,tvinterior,tvdesign,tvarch,tvskill,tvelectrical,tvbiometric,tvcooler,tvprojector,tvplumber,tvpainter,tvcarpenter,tvdesktop,tvtablet, tvcommercial,tvmaterialhouse,tvstationary,tv3;
+    TextView tvwhy,tvpnt1,tvpnt2,tvpnt3,tvarticles,tvguarantee,tvverify,tvprofessional,tvinsured,tvwork,tvsatisfaction,tvguaranteed,tveasy,tvpayment,tvbuilding,tvhome,tvacer, tvdell,tvhp,tvlenevo,tvtelevision,tvdvd,tvrefrigerator,tvwashing,tvtheatre,tvgeyser,tvrepair,tvselect,tvcarpentry,tvlan,tvlaptop,tvcamera,tvmanson,tvglass,tvcleaning,tvprinter,tvchair,tvmobile,tvmenpower,tvonetime,tvmovers,tvreal,tvtours,tvpest,tvinterior,tvdesign,tvarch,tvskill,tvelectrical,tvbiometric,tvcooler,tvprojector,tvplumber,tvpainter,tvcarpenter,tvdesktop,tvtablet, tvcommercial,tvmaterialhouse,tvstationary,tv3, tvtext;
     ViewPagerAdapters viewadapter;
     View view,view1, view3,view2, view4,view5;
     RelativeLayout linearLayout;
@@ -88,7 +89,7 @@ Button  btnno;
     LinearLayout linearLayout1;
     int count=1,count1=1,count2=1,add=0;
     grfont gr;
-    ImageView indicator1,indicator2,indicator3,ivactionmenu;
+    ImageView indicator1,indicator2,indicator3,ivactionmenu, fab1 ;
     HorizontalScrollView horizontalScrollView;
     int j;
     int[] mids = {
@@ -204,7 +205,8 @@ Button  btnno;
     private TabLayout tabLayout;
     int pos=6;
     View v2;
-String cats="";
+    String cats="";
+    String mobiles="";
     String type="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -243,7 +245,6 @@ String cats="";
 
         if (pos == 0) {
             cats="auto";
-
 
             View mActionBarView = getLayoutInflater().inflate(R.layout.actionbarservicing, null);
             getSupportActionBar().setCustomView(mActionBarView);
@@ -16449,15 +16450,15 @@ String cats="";
                     }
                 }
         );
-        RestAdapter radapter = new RestAdapter.Builder().setEndpoint(url).build();
+        RestAdapter radapter2 = new RestAdapter.Builder().setEndpoint(url).build();
 
-        MInterface restInt = radapter.create(MInterface.class);
+        MInterface restInt2 = radapter1.create(MInterface.class);
 
-        restInt.insertarticle(
+        restInt2. insertarticle(
 
                 //Passing the values by getting it from editTexts
+                cats,
 
-                "auto",
 
                 //Creating an anonymous callback
                 new Callback<Response>() {
@@ -16481,35 +16482,52 @@ String cats="";
                             e.printStackTrace();
                         }
                         try {
+                            JSONArray json_data = new JSONArray(output);
 
-                            JSONObject json_data = new JSONObject(output);
+                            System.out.print("succesful"+output+json_data.length());
+                            int flag=0;
                             //json_data.put("us", result);
                             //Toast.makeText(getBaseContext(), "Inserted Successfully"+result+json_data,Toast.LENGTH_SHORT).show();
                             //json_data.put("code", result);
 
+                            for (int i = 0; i < json_data.length(); i++) {
+                                final JSONObject jo = json_data.getJSONObject(i);
+
+                                flag = 1;
+                                LinearLayout root = (LinearLayout) findViewById(R.id.linearlayouthorscroll);
+                                LayoutInflater layoutInflator = (LayoutInflater) MainActivity12.this.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                                View vw = layoutInflator.inflate(R.layout.horizantalscrollview, null);
+                                fab1 = (ImageView)vw.findViewById(R.id.fab1);
+                                tvtext= (TextView) vw.findViewById(R.id.tvtext);
+                                grfont gr= new grfont(MainActivity12.this);
+                                gr.grfonttxt(tvtext);
+                                final String question= jo.getString("ques");
+                                final String Image = jo.getString("img");
+                                final String content= jo.getString("cont");
+                                Picasso.with(MainActivity12.this).load( Image).into(fab1);
+                                tvtext.setText(question);
+                                root.addView(vw);
+                                vw.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent intent = new Intent(MainActivity12.this,ArticleActivity.class);
+                                        intent.putExtra("ques",question);
+                                        intent.putExtra("cont",content);
+                                        startActivity(intent );
+                                    }
+                                });
+
+//                    mclass.setTaskdate(jo.getString("taskdate"));
+//                    mclass.setFrtime(jo.getString("fromtime"));
+//                    mclass.setTotime(jo.getString("totime"));
+//                    mclass.setTaskdescription(jo.getString("taskdesc"));
+//                    mclass.setContactperson(jo.getString("contactperson"));
+//                    mclass.setFromaddress(jo.getString("fromaddress"));
+//                    mclass.setStatus(jo.getString("status"));
 
 
-                            String question = json_data.getString("ques");
-                            String code = json_data.getString("img");
-                            String  content= json_data.getString("cont");
-                            //  String vendorid = json_data.getString("venid");
-                            articles = new String[]{
-                                    question,
-                                    code,
-                                    content,
+                            }
 
-                                    // "http://getrepair.in/GetRepairApi/images/HomeBC.jpg",
-                                    //"http://getrepair.in/GetRepairApi/images/HomeCar.jpg"
-                            };
-                            // Toast.makeText(HomePage.this,  "test"+articles[0]+articles[1], Toast.LENGTH_LONG).show();
-                            getdep();
-                            //Toast.makeText(HomePage.this, code+code1+code2, Toast.LENGTH_LONG).show();
-
-                            //Picasso.with(HomePage.this).load(articles[j-1]).into(ivproduct);
-//                                ImageLoaderConfiguration config=new ImageLoaderConfiguration.Builder(HomePage.this).build();
-//                                ImageLoader.getInstance().init(config);
-//                                viewadapter = new ViewPagerAdapter(HomePage.this,images);
-//                                viewPager.setAdapter(viewadapter);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -16524,7 +16542,8 @@ String cats="";
                     }
                 }
         );
-        }
+
+    }
 
 
     public void setfont(){
@@ -16680,41 +16699,38 @@ Intent intent=new Intent(MainActivity12.this,ArticleActivity.class);
             return mFragmentTitleList.get(position);
         }
     }
-
     public void getdep(){
         LinearLayout root = (LinearLayout) findViewById(R.id.linearlayouthorscroll);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
-
         for(j=0;j<=2;j++) {
             Getrepairpojo pojo = new Getrepairpojo(new LinearLayout(MainActivity12.this),j);
             pojo.getLinearLayout().setOrientation(LinearLayout.VERTICAL);
-
-
             //    pojo.getLinearLayout().setBackgroundColor(color[j]);
-           // pojo.getLinearLayout().setPadding(10, 10, 10, 10);
+            pojo.getLinearLayout().setPadding(10, 10, 10, 10);
             //ImageView ivproduct ;
 //ll.setDividerPadding(1);
-           // params.setMargins(4, 0, 4, 0);
+            params.setMargins(4, 0, 4, 0);
             pojo.getLinearLayout().setLayoutParams(params);
             pojo.getLinearLayout().setClickable(true);
             final ImageView ivproduct = new ImageView(MainActivity12.this);
-
             //  ivproduct.setImageResource(mids[j]);
-          //  Toast.makeText(MainActivity12.this,  "test"+articles[j], Toast.LENGTH_LONG).show();
-            Picasso.with(MainActivity12.this).load(articles[1]).into(ivproduct);
+            // Toast.makeText(HomePage.this,  "test"+articles[j], Toast.LENGTH_LONG).show();
+            Picasso.with(MainActivity12.this).load( articles[1]).into(ivproduct);
 
             //Picasso.with(c).load(images[position]).into(image);
             // ivproduct.setBackgroundColor(color[j]);
             //  ivproduct.setId(j+1);
-           // ivproduct.setPadding(10, 10, 10, 10);
+            ivproduct.setPadding(10, 10, 10, 10);
             pojo.getLinearLayout().addView(ivproduct);
 
             TextView product = new TextView(MainActivity12.this);
 
-            product.setText(articles[0]);
-           // product.setGravity(Gravity.NO_GRAVITY);
-           // product.setPadding(10, 10, 10, 10);
+            product.setText("maheswari is good girl and manik is bad boy");
+            product.setMaxLines(4);
+            product.setLines(4);
+            product.setGravity(Gravity.CENTER);
+            product.setPadding(10, 10, 10, 10);
             //product.setTextColor(Color.parseColor("#ffffff"));
             //product.setBackgroundColor(color[j]);
             pojo.getLinearLayout().addView(product);
@@ -16735,6 +16751,60 @@ Intent intent=new Intent(MainActivity12.this,ArticleActivity.class);
 
         }
     }
+//    public void getdep(){
+//        LinearLayout root = (LinearLayout) findViewById(R.id.linearlayouthorscroll);
+//        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+//                ViewGroup.LayoutParams.MATCH_PARENT);
+//
+//        for(j=0;j<=2;j++) {
+//            Getrepairpojo pojo = new Getrepairpojo(new LinearLayout(MainActivity12.this),j);
+//            pojo.getLinearLayout().setOrientation(LinearLayout.VERTICAL);
+//
+//
+//            //    pojo.getLinearLayout().setBackgroundColor(color[j]);
+//           // pojo.getLinearLayout().setPadding(10, 10, 10, 10);
+//            //ImageView ivproduct ;
+////ll.setDividerPadding(1);
+//           // params.setMargins(4, 0, 4, 0);
+//            pojo.getLinearLayout().setLayoutParams(params);
+//            pojo.getLinearLayout().setClickable(true);
+//            final ImageView ivproduct = new ImageView(MainActivity12.this);
+//
+//            //  ivproduct.setImageResource(mids[j]);
+//          //  Toast.makeText(MainActivity12.this,  "test"+articles[j], Toast.LENGTH_LONG).show();
+//            Picasso.with(MainActivity12.this).load(articles[1]).into(ivproduct);
+//
+//            //Picasso.with(c).load(images[position]).into(image);
+//            // ivproduct.setBackgroundColor(color[j]);
+//            //  ivproduct.setId(j+1);
+//           // ivproduct.setPadding(10, 10, 10, 10);
+//            pojo.getLinearLayout().addView(ivproduct);
+//
+//            TextView product = new TextView(MainActivity12.this);
+//
+//            product.setText(cat[j]);
+//           // product.setGravity(Gravity.NO_GRAVITY);
+//           // product.setPadding(10, 10, 10, 10);
+//            //product.setTextColor(Color.parseColor("#ffffff"));
+//            //product.setBackgroundColor(color[j]);
+//            pojo.getLinearLayout().addView(product);
+//
+//            final int positon = pojo.getPosition();
+//            pojo.getLinearLayout().setOnClickListener(new View.OnClickListener() {
+//
+//                @Override
+//
+//                public void onClick(View view) {
+//                    //  Toast.makeText(SagarAssociatesActivity.this,"clickable",Toast.LENGTH_LONG).show();
+//                    changeView(positon);
+//                }
+//
+//            });
+//
+//            root.addView(pojo.getLinearLayout());
+//
+//        }
+//    }
     @Override
     public void onBackPressed() {
 

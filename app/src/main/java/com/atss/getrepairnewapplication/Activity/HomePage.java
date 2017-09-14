@@ -1,15 +1,27 @@
 package com.atss.getrepairnewapplication.Activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,17 +39,29 @@ import com.atss.getrepairnewapplication.Mainclass;
 import com.atss.getrepairnewapplication.Pojoclass.Getrepairpojo;
 import com.atss.getrepairnewapplication.Pojoclass.grfont;
 import com.atss.getrepairnewapplication.R;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
+import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.squareup.picasso.Picasso;
 
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -47,16 +71,32 @@ import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class HomePage extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
+public class HomePage extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener,ConnectionCallbacks,
+        OnConnectionFailedListener, LocationListener {
     ViewPager viewPager;
-    ImageView indicator1, indicator2, indicator3,ivactionhomemap;
+    ImageView indicator1, indicator2, indicator3,ivactionhomemap,fab1;
     LinearLayout lcar,linearcart;
     ViewPagerAdapter viewadapter;
-    TextView title,bike,car,home,desktop,tvfacility,interior,loc,lochead,myprof,reward,wallet,share,notify,help,locmenu,tvarticles,tvguarantee,tvverify,tvprofessional,tvinsured,tvwork,tvsatisfaction,tvguarantees,tvbeauty,tvevents,tvloans, homeapp,repairtxt,tvinter,tvorders;
+    TextView title,bike,car,home,desktop,tvfacility,interior,loc,lochead,myprof,reward,wallet,share,notify,help,locmenu,tvarticles,tvguarantee,tvverify,tvprofessional,tvinsured,tvwork,tvsatisfaction,tvguarantees,tvbeauty,tvevents,tvloans, homeapp,repairtxt,tvinter,tvorders,tvtext;
     Timer timer;
+    String address = null, province = null, country = null, postalCode = null, knownName = null, local = null, local2 = null;
     Mainclass mclass;
-
+    private GoogleApiClient mGoogleApiClient;
+    Geocoder geocoder;
+    private static final String TAG = HomePage.class.getSimpleName();
+    private boolean mRequestingLocationUpdates = false;
+    private LocationRequest mLocationRequest;
+    private TextView lblLocation;
+    List<Address> addresses = null;
+    private Location mLastLocation;
+    public static final String MyPREFERENCES = "MyPrefs";
     int count = 0;
+    private static int UPDATE_INTERVAL = 10000; // 10 sec
+    private static int FATEST_INTERVAL = 5000; // 5 sec
+    private static int DISPLACEMENT = 10; // 10 meters
+    private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 1000;
+    String[] spiltaddr, spiltaddr2;
+    private String fulladdr;
     int noofsize = 3;
     int position;
     CircleImageView profile_image;
@@ -72,14 +112,16 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
 
     };
     String[] articles=new String[3];
-    String cat[] = {"Minearl or Synthetic\noil? What's better\nfor your car?", "4 car lover\nmust know",
-            "Why does your car\nneed to be waxed?", "How do you care for\nyour motorcycle\nspark plug?"};
+    String cat[] = {"Minearl or Syntheticoil? What's betterfor your car?", "4 car lover must know",
+            "Why does your car need to be waxed?", "How do you care for your motorcycle spark plug?"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        buildGoogleApiClient();
+        createLocationRequest();
         mclass=(Mainclass) getApplicationContext();
         //toolbar.setTitle("");
         //StartLocationAlert startLocationAlert = new StartLocationAlert(HomePage.this);
@@ -110,11 +152,11 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
 
         MInterface restInt = radapter.create(MInterface.class);
 
-        restInt.insertUsers(
+        restInt.insertarticle(
 
                 //Passing the values by getting it from editTexts
-                "home",
-                "article",
+                "auto",
+
 
                 //Creating an anonymous callback
                 new Callback<Response>() {
@@ -138,35 +180,52 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
                             e.printStackTrace();
                         }
                         try {
+                            JSONArray json_data = new JSONArray(output);
 
-                            JSONObject json_data = new JSONObject(output);
+                            System.out.print("succesful"+output+json_data.length());
+                            int flag=0;
                             //json_data.put("us", result);
                             //Toast.makeText(getBaseContext(), "Inserted Successfully"+result+json_data,Toast.LENGTH_SHORT).show();
                             //json_data.put("code", result);
 
-                            String code = json_data.getString("img1");
-                            String code1 = json_data.getString("img2");
-                            String code2 = json_data.getString("img3");
+                            for (int i = 0; i < json_data.length(); i++) {
+                                final JSONObject jo = json_data.getJSONObject(i);
 
-                            //  String vendorid = json_data.getString("venid");
-                            articles = new String[]{
-                                    code,
-                                    code1,
-                                    code2,
+                                    flag = 1;
+                                LinearLayout root = (LinearLayout) findViewById(R.id.linearlayouthorscroll);
+                                    LayoutInflater layoutInflator = (LayoutInflater) HomePage.this.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                                    View vw = layoutInflator.inflate(R.layout.horizantalscrollview, null);
+                                    fab1 = (ImageView)vw.findViewById(R.id.fab1);
+                                    tvtext= (TextView) vw.findViewById(R.id.tvtext);
+                                grfont gr= new grfont(HomePage.this);
+                                gr.grfonttxt(tvtext);
+                                    final String question= jo.getString("ques");
+                                    final String Image = jo.getString("img");
+                                    final String content= jo.getString("cont");
+                                Picasso.with(HomePage.this).load( Image).into(fab1);
+                                tvtext.setText(question);
+                               root.addView(vw);
+                                vw.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent intent = new Intent(HomePage.this,ArticleActivity.class);
+                                        intent.putExtra("ques",question);
+                                        intent.putExtra("cont",content);
+                                        startActivity(intent );
+                                    }
+                                });
 
-                                    // "http://getrepair.in/GetRepairApi/images/HomeBC.jpg",
-                                    //"http://getrepair.in/GetRepairApi/images/HomeCar.jpg"
-                            };
-                           // Toast.makeText(HomePage.this,  "test"+articles[0]+articles[1], Toast.LENGTH_LONG).show();
-                            getdep();
-                            //Toast.makeText(HomePage.this, code+code1+code2, Toast.LENGTH_LONG).show();
+//                    mclass.setTaskdate(jo.getString("taskdate"));
+//                    mclass.setFrtime(jo.getString("fromtime"));
+//                    mclass.setTotime(jo.getString("totime"));
+//                    mclass.setTaskdescription(jo.getString("taskdesc"));
+//                    mclass.setContactperson(jo.getString("contactperson"));
+//                    mclass.setFromaddress(jo.getString("fromaddress"));
+//                    mclass.setStatus(jo.getString("status"));
 
-                            //Picasso.with(HomePage.this).load(articles[j-1]).into(ivproduct);
-//                                ImageLoaderConfiguration config=new ImageLoaderConfiguration.Builder(HomePage.this).build();
-//                                ImageLoader.getInstance().init(config);
-//                                viewadapter = new ViewPagerAdapter(HomePage.this,images);
-//                                viewPager.setAdapter(viewadapter);
-                        } catch (JSONException e) {
+
+                            }
+                            } catch (JSONException e) {
                             e.printStackTrace();
                         }
                         //Displaying the output as a toast
@@ -546,7 +605,102 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
         }
 
     }
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (mGoogleApiClient != null) {
+            mGoogleApiClient.connect();
+        }
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        checkPlayServices();
+
+        // Resuming the periodic location updates
+        if (mGoogleApiClient.isConnected() && mRequestingLocationUpdates) {
+            startLocationUpdates();
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mGoogleApiClient.isConnected()) {
+            mGoogleApiClient.disconnect();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+       // stopLocationUpdates();
+    }
+    private void displayLocation() {
+        checkPermission();
+        mLastLocation = LocationServices.FusedLocationApi
+                .getLastLocation(mGoogleApiClient);
+
+        if (mLastLocation != null) {
+            double latitude = mLastLocation.getLatitude();
+            double longitude = mLastLocation.getLongitude();
+            mclass.setLat(latitude);
+            mclass.setLang(longitude);
+            //lblLocation.setText(latitude + ", " + longitude);
+            geocoder = new Geocoder(HomePage.this);
+            try {
+                addresses = geocoder.getFromLocation(latitude, longitude, 1);
+
+                //get current Street name
+                address = addresses.get(0).getAddressLine(0) + addresses.get(0).getAddressLine(1);
+
+                //get current province/City
+
+                local2 = addresses.get(0).getAddressLine(2);
+                //local= "*"+addresses.get(0).getAddressLine(2);
+                country = addresses.get(0).getAddressLine(3);
+                spiltaddr = local2.split(",");
+                spiltaddr2 = spiltaddr[1].split("\\s");
+                province = spiltaddr2[1];
+                local = spiltaddr[0];
+                postalCode = spiltaddr2[2];
+                fulladdr = address + "," + local + "," + province + "," + postalCode + "," + country;
+                //lblLocation.setText(fulladdr);
+                mclass.setAddress(address);
+                mclass.setCity(province);
+                mclass.setPin(postalCode);
+                mclass.setLocadd(fulladdr);
+                loc.setText( address );
+                // mclass.setAddress(country);
+                //fulladdr= fulladdr.replace(',',' ');
+                //fulladdr=fulladdr.replaceAll("\\s+","");
+                // a.replaceAll("\\s+","");
+                System.out.println("full addr" + fulladdr);
+                // loc.setText(fulladdr);
+                //mclass.setAddress(fulladdr);
+                //fulladdr.replaceAll(","," ");
+                //get postal code
+                // postalCode = "*"+addresses.get(0).getAddressLine(4);
+                //Toast.makeText(GpsTrack.this,"add:"+spiltaddr[0]+spiltaddr2[1]+spiltaddr2[2],Toast.LENGTH_LONG).show();
+                //get place Name
+                //knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
+
+            /*return  address + "\t"  + province + "\t " + country
+                    + "\t" + postalCode + "\t"  + knownName;*/
+               // Toast.makeText(HomePage.this, "pin" +address, Toast.LENGTH_SHORT).show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+
+
+            } catch (IllegalArgumentException ex) {
+                ex.printStackTrace();
+
+            }
+
+        }
+    }
      /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -593,6 +747,105 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    private boolean checkPlayServices() {
+        int resultCode = GooglePlayServicesUtil
+                .isGooglePlayServicesAvailable(HomePage.this);
+        if (resultCode != ConnectionResult.SUCCESS) {
+            if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
+                GooglePlayServicesUtil.getErrorDialog(resultCode, HomePage.this,
+                        PLAY_SERVICES_RESOLUTION_REQUEST).show();
+            } else {
+                Toast.makeText(HomePage.this,
+                        "This device is not supported.", Toast.LENGTH_LONG)
+                        .show();
+              HomePage.this.finish();
+            }
+            return false;
+        }
+        return true;
+    }
+    @Override
+    public void onLocationChanged(Location location) {
+        mLastLocation = location;
+
+        Toast.makeText(HomePage.this, "Location changed!",
+                Toast.LENGTH_SHORT).show();
+
+        // Displaying the new location on UI
+        displayLocation();
+    }
+
+
+
+    private boolean checkPermission() {
+        boolean flag = true;
+        String[] permissions = {"android.permission.ACCESS_FINE_LOCATION", "android.permission.ACCESS_COARSE_LOCATION", "android.permission.RECEIVE_SMS"};
+        if (ActivityCompat.checkSelfPermission(HomePage.this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(HomePage.this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(permissions, 3);
+                flag = false;
+            } else {
+                flag = true;
+            }
+        }
+        return flag;
+    }
+
+
+
+    @Override
+    public void onConnected(Bundle arg0) {
+
+        // Once connected with google api, get the location
+        displayLocation();
+
+        if (mRequestingLocationUpdates) {
+            startLocationUpdates();
+        }
+    }
+
+
+    @Override
+    public void onConnectionSuspended(int arg0) {
+        mGoogleApiClient.connect();
+    }
+
+
+    protected void startLocationUpdates() {
+        checkPermission();
+        LocationServices.FusedLocationApi.requestLocationUpdates(
+                mGoogleApiClient, mLocationRequest, this);
+
+    }
+//    protected void stopLocationUpdates() {
+//        LocationServices.FusedLocationApi.removeLocationUpdates(
+//                mGoogleApiClient, this);
+//    }
+    protected synchronized void buildGoogleApiClient() {
+        mGoogleApiClient = new GoogleApiClient.Builder(HomePage.this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API).build();
+    }
+
+    /**
+     * Creating location request object
+     */
+    protected void createLocationRequest() {
+        mLocationRequest = new LocationRequest();
+        mLocationRequest.setInterval(UPDATE_INTERVAL);
+        mLocationRequest.setFastestInterval(FATEST_INTERVAL);
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        mLocationRequest.setSmallestDisplacement(DISPLACEMENT);
+    }
+    /**
+     * Google api callback methods
+     */
+    @Override
+    public void onConnectionFailed(ConnectionResult result) {
+        Log.i(TAG, "Connection failed: ConnectionResult.getErrorCode() = "
+                + result.getErrorCode());
+    }
     /*public void gpstrack() {
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         Criteria criteria = new Criteria();
@@ -617,54 +870,5 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
             //showGPSDisabledAlertToUser();
         }
     }*/
-    public void getdep(){
-        LinearLayout root = (LinearLayout) findViewById(R.id.linearlayouthorscroll);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
-        for(j=0;j<=2;j++) {
-            Getrepairpojo pojo = new Getrepairpojo(new LinearLayout(HomePage.this),j);
-            pojo.getLinearLayout().setOrientation(LinearLayout.VERTICAL);
-            //    pojo.getLinearLayout().setBackgroundColor(color[j]);
-            pojo.getLinearLayout().setPadding(10, 10, 10, 10);
-            //ImageView ivproduct ;
-//ll.setDividerPadding(1);
-            params.setMargins(4, 0, 4, 0);
-            pojo.getLinearLayout().setLayoutParams(params);
-            pojo.getLinearLayout().setClickable(true);
-            final ImageView ivproduct = new ImageView(HomePage.this);
-            //  ivproduct.setImageResource(mids[j]);
-           // Toast.makeText(HomePage.this,  "test"+articles[j], Toast.LENGTH_LONG).show();
-            Picasso.with(HomePage.this).load( articles[j]).into(ivproduct);
 
-            //Picasso.with(c).load(images[position]).into(image);
-            // ivproduct.setBackgroundColor(color[j]);
-            //  ivproduct.setId(j+1);
-            ivproduct.setPadding(10, 10, 10, 10);
-            pojo.getLinearLayout().addView(ivproduct);
-
-            TextView product = new TextView(HomePage.this);
-
-            product.setText(cat[j]);
-            product.setGravity(Gravity.CENTER);
-            product.setPadding(10, 10, 10, 10);
-            //product.setTextColor(Color.parseColor("#ffffff"));
-            //product.setBackgroundColor(color[j]);
-            pojo.getLinearLayout().addView(product);
-
-            final int positon = pojo.getPosition();
-            pojo.getLinearLayout().setOnClickListener(new View.OnClickListener() {
-
-                @Override
-
-                public void onClick(View view) {
-                    //  Toast.makeText(SagarAssociatesActivity.this,"clickable",Toast.LENGTH_LONG).show();
-                    changeView(positon);
-                }
-
-            });
-
-            root.addView(pojo.getLinearLayout());
-
-        }
-    }
 }

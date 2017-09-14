@@ -65,9 +65,9 @@ import retrofit.client.Response;
 
 import static com.atss.getrepairnewapplication.R.id.etemail;
 
-public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
+public class MainActivitytest extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, LocationListener {
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = MainActivitytest.class.getSimpleName();
 
     private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 1000;
     TextView checkbut, logintext, forgetpass;
@@ -126,9 +126,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         txtlay2 = (TextInputLayout) findViewById(R.id.input_layout_password);
         mclass = (Mainclass) getApplicationContext();
 
-        Activity mContext = MainActivity.this;//change this your activity name
+        Activity mContext = MainActivitytest.this;//change this your activity name
         StartLocationAlert startLocationAlert = new StartLocationAlert(mContext);
-        grfont gr = new grfont(MainActivity.this);
+        grfont gr = new grfont(MainActivitytest.this);
         gr.grfonttxt(checkbut);
         gr.grfonttxt(forgetpass);
         gr.grfontbut(b1);
@@ -163,20 +163,20 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
         StrictMode.setThreadPolicy(policy);
-        settings = getSharedPreferences(MainActivity.MyPREFERENCES, 0);// 0 - for private mode
+        settings = getSharedPreferences(MainActivitytest.MyPREFERENCES, 0);// 0 - for private mode
         boolean hasLoggedIn = settings.getBoolean("hasLoggedIn", false);
 
         if(hasLoggedIn)
         {
             Intent intent = new Intent();
-            intent.setClass(MainActivity.this, HomePage.class);
+            intent.setClass(MainActivitytest.this, HomePage.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             this.finish();//Go directly to main activity.
         }
         else
         {
-            Toast.makeText(MainActivity.this,"login to Proceed", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivitytest.this,"login to Proceed", Toast.LENGTH_LONG).show();
         }
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -187,186 +187,186 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
 
 
-                    RestAdapter radapter = new RestAdapter.Builder().setEndpoint(url).build();
+                RestAdapter radapter = new RestAdapter.Builder().setEndpoint(url).build();
 
-                    MInterface restInt = radapter.create(MInterface.class);
-
-
-                    if (!press) {
-                        if (email.getText().toString().equals("") || pass.getText().toString().equals("")) {
-
-                            Snackbar.make(view, "Please enter the form", Snackbar.LENGTH_LONG)
-                                    .setAction("Action", null).show();
-                            // tvvalidation.setText("Please enter the form");
-                        }else if(!validation(emails) ){
-                            Snackbar.make(view, "Invalid email or phone number", Snackbar.LENGTH_LONG)
-                                    .setAction("Action", null).show();
-
-                        }else {
-                            progress();
-                            restInt.insertlogin(
-
-                                    //Passing the values by getting it from editTexts
-                                    email.getText().toString(),
-                                    pass.getText().toString(),
+                MInterface restInt = radapter.create(MInterface.class);
 
 
-                                    //Creating an anonymous callback
-                                    new Callback<Response>() {
-                                        @Override
-                                        public void success(Response result, Response response) {
-                                            //On success we will read the server's output using bufferedreader
-                                            //Creating a bufferedreader object
-                                            BufferedReader reader = null;
+                if (!press) {
+                    if (email.getText().toString().equals("") || pass.getText().toString().equals("")) {
 
-                                            //An string to store output from the server
-                                            String output = "";
+                        Snackbar.make(view, "Please enter the form", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                        // tvvalidation.setText("Please enter the form");
+                    }else if(!validation(emails) ){
+                        Snackbar.make(view, "Invalid email or phone number", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+
+                    }else {
+                        progress();
+                        restInt.insertlogin(
+
+                                //Passing the values by getting it from editTexts
+                                email.getText().toString(),
+                                pass.getText().toString(),
 
 
-                                            try {
-                                                //Initializing buffered reader
-                                                reader = new BufferedReader(new InputStreamReader(result.getBody().in()));
+                                //Creating an anonymous callback
+                                new Callback<Response>() {
+                                    @Override
+                                    public void success(Response result, Response response) {
+                                        //On success we will read the server's output using bufferedreader
+                                        //Creating a bufferedreader object
+                                        BufferedReader reader = null;
 
-                                                //Reading the output in the string
-                                                output = reader.readLine();
-                                            } catch (IOException e) {
-                                                e.printStackTrace();
-                                            }
-                                            try {
+                                        //An string to store output from the server
+                                        String output = "";
 
-                                                JSONObject json_data = new JSONObject(output);
-                                                //json_data.put("us", result);
-                                                //Toast.makeText(getBaseContext(), "Inserted Successfully"+result+json_data,Toast.LENGTH_SHORT).show();
-                                                //json_data.put("code", result);
-                                                progressDialog.dismiss();
-                                                String code = json_data.getString("status");
-                                                //  String vendorid = json_data.getString("venid");
-                                                String user = json_data.getString("userid");
-                                                //String code1 = json_data.getString("userid");
-                                                if (code.equalsIgnoreCase("success")) {
-                                                    mclass.setUserid(user);
-                                                    session(user);
-                                                    // mclass.setVendorid(vendorid);
-                                                    // mclass.setLogin(true);
-                                                    Intent n = new Intent(MainActivity.this, HomePage.class);
-                                                    finish();
-                                                    startActivity(n);
-                                                }
-                                                else {
-                                                    Snackbar.make(view, "Wrong Emailid and password", Snackbar.LENGTH_LONG)
-                                                            .setAction("Action", null).show();
 
-                                                }
-                                            } catch (JSONException e) {
-                                                e.printStackTrace();
-                                            }
-                                            //Displaying the output as a toast
-                                            //Toast.makeText(loginpageActivity.this, output, Toast.LENGTH_LONG).show();
+                                        try {
+                                            //Initializing buffered reader
+                                            reader = new BufferedReader(new InputStreamReader(result.getBody().in()));
+
+                                            //Reading the output in the string
+                                            output = reader.readLine();
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
                                         }
+                                        try {
 
-                                        @Override
-                                        public void failure(RetrofitError error) {
-                                            //If any error occured displaying the error as toast
-                                            Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+                                            JSONObject json_data = new JSONObject(output);
+                                            //json_data.put("us", result);
+                                            //Toast.makeText(getBaseContext(), "Inserted Successfully"+result+json_data,Toast.LENGTH_SHORT).show();
+                                            //json_data.put("code", result);
+                                            progressDialog.dismiss();
+                                            String code = json_data.getString("status");
+                                            //  String vendorid = json_data.getString("venid");
+                                            String user = json_data.getString("userid");
+                                            //String code1 = json_data.getString("userid");
+                                            if (code.equalsIgnoreCase("success")) {
+                                                mclass.setUserid(user);
+                                                session(user);
+                                                // mclass.setVendorid(vendorid);
+                                                // mclass.setLogin(true);
+                                                Intent n = new Intent(MainActivitytest.this, HomePage.class);
+                                                finish();
+                                                startActivity(n);
+                                            }
+                                            else {
+                                                Snackbar.make(view, "Wrong Emailid and password", Snackbar.LENGTH_LONG)
+                                                        .setAction("Action", null).show();
+
+                                            }
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
                                         }
+                                        //Displaying the output as a toast
+                                        //Toast.makeText(loginpageActivity.this, output, Toast.LENGTH_LONG).show();
                                     }
-                            );
-                        }
-                    } else {
-                        if (name.getText().toString().equals("")
-                                || email.getText().toString().equals("") || pass.getText().toString().equals("")) {
-                            Snackbar.make(view, "Please enter the form", Snackbar.LENGTH_LONG)
-                                    .setAction("Action", null).show();
-                            // tvvalidation.setText("Please enter the form");
-                        } else if (!validation(emails)) {
-                            Snackbar.make(view, "Invalid email or phone number", Snackbar.LENGTH_LONG)
-                                    .setAction("Action", null).show();
 
-                        } else {
-                            progress();
-                            restInt.insertUser(
-
-
-                                    //Passing the values by getting it from editTexts
-                                    email.getText().toString(),
-                                    pass.getText().toString(),
-                                    name.getText().toString(),
-
-                                    //Creating an anonymous callback
-                                    new Callback<Response>() {
-                                        @Override
-                                        public void success(Response result, Response response) {
-                                            //On success we will read the server's output using bufferedreader
-                                            //Creating a bufferedreader object
-                                            BufferedReader reader = null;
-
-                                            //An string to store output from the server
-                                            String output = "";
-
-
-                                            try {
-                                                //Initializing buffered reader
-                                                reader = new BufferedReader(new InputStreamReader(result.getBody().in()));
-
-                                                //Reading the output in the string
-                                                output = reader.readLine();
-                                            } catch (IOException e) {
-                                                e.printStackTrace();
-                                            }
-                                            try {
-
-                                                JSONObject json_data = new JSONObject(output);
-                                                //json_data.put("us", result);
-                                                //Toast.makeText(getBaseContext(), "Inserted Successfully"+result+json_data,Toast.LENGTH_SHORT).show();
-                                                //json_data.put("code", result);
-                                                progressDialog.dismiss();
-
-                                                String code = json_data.getString("status");
-                                                //  String vendorid = json_data.getString("venid");
-                                                String user = json_data.getString("userid");
-
-                                                if (code.equalsIgnoreCase("success")) {
-
-
-                                                     mclass.setUserid(user);
-                                                    // mclass.setLogin(true);
-                                                    Intent n = new Intent(MainActivity.this, HomePage.class);
-
-                                                    startActivity(n);
-                                                }else if(code.equalsIgnoreCase("Exist")){
-                                                    Snackbar.make(view, "Already registered with this emailid/Phone no", Snackbar.LENGTH_LONG)
-                                                            .setAction("Action", null).show();
-
-                                                }
-                                                else {
-                                                    Snackbar.make(view, "Wrong Emailid and password", Snackbar.LENGTH_LONG)
-                                                            .setAction("Action", null).show();
-
-
-                                                }
-                                            } catch (JSONException e) {
-                                                e.printStackTrace();
-                                            }
-                                            //Displaying the output as a toast
-                                            //Toast.makeText(loginpageActivity.this, output, Toast.LENGTH_LONG).show();
-                                        }
-
-                                        @Override
-                                        public void failure(RetrofitError error) {
-                                            //If any error occured displaying the error as toast
-                                            Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_LONG).show();
-                                        }
+                                    @Override
+                                    public void failure(RetrofitError error) {
+                                        //If any error occured displaying the error as toast
+                                        Toast.makeText(MainActivitytest.this, error.toString(), Toast.LENGTH_LONG).show();
                                     }
-                            );
-                        }
+                                }
+                        );
                     }
-               }
+                } else {
+                    if (name.getText().toString().equals("")
+                            || email.getText().toString().equals("") || pass.getText().toString().equals("")) {
+                        Snackbar.make(view, "Please enter the form", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                        // tvvalidation.setText("Please enter the form");
+                    } else if (!validation(emails)) {
+                        Snackbar.make(view, "Invalid email or phone number", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+
+                    } else {
+                        progress();
+                        restInt.insertUser(
+
+
+                                //Passing the values by getting it from editTexts
+                                email.getText().toString(),
+                                pass.getText().toString(),
+                                name.getText().toString(),
+
+                                //Creating an anonymous callback
+                                new Callback<Response>() {
+                                    @Override
+                                    public void success(Response result, Response response) {
+                                        //On success we will read the server's output using bufferedreader
+                                        //Creating a bufferedreader object
+                                        BufferedReader reader = null;
+
+                                        //An string to store output from the server
+                                        String output = "";
+
+
+                                        try {
+                                            //Initializing buffered reader
+                                            reader = new BufferedReader(new InputStreamReader(result.getBody().in()));
+
+                                            //Reading the output in the string
+                                            output = reader.readLine();
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+                                        try {
+
+                                            JSONObject json_data = new JSONObject(output);
+                                            //json_data.put("us", result);
+                                            //Toast.makeText(getBaseContext(), "Inserted Successfully"+result+json_data,Toast.LENGTH_SHORT).show();
+                                            //json_data.put("code", result);
+                                            progressDialog.dismiss();
+
+                                            String code = json_data.getString("status");
+                                            //  String vendorid = json_data.getString("venid");
+                                            String user = json_data.getString("userid");
+
+                                            if (code.equalsIgnoreCase("success")) {
+
+
+                                                mclass.setUserid(user);
+                                                // mclass.setLogin(true);
+                                                Intent n = new Intent(MainActivitytest.this, HomePage.class);
+
+                                                startActivity(n);
+                                            }else if(code.equalsIgnoreCase("Exist")){
+                                                Snackbar.make(view, "Already registered with this emailid/Phone no", Snackbar.LENGTH_LONG)
+                                                        .setAction("Action", null).show();
+
+                                            }
+                                            else {
+                                                Snackbar.make(view, "Wrong Emailid and password", Snackbar.LENGTH_LONG)
+                                                        .setAction("Action", null).show();
+
+
+                                            }
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                        //Displaying the output as a toast
+                                        //Toast.makeText(loginpageActivity.this, output, Toast.LENGTH_LONG).show();
+                                    }
+
+                                    @Override
+                                    public void failure(RetrofitError error) {
+                                        //If any error occured displaying the error as toast
+                                        Toast.makeText(MainActivitytest.this, error.toString(), Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                        );
+                    }
+                }
+            }
 
         });
         forgetpass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(MainActivity.this,Forgotpassword.class);
+                Intent intent= new Intent(MainActivitytest.this,Forgotpassword.class);
                 startActivity(intent);
             }
         });
@@ -376,7 +376,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                 if(press==true) {
                     Drawable img = getBaseContext().getResources().getDrawable(R.drawable.checked);
                     img.setBounds(0, 0,  (int)(img.getIntrinsicWidth()),(int)(img.getIntrinsicHeight()));
-                   b1.setText("Login");
+                    b1.setText("Login");
                     checkbut.setCompoundDrawables(img, null, null, null);
                     press=false;
                     txtlay.setVisibility(View.INVISIBLE);
@@ -411,7 +411,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         // Commit the edits!
         editor.commit();
     }
-//    private boolean isValidPhonenumber(String number) {
+    //    private boolean isValidPhonenumber(String number) {
 //        String regEx = "^[0-9]{11,12}$";
 //        return number.matches(regEx);
 //        if (number !=null && number.length()<=10&&number.length()>=10){
@@ -446,7 +446,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         {
             return false;
         }
-       // return matcher.matches();
+        // return matcher.matches();
     }
 
     /**
@@ -474,7 +474,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         client.connect();
         AppIndex.AppIndexApi.start(client, getIndexApiAction());
     }
-//@Override
+    //@Override
 //public void onStart() {
 //    super.onStart();
 //    if (mGoogleApiClient != null) {
@@ -516,80 +516,80 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
 
 
-   private void displayLocation() {
-       checkPermission();
-       mLastLocation = LocationServices.FusedLocationApi
-               .getLastLocation(mGoogleApiClient);
+    private void displayLocation() {
+        checkPermission();
+        mLastLocation = LocationServices.FusedLocationApi
+                .getLastLocation(mGoogleApiClient);
 
-       if (mLastLocation != null) {
-           double latitude = mLastLocation.getLatitude();
-           double longitude = mLastLocation.getLongitude();
-           mclass.setLat(latitude);
-           mclass.setLang(longitude);
-           //lblLocation.setText(latitude + ", " + longitude);
-           geocoder = new Geocoder(MainActivity.this);
-           try {
-               addresses = geocoder.getFromLocation(latitude, longitude, 1);
+        if (mLastLocation != null) {
+            double latitude = mLastLocation.getLatitude();
+            double longitude = mLastLocation.getLongitude();
+            mclass.setLat(latitude);
+            mclass.setLang(longitude);
+            //lblLocation.setText(latitude + ", " + longitude);
+            geocoder = new Geocoder(MainActivitytest.this);
+            try {
+                addresses = geocoder.getFromLocation(latitude, longitude, 1);
 
-               //get current Street name
-               address = addresses.get(0).getAddressLine(0) + addresses.get(0).getAddressLine(1);
+                //get current Street name
+                address = addresses.get(0).getAddressLine(0) + addresses.get(0).getAddressLine(1);
 
-               //get current province/City
+                //get current province/City
 
-               local2 = addresses.get(0).getAddressLine(2);
-               //local= "*"+addresses.get(0).getAddressLine(2);
-               country = addresses.get(0).getAddressLine(3);
-               spiltaddr = local2.split(",");
-               spiltaddr2 = spiltaddr[1].split("\\s");
-               province = spiltaddr2[1];
-               local = spiltaddr[0];
-               postalCode = spiltaddr2[2];
-               fulladdr = address + "," + local + "," + province + "," + postalCode + "," + country;
-               lblLocation.setText(fulladdr);
-               mclass.setAddress(address);
-               mclass.setCity(province);
-               mclass.setPin(postalCode);
-               mclass.setLocadd(fulladdr);
-              // mclass.setAddress(country);
-               //fulladdr= fulladdr.replace(',',' ');
-               //fulladdr=fulladdr.replaceAll("\\s+","");
-               // a.replaceAll("\\s+","");
-               System.out.println("full addr" + fulladdr);
-               // loc.setText(fulladdr);
-               //mclass.setAddress(fulladdr);
-               //fulladdr.replaceAll(","," ");
-               //get postal code
-               // postalCode = "*"+addresses.get(0).getAddressLine(4);
-               //Toast.makeText(GpsTrack.this,"add:"+spiltaddr[0]+spiltaddr2[1]+spiltaddr2[2],Toast.LENGTH_LONG).show();
-               //get place Name
-               //knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
+                local2 = addresses.get(0).getAddressLine(2);
+                //local= "*"+addresses.get(0).getAddressLine(2);
+                country = addresses.get(0).getAddressLine(3);
+                spiltaddr = local2.split(",");
+                spiltaddr2 = spiltaddr[1].split("\\s");
+                province = spiltaddr2[1];
+                local = spiltaddr[0];
+                postalCode = spiltaddr2[2];
+                fulladdr = address + "," + local + "," + province + "," + postalCode + "," + country;
+                lblLocation.setText(fulladdr);
+                mclass.setAddress(address);
+                mclass.setCity(province);
+                mclass.setPin(postalCode);
+                mclass.setLocadd(fulladdr);
+                // mclass.setAddress(country);
+                //fulladdr= fulladdr.replace(',',' ');
+                //fulladdr=fulladdr.replaceAll("\\s+","");
+                // a.replaceAll("\\s+","");
+                System.out.println("full addr" + fulladdr);
+                // loc.setText(fulladdr);
+                //mclass.setAddress(fulladdr);
+                //fulladdr.replaceAll(","," ");
+                //get postal code
+                // postalCode = "*"+addresses.get(0).getAddressLine(4);
+                //Toast.makeText(GpsTrack.this,"add:"+spiltaddr[0]+spiltaddr2[1]+spiltaddr2[2],Toast.LENGTH_LONG).show();
+                //get place Name
+                //knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
 
             /*return  address + "\t"  + province + "\t " + country
                     + "\t" + postalCode + "\t"  + knownName;*/
-               Toast.makeText(MainActivity.this, "pin" +address, Toast.LENGTH_SHORT).show();
-           } catch (IOException ex) {
-               ex.printStackTrace();
+                Toast.makeText(MainActivitytest.this, "pin" +address, Toast.LENGTH_SHORT).show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
 
 
-           } catch (IllegalArgumentException ex) {
-               ex.printStackTrace();
+            } catch (IllegalArgumentException ex) {
+                ex.printStackTrace();
 
-           }
+            }
 
-       }
-   }
+        }
+    }
     private boolean checkPlayServices() {
         int resultCode = GooglePlayServicesUtil
-                .isGooglePlayServicesAvailable(MainActivity.this);
+                .isGooglePlayServicesAvailable(MainActivitytest.this);
         if (resultCode != ConnectionResult.SUCCESS) {
             if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
-                GooglePlayServicesUtil.getErrorDialog(resultCode, MainActivity.this,
+                GooglePlayServicesUtil.getErrorDialog(resultCode, MainActivitytest.this,
                         PLAY_SERVICES_RESOLUTION_REQUEST).show();
             } else {
-                Toast.makeText(MainActivity.this,
+                Toast.makeText(MainActivitytest.this,
                         "This device is not supported.", Toast.LENGTH_LONG)
                         .show();
-                MainActivity.this.finish();
+                MainActivitytest.this.finish();
             }
             return false;
         }
@@ -599,7 +599,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     public void onLocationChanged(Location location) {
         mLastLocation = location;
 
-        Toast.makeText(MainActivity.this, "Location changed!",
+        Toast.makeText(MainActivitytest.this, "Location changed!",
                 Toast.LENGTH_SHORT).show();
 
         // Displaying the new location on UI
@@ -621,8 +621,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
     }
 
-//    public void gpstrack() {
-//        LocationManager locationManager = (LocationManager) getSystemService(MainActivity.this.LOCATION_SERVICE);
+    //    public void gpstrack() {
+//        LocationManager locationManager = (LocationManager) getSystemService(MainActivitytest.this.LOCATION_SERVICE);
 //        Criteria criteria = new Criteria();
 //
 //        String bestProvider = locationManager.getBestProvider(criteria, true);
@@ -655,7 +655,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     private boolean checkPermission() {
         boolean flag = true;
         String[] permissions = {"android.permission.ACCESS_FINE_LOCATION", "android.permission.ACCESS_COARSE_LOCATION", "android.permission.RECEIVE_SMS"};
-        if (ActivityCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(MainActivitytest.this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(MainActivitytest.this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 requestPermissions(permissions, 3);
                 flag = false;
@@ -705,11 +705,12 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                 + result.getErrorCode());
     }
     public void progress(){
-        progressDialog = new ProgressDialog(MainActivity.this);
+        progressDialog = new ProgressDialog(MainActivitytest.this);
         progressDialog.setCancelable(true);
         progressDialog.setMessage("Loading ...");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setProgress(0);
+
         progressDialog.setMax(100);
         progressDialog.show();
     }
