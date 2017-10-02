@@ -2,6 +2,7 @@ package com.atss.getrepairnewapplication.Activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -77,9 +78,9 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
     ImageView indicator1, indicator2, indicator3,ivactionhomemap,fab1;
     LinearLayout lcar,linearcart;
     ViewPagerAdapter viewadapter;
-    TextView title,bike,car,home,desktop,tvfacility,interior,loc,lochead,myprof,reward,wallet,share,notify,help,locmenu,tvarticles,tvguarantee,tvverify,tvprofessional,tvinsured,tvwork,tvsatisfaction,tvguarantees,tvbeauty,tvevents,tvloans, homeapp,repairtxt,tvinter,tvorders,tvtext;
+    TextView title,bike,car,home,desktop,tvfacility,badgent,loc,lochead,myprof,reward,wallet,share,notify,help,locmenu,tvarticles,tvguarantee,tvverify,tvprofessional,tvinsured,tvwork,tvsatisfaction,tvguarantees,tvbeauty,tvevents,tvloans, homeapp,repairtxt,tvinter,tvorders,tvtext;
     Timer timer;
-    String address = null, province = null, country = null, postalCode = null, knownName = null, local = null, local2 = null;
+    String address = null, province = null, country = null, postalCode = null, knownName = null, local = null, local2 = null,cart;
     Mainclass mclass;
     private GoogleApiClient mGoogleApiClient;
     Geocoder geocoder;
@@ -90,11 +91,13 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
     List<Address> addresses = null;
     private Location mLastLocation;
     public static final String MyPREFERENCES = "MyPrefs";
+    SharedPreferences settings;
     int count = 0;
     private static int UPDATE_INTERVAL = 10000; // 10 sec
     private static int FATEST_INTERVAL = 5000; // 5 sec
     private static int DISPLACEMENT = 10; // 10 meters
     private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 1000;
+
     String[] spiltaddr, spiltaddr2;
     private String fulladdr;
     int noofsize = 3;
@@ -123,10 +126,15 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
         buildGoogleApiClient();
         createLocationRequest();
         mclass=(Mainclass) getApplicationContext();
+
         //toolbar.setTitle("");
         //StartLocationAlert startLocationAlert = new StartLocationAlert(HomePage.this);
         indicator1 = (ImageView)findViewById(R.id.imgslidecircle1);
       tvorders = (TextView) findViewById(R.id.tvorders);
+
+        badgent = (TextView) findViewById(R.id.badgent);
+        settings = getSharedPreferences(HomePage.MyPREFERENCES, 0);// 0 - for private mode
+        cart = settings.getString("userid","");
         tvorders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -226,6 +234,60 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
 
                             }
                             } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        //Displaying the output as a toast
+                        //Toast.makeText(loginpageActivity.this, output, Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        //If any error occured displaying the error as toast
+                        Toast.makeText(HomePage.this, error.toString(), Toast.LENGTH_LONG).show();
+                    }
+                }
+        );
+        restInt.insertcart(
+
+                //Passing the values by getting it from editTexts
+                cart,
+
+
+
+                //Creating an anonymous callback
+                new Callback<Response>() {
+                    @Override
+                    public void success(Response result, Response response) {
+                        //On success we will read the server's output using bufferedreader
+                        //Creating a bufferedreader object
+                        BufferedReader reader = null;
+
+                        //An string to store output from the server
+                        String output = "";
+
+                        try {
+                            //Initializing buffered reader
+                            reader = new BufferedReader(new InputStreamReader(result.getBody().in()));
+
+                            //Reading the output in the string
+                            output = reader.readLine();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+
+                            JSONObject json_data = new JSONObject(output);
+                            //json_data.put("us", result);
+                            //Toast.makeText(getBaseContext(), "Inserted Successfully"+result+json_data,Toast.LENGTH_SHORT).show();
+                            //json_data.put("code", result);
+
+                            String code = json_data.getString("cart");
+                           mclass.setCart(code);
+                            //  String vendorid = json_data.getString("venid");
+
+                            badgent.setText(code);
+                            badgent.setVisibility(View.VISIBLE);
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         }
                         //Displaying the output as a toast
@@ -661,17 +723,17 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
                 local2 = addresses.get(0).getAddressLine(2);
                 //local= "*"+addresses.get(0).getAddressLine(2);
                 country = addresses.get(0).getAddressLine(3);
-                spiltaddr = local2.split(",");
-                spiltaddr2 = spiltaddr[1].split("\\s");
-                province = spiltaddr2[1];
-                local = spiltaddr[0];
-                postalCode = spiltaddr2[2];
-                fulladdr = address + "," + local + "," + province + "," + postalCode + "," + country;
-                //lblLocation.setText(fulladdr);
+//                spiltaddr = local2.split(",");
+//                spiltaddr2 = spiltaddr[1].split("\\s");
+//                province = spiltaddr2[1];
+//                local = spiltaddr[0];
+//                postalCode = spiltaddr2[2];
+                fulladdr = address + "," + country;
+               loc.setText(fulladdr);
                 mclass.setAddress(address);
                 mclass.setCity(province);
                 mclass.setPin(postalCode);
-                mclass.setLocadd(fulladdr);
+                mclass.setLocadd(local);
                 loc.setText( address );
                 // mclass.setAddress(country);
                 //fulladdr= fulladdr.replace(',',' ');
@@ -797,7 +859,7 @@ public class HomePage extends AppCompatActivity  implements NavigationView.OnNav
     public void onConnected(Bundle arg0) {
 
         // Once connected with google api, get the location
-        displayLocation();
+     displayLocation();
 
         if (mRequestingLocationUpdates) {
             startLocationUpdates();

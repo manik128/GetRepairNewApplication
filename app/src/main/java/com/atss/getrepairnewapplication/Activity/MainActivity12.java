@@ -5516,6 +5516,8 @@ Button  btnno;
                                 }
 
                                 private void changeView(int positon) {
+
+                                    mclass.setService("Bio Metric Service");
                                     // System.out.print("j value:"+j+"position value"+positon);
                                     if (positon == 0) {
 
@@ -6046,13 +6048,14 @@ Button  btnno;
                                 }
 
                                 private void changeView(int positon) {
+                                    mclass.setService("Projector Services");
                                     // System.out.print("j value:"+j+"position value"+positon);
                                     if (positon == 0) {
 
                                         Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
                                         intent.putExtra("message", tvprojector.getText().toString());
                                         intent.putExtra("sertyp", 3);
-                                        mclass.setType("Projector Service");
+                                        mclass.setType("Projector Services");
                                         mclass.setModel(tvwash.getText().toString());
 
                                         intent.putExtra("service",  tvwash.getText().toString());
@@ -7635,7 +7638,7 @@ Button  btnno;
                         intent.putExtra("message", tvlan.getText().toString());
                         intent.putExtra("sertyp", 7);
                         mclass.setType("Lan Networking Service");
-
+                        mclass.setService("Lan Networking Service");
                         intent.putExtra("service",  tvlan.getText().toString());
                         startActivity(intent);
                     }
@@ -9875,7 +9878,7 @@ Button  btnno;
                         intent.putExtra("sertyp", 10);
                         mclass.setType("Glass doors and Glass work Service");
                         mclass.setModel(tvglass.getText().toString());
-
+                        mclass.setService("Glass doors and Glass work Service");
                         intent.putExtra("service",  tvglass.getText().toString());
                         startActivity(intent);
                     }
@@ -13807,6 +13810,7 @@ Button  btnno;
                                         intent.putExtra("message",  tvmenpower.getText().toString());
                                         intent.putExtra("sertyp", 3);
                                         mclass.setType("Man Power Service");
+                                        mclass.setService("Man Power Service");
                                         mclass.setModel(tvhomes.getText().toString());
                                         intent.putExtra("service", tvhomes.getText().toString());
                                         startActivity(intent);
@@ -13999,6 +14003,7 @@ Button  btnno;
                                         Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
                                         intent.putExtra("message", tvrepair.getText().toString());
                                         mclass.setType("One time cleaning services");
+                                      //  mclass.setService("One time cleaning services");
                                         mclass.setModel(tvonetime.getText().toString());
                                         intent.putExtra("service", tvonetime.getText().toString());
                                         intent.putExtra("sertyp", 5);
@@ -15963,6 +15968,7 @@ Button  btnno;
                 insertpoint.addView(view);
             }
             else if (pos == 6) {
+                cats="beauty";
                 view = getLayoutInflater().inflate(R.layout.itemsofbuilding, null);
                 viewpager1 = (ViewPager) view.findViewById(R.id.viewpager);
                 setupViewPageing(viewpager1);
@@ -16023,6 +16029,7 @@ Button  btnno;
                 insertpoint.addView(view);
             }
             else if (pos == 7) {
+                cats="events";
                 view = getLayoutInflater().inflate(R.layout.itemsofbuilding, null);
                 viewpager1 = (ViewPager) view.findViewById(R.id.viewpager);
                 setupViewPageevents(viewpager1);
@@ -16083,6 +16090,7 @@ Button  btnno;
                 insertpoint.addView(view);
             }
             else if (pos == 8) {
+                cats="finance";
                 view = getLayoutInflater().inflate(R.layout.activity_buildingconstruction, null);
 
                 lfinancial=(LinearLayout)view.findViewById(R.id.lfinancial);
@@ -16136,9 +16144,11 @@ Button  btnno;
                         }
 
                         private void changeView(final int position) {
+                            mclass.setService("Financial loans");
                             if (position == 0) {
                                 Intent intent = new Intent(MainActivity12.this, ServicingActivity.class);
                                 intent.putExtra("sertyp", 0);
+
                                 mclass.setType("Financial Service");
                                 mclass.setModel(tvproduct.getText().toString());
                                 intent.putExtra("service", tvproduct.getText().toString());
