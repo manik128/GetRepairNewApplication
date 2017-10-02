@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#b9dae7"
-    tools:context="com.atss.getrepairnewapplication.ChangeAddressPage.AddadressActivity">
+    tools:context="com.atss.getrepairnewapplication.Activity.AddadressActivity">
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/input_layout_name"

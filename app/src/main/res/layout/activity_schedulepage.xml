@@ -96,19 +96,236 @@ android:textColor="#fff"
         />
 
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#e2eff4"
+            android:layout_below="@+id/tvchange"
+           >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fff"
-        android:id="@+id/container_destacado"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/tvchange"
-        android:orientation="vertical">
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_name"
+                android:layout_width="match_parent"
+                android:textColorHint="#0189b1"
+                android:textColor="#0189b1"
+                android:inputType="textPersonName"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etname"
+                    android:hint="Name"
+                    android:textColorHint="#0189b1"
+
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:textSize="17dp"
+                    android:paddingTop="8dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingBottom="8dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_centerHorizontal="true" />
+
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_number"
+                android:layout_width="match_parent"
+                android:textColorHint="#0189b1"
+                android:textColor="#0189b1"
+                android:layout_below="@+id/input_layout_name"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etaddress"
+                    android:hint="Address"
+                    android:textColorHint="#0189b1"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:textSize="17dp"
+                    android:paddingTop="8dp"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingBottom="8dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_centerHorizontal="true" />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_email"
+                android:layout_width="match_parent"
+                android:textColorHint="#0189b1"
+                android:textColor="#0189b1"
+                android:layout_below="@+id/input_layout_number"
+                android:layout_height="wrap_content">
 
 
-    </LinearLayout>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etmobile"
+                    android:hint="Mobile Number"
+                    android:paddingLeft="20dp"
+                    android:textColorHint="#0189b1"
+                    android:paddingRight="20dp"
+                    android:textSize="17dp"
+                    android:paddingTop="8dp"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:inputType="number"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingBottom="8dp"
+                    android:maxLength="10"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_below="@+id/input_layout_number"
+                    android:layout_centerHorizontal="true" />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_area"
+                android:layout_width="match_parent"
+                android:textColorHint="#0189b1"
+                android:textColor="#0189b1"
+                android:layout_below="@+id/input_layout_email"
+                android:layout_height="wrap_content">
+
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etarea"
+                    android:hint="Area"
+                    android:textColorHint="#0189b1"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:textSize="17dp"
+                    android:paddingTop="8dp"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:inputType="number"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingBottom="8dp"
+                    android:maxLength="10"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_below="@+id/input_layout_number"
+                    android:layout_centerHorizontal="true" />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_city"
+                android:layout_width="match_parent"
+                android:textColorHint="#0189b1"
+                android:textColor="#0189b1"
+                android:layout_below="@+id/input_layout_area"
+                android:layout_height="wrap_content">
+
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etcity"
+                    android:hint="city"
+                    android:textColorHint="#0189b1"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:textSize="17dp"
+                    android:paddingTop="8dp"
+                    android:singleLine="true"
+                    android:maxLines="1"
+
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingBottom="8dp"
+                    android:maxLength="10"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_below="@+id/input_layout_number"
+                    android:layout_centerHorizontal="true" />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_state"
+                android:layout_width="match_parent"
+                android:textColorHint="#0189b1"
+                android:textColor="#0189b1"
+                android:layout_below="@+id/input_layout_city"
+                android:layout_height="wrap_content">
+
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etstate"
+                    android:hint="State"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:textSize="17dp"
+                    android:paddingTop="8dp"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:textColorHint="#0189b1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingBottom="8dp"
+                    android:maxLength="10"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_below="@+id/input_layout_number"
+                    android:layout_centerHorizontal="true" />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_pin"
+                android:layout_width="match_parent"
+                android:textColorHint="#0189b1"
+                android:textColor="#0189b1"
+                android:layout_below="@+id/input_layout_state"
+                android:layout_height="wrap_content">
+
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etpin"
+                    android:hint="Pin Number"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:textSize="17dp"
+                    android:paddingTop="8dp"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:textColorHint="#0189b1"
+                    android:inputType="number"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingBottom="8dp"
+                    android:maxLength="10"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_below="@+id/input_layout_number"
+                    android:layout_centerHorizontal="true" />
+            </android.support.design.widget.TextInputLayout>
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="#fff"-->
+        <!--android:id="@+id/container_destacado"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_below="@+id/tvchange"-->
+        <!--android:orientation="vertical">-->
+
+
+    <!--</LinearLayout>-->
 
 
 
@@ -211,6 +428,7 @@ android:textColor="#fff"
             />-->
 
 </RelativeLayout>
+        </RelativeLayout>
 </ScrollView>
     <Button
         android:layout_width="match_parent"

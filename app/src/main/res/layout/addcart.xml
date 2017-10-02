@@ -30,13 +30,14 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/badge_notification_1"
+        android:id="@+id/badgent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignRight="@id/relative_layout"
         android:layout_alignParentTop="true"
         android:background="@drawable/badge"
-        android:text="1"
+
+       android:visibility="gone"
         android:textColor="#FFF"
         android:textSize="12dp"
         android:layout_marginTop="2dp"

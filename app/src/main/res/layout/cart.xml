@@ -107,7 +107,7 @@
                android:layout_marginTop="40dp"
                 android:id="@+id/ivdelete" />
             <Button
-                android:text="continue"
+                android:text="checkout"
                 android:textColor="#fff"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"

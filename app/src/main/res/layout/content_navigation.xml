@@ -8,7 +8,7 @@
     android:background="#ffffff"
 
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.atss.getrepairnewapplication.Navigation"
+    tools:context="com.atss.getrepairnewapplication.Activity.Navigation"
     tools:showIn="@layout/app_bar_navigation">
 
     <ScrollView

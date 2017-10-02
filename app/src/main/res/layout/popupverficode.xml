@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_verficationcode"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/myborderscolor"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
- android:gravity="center"
-    android:background="#45bcf1"
-    tools:context="com.atss.getrepairnewapplication.Activity.Verficationcode">
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:padding="5dp"
+    >
 
 
     <TextView
-        android:text="Six digit verfication code send to your EmailId/ Phone number"
+        android:text="Six digit verfication code send to  your  Phone number"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:id="@+id/tvmail" />
@@ -24,12 +26,12 @@
         android:text="Verify"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="30dp"
         android:id="@+id/btnverify"
         android:background="#0077A4"
         android:textColor="#ffff"
-       android:layout_centerInParent="true"
-          android:layout_below="@+id/input_layout_email"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/input_layout_email"
 
         />
 
@@ -37,7 +39,7 @@
         android:id="@+id/input_layout_email"
         android:layout_width="match_parent"
         android:textColorHint="#FFFFFF"
-    android:layout_marginTop="40dp"
+        android:layout_marginTop="40dp"
         android:textColor="#FFFFFF"
         android:inputType="number"
         android:layout_height="wrap_content"
@@ -68,4 +70,32 @@
             android:layout_centerHorizontal="true" />
 
     </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:text="TextView"
+        android:textColor="#fff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/input_layout_email"
+        android:layout_alignLeft="@+id/tvmail"
+        android:layout_alignStart="@+id/tvmail"
+        android:layout_marginLeft="65dp"
+        android:layout_marginStart="100dp"
+        android:id="@+id/tvnumber" />
+
+    <TextView
+        android:text="@string/your_resend"
+        android:textColor="#ffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/input_layout_email"
+        android:layout_toRightOf="@+id/btnverify"
+        android:layout_toEndOf="@+id/btnverify"
+        android:layout_marginLeft="35dp"
+        android:layout_marginStart="35dp"
+        android:id="@+id/tvresend" />
+
+
 </RelativeLayout>
+
+
