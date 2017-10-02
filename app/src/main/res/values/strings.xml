@@ -3,6 +3,7 @@
     <string name="title_activity_navigation">Navigation</string>
     <string name="your_string"><u>terms &amp; Conditions</u></string>
     <string name="your_strings"><u>Forgot Password?</u></string>
+    <string name="your_resend"><u>Resend</u></string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="time_save">Save</string>
