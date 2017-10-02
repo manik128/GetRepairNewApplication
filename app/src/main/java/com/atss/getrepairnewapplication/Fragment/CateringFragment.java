@@ -68,38 +68,39 @@ public class CateringFragment extends Fragment {
                 }
 
                 private void changeView(final int position) {
+                    mclass.setService("Catering");
                     if (position == 0) {
                         Intent intent = new Intent(getContext(), ServicingActivity.class);
                         intent.putExtra("sertyp", 2);
-                        mclass.setType("Cattering");
+                        mclass.setType("Catering");
                         mclass.setModel(tvproduct.getText().toString());
                         intent.putExtra("service", tvproduct.getText().toString());
                         startActivity(intent);
                     }else if (position == 1) {
                         Intent intent = new Intent(getContext(), ServicingActivity.class);
                         intent.putExtra("sertyp", 2);
-                        mclass.setType("Cattering");
+                        mclass.setType("Catering");
                         mclass.setModel(tvproduct.getText().toString());
                         intent.putExtra("service", tvproduct.getText().toString());
                         startActivity(intent);
                     }else if (position == 2) {
                         Intent intent = new Intent(getContext(), ServicingActivity.class);
                         intent.putExtra("sertyp", 2);
-                        mclass.setType("Cattering");
+                        mclass.setType("Catering");
                         mclass.setModel(tvproduct.getText().toString());
                         intent.putExtra("service", tvproduct.getText().toString());
                         startActivity(intent);
                     }else if (position == 3) {
                         Intent intent = new Intent(getContext(), ServicingActivity.class);
                         intent.putExtra("sertyp", 2);
-                        mclass.setType("Cattering");
+                        mclass.setType("Catering");
                         mclass.setModel(tvproduct.getText().toString());
                         intent.putExtra("service", tvproduct.getText().toString());
                         startActivity(intent);
                     }else if (position == 4) {
                         Intent intent = new Intent(getContext(), ServicingActivity.class);
                         intent.putExtra("sertyp", 2);
-                        mclass.setType("Cattering");
+                        mclass.setType("Catering");
                         mclass.setModel(tvproduct.getText().toString());
                         intent.putExtra("service", tvproduct.getText().toString());
                         startActivity(intent);
@@ -140,7 +141,7 @@ public class CateringFragment extends Fragment {
                                 } else {
                                     Intent intent = new Intent(getContext(), ServicingActivity.class);
                                     intent.putExtra("sertyp", 2);
-                                    mclass.setType("Cattering");
+                                    mclass.setType("Catering");
                                     mclass.setModel(etemail.getText().toString());
                                     intent.putExtra("service", etemail.getText().toString());
                                     startActivity(intent);

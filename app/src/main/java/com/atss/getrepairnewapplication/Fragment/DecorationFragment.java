@@ -68,6 +68,7 @@ public class DecorationFragment extends Fragment {
                 }
 
                 private void changeView(final int position) {
+                    mclass.setService("Decoration");
                     if (position == 0) {
                         Intent intent = new Intent(getContext(), ServicingActivity.class);
                         intent.putExtra("sertyp", 1);

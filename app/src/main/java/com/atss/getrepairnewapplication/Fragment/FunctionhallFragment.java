@@ -76,6 +76,7 @@ public  class FunctionhallFragment extends Fragment {
                 }
 
                 private void changeView(final int position) {
+                    mclass.setService("Function");
                    if (position == 0) {
                        Intent intent = new Intent(getContext(), ServicingActivity.class);
                        intent.putExtra("sertyp", 0);

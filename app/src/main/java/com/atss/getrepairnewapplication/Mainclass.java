@@ -10,6 +10,7 @@ import android.support.multidex.MultiDex;
 
 public class Mainclass extends Application {
     String address;
+    String fulladdress;
     String locadd;
     String name;
     String house;
@@ -17,6 +18,7 @@ public class Mainclass extends Application {
     String state;
     String city;
     String date;
+    String userid;
     String time;
     String category;
     String pin;
@@ -61,6 +63,7 @@ public class Mainclass extends Application {
     String to;
     String year;
     String newvar;
+    String cart;
     String vechicle;
     String tripfrom;
     String tripto;
@@ -80,6 +83,27 @@ Double lat;
 
     public void setAddress(String address) {
         this.address = address;
+    }
+    public String getCart() {
+        return cart;
+    }
+
+    public void setCart(String cart) {
+        this.cart = cart;
+    }
+    public String getFulladdress() {
+        return fulladdress;
+    }
+
+    public void setFulladdress(String fulladdress) {
+        this.fulladdress = fulladdress;
+    }
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
     public String getState() {
         return state;
