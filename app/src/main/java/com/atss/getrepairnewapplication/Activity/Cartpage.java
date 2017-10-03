@@ -8,6 +8,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.atss.getrepairnewapplication.MInterface;
+import com.atss.getrepairnewapplication.Mainclass;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,15 +31,17 @@ public class Cartpage {
     boolean stat=false;
     String res="failed";
     Context con;
+    Mainclass mclass;
     RelativeLayout relativeLayout;
     String userid,request,cart,orderca, one;
-    public  Cartpage(String userid ,Context context){
+    public  Cartpage(String userid ,Context context, Mainclass mcla){
        this.userid=userid;
         con=context;
-
+        this.mclass = mcla;
 
 
     }
+
     RestAdapter radapter = new RestAdapter.Builder().setEndpoint(url).build();
 
     MInterface restInt = radapter.create(MInterface.class);
@@ -79,6 +82,8 @@ public class Cartpage {
                          //json_data.put("code", result);
 
                          String code = json_data.getString("status");
+                         String code1 = json_data.getString("id");
+                         mclass.setCartid(code1);
                          //  String vendorid = json_data.getString("venid");
                          // String user = json_data.getString("userid");
                          //String code1 = json_data.getString("userid");
@@ -150,6 +155,8 @@ public class Cartpage {
                             //json_data.put("code", result);
 
                             String code = json_data.getString("status");
+                            String code1 = json_data.getString("id");
+                            mclass.setCartid(code1);
                             //  String vendorid = json_data.getString("venid");
                             // String user = json_data.getString("userid");
                             //String code1 = json_data.getString("userid");
@@ -221,6 +228,8 @@ public class Cartpage {
                             //json_data.put("code", result);
 
                             String code = json_data.getString("status");
+                            String code1 = json_data.getString("id");
+                            mclass.setCartid(code1);
                             //  String vendorid = json_data.getString("venid");
                             // String user = json_data.getString("userid");
                             //String code1 = json_data.getString("userid");
@@ -290,6 +299,8 @@ public class Cartpage {
                             //json_data.put("code", result);
 
                             String code = json_data.getString("status");
+                            String code1 = json_data.getString("id");
+                            mclass.setCartid(code1);
                             //  String vendorid = json_data.getString("venid");
                             // String user = json_data.getString("userid");
                             //String code1 = json_data.getString("userid");
@@ -359,6 +370,8 @@ public class Cartpage {
                             //json_data.put("code", result);
 
                             String code = json_data.getString("status");
+                            String code1 = json_data.getString("id");
+                            mclass.setCartid(code1);
                             //  String vendorid = json_data.getString("venid");
                             // String user = json_data.getString("userid");
                             //String code1 = json_data.getString("userid");
@@ -428,6 +441,8 @@ public class Cartpage {
                             //json_data.put("code", result);
 
                             String code = json_data.getString("status");
+                            String code1 = json_data.getString("id");
+                            mclass.setCartid(code1);
                             //  String vendorid = json_data.getString("venid");
                             // String user = json_data.getString("userid");
                             //String code1 = json_data.getString("userid");
@@ -497,6 +512,8 @@ public class Cartpage {
                             //json_data.put("code", result);
 
                             String code = json_data.getString("status");
+                            String code1 = json_data.getString("id");
+                            mclass.setCartid(code1);
                             //  String vendorid = json_data.getString("venid");
                             // String user = json_data.getString("userid");
                             //String code1 = json_data.getString("userid");
@@ -566,6 +583,8 @@ public class Cartpage {
                             //json_data.put("code", result);
 
                             String code = json_data.getString("status");
+                            String code1 = json_data.getString("id");
+                            mclass.setCartid(code1);
                             //  String vendorid = json_data.getString("venid");
                             // String user = json_data.getString("userid");
                             //String code1 = json_data.getString("userid");
